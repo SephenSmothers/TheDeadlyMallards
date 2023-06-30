@@ -1,19 +1,79 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [Header("-----Instance-----")]
+    public static GameManager instance;
+    [Header("-----Player-----")]
+    public GameObject _player;
+    public GameObject _activeMenu;
+    public GameObject _pauseMenu;
+    public GameObject _winMenu;
+    public GameObject _loseMenu;
+    public GameObject _flashScreen;
+    public TextMeshProUGUI enemiesRemainText;
+    public Image playerHpBar;
+    bool isPaused;
+    float origTimeScale;
+    int enemiesRemain;
+
+
+    void Awake()
     {
-        
+        instance = this;
+        _player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetButtonDown("P") && _activeMenu == null)
+        {
+            Pause();
+            _activeMenu = _pauseMenu;
+            _activeMenu.SetActive(isPaused);
+        }
+    }
+
+    public void Pause()
+    {
+        Time.timeScale = 0;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+        isPaused = !isPaused;
+    }
+
+    public void UnPause()
+    {
+        Time.timeScale = origTimeScale;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        isPaused = !isPaused;
+        _activeMenu.SetActive(false);
+        _activeMenu = null;
+    }
+
+    public void YoLose()
+    {
+        Pause();
+        _activeMenu = _loseMenu;
+        _activeMenu.SetActive(true);
+    }
+
+    public IEnumerator FlashScreen()
+    {
+        _flashScreen.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        _flashScreen.SetActive(false);
+    }
+
+    int ReturnEnemyCount(int ammount)
+    {
+        enemiesRemain += ammount;
+        return enemiesRemain;
     }
 }
