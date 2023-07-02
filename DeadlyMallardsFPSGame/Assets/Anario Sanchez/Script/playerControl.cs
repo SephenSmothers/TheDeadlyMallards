@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditorInternal;
 using UnityEngine;
 
-public class playerControl : MonoBehaviour
+public class playerControl : MonoBehaviour, TakeDamage
 {
     [Header("----- Compents -----")]
     [SerializeField] CharacterController controller;
@@ -76,4 +76,13 @@ public class playerControl : MonoBehaviour
             state = MovementState.air;
         }
     }
+    public void CanTakeDamage(int amount)
+    {
+        hp -= amount;
+        if (hp <= 0)
+        {
+            GameManager.instance.YoLose();
+        }
+    }
+
 }
