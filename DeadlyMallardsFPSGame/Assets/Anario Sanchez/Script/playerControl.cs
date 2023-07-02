@@ -5,23 +5,20 @@ using UnityEngine;
 
 public class playerControl : MonoBehaviour
 {
-    private bool groundedPlayer;
-    private float playerSpeed;
+    [Header("----- Compents -----")]
+    [SerializeField] CharacterController controller;
 
-    public Transform orientation;
-    [Header("Player Stats")]
+    [Header("----- Player Stats -----")]
+    [SerializeField] int hp;
     [SerializeField] float playerWalkSpeed;
     [SerializeField] float playerSprintSpeed;
     [SerializeField] float jumpHeight;
-    public float groundDrag;
-    public float airDrag;
-    public float playerHeight;
-
-    [Header("State Check")]
-    public LayerMask whatIsGround;
 
     Vector3 move;
-    Rigidbody rb;
+    //Rigidbody rb;
+    private float playerSpeed;
+    private Vector3 playerVelocity;
+    private bool groundedPlayer;
 
     public MovementState state;
     public enum MovementState
@@ -30,57 +27,46 @@ public class playerControl : MonoBehaviour
         sprinting,
         air
     }
-
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        rb.freezeRotation = true;
+        //rb = GetComponent<Rigidbody>();
+        //rb.freezeRotation = true;
     }
-
     void Update()
     {
-        groundedPlayer = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
-
+        groundedPlayer = controller.isGrounded;
         stateCheck();
         movement();
-        speedControl();
-
-        if (Input.GetKeyDown(KeyCode.Space) && groundedPlayer)
-        {
-            Jump();
-        }
-
-        if (state == MovementState.walking || state == MovementState.sprinting)
-        {
-            rb.drag = groundDrag;
-        }
-        else
-        {
-            rb.drag = 0;
-        }
     }
     void movement()
     {
-        move = (orientation.right * Input.GetAxisRaw("Horizontal")) + (orientation.forward * Input.GetAxisRaw("Vertical"));
-
-        if (groundedPlayer)
+        if (groundedPlayer && playerVelocity.y < 0)
         {
-            rb.AddForce(move.normalized * playerSpeed, ForceMode.Force);
-        }
-        else if (!groundedPlayer)
-        {
-            rb.AddForce(move.normalized * playerSpeed * airDrag, ForceMode.Force);
+            playerVelocity.y = 0f;
         }
 
+        move = (transform.right * Input.GetAxis("Horizontal")) +
+                (transform.forward * Input.GetAxis("Vertical"));
+
+        controller.Move(move * Time.deltaTime * playerSpeed);
+
+
+        // Changes the height position of the player..
+        if (Input.GetButton("Jump") && groundedPlayer)
+        {
+            playerVelocity.y = jumpHeight;
+        }
+        playerVelocity.y -= 9.81f * Time.deltaTime;
+        controller.Move(playerVelocity * Time.deltaTime);
     }
     void stateCheck()
     {
-        if (Input.GetKey(KeyCode.LeftShift) && groundedPlayer)
+        if(Input.GetKey(KeyCode.LeftShift) && groundedPlayer)
         {
             state = MovementState.sprinting;
             playerSpeed = playerSprintSpeed;
         }
-        else if(groundedPlayer)
+        else if (groundedPlayer)
         {
             state = MovementState.walking;
             playerSpeed = playerWalkSpeed;
@@ -89,19 +75,5 @@ public class playerControl : MonoBehaviour
         {
             state = MovementState.air;
         }
-    }
-    private void speedControl()
-    {
-        Vector3 flatvel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-        if (flatvel.magnitude > playerSpeed)
-        {
-            Vector3 limitvel = flatvel.normalized * playerSpeed;
-            rb.velocity = new Vector3(limitvel.x, rb.velocity.y, limitvel.z);
-        }
-    }
-    private void Jump()
-    {
-        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-        rb.AddForce(transform.up * jumpHeight, ForceMode.Impulse);
     }
 }
