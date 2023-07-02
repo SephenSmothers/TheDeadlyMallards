@@ -71,9 +71,10 @@ public class GameManager : MonoBehaviour
         _flashScreen.SetActive(false);
     }
 
-    int ReturnEnemyCount(int ammount)
+    public int ReturnEnemyCount(int ammount)
     {
         enemiesRemain += ammount;
+        enemiesRemainText.text = enemiesRemain.ToString("f0");
         return enemiesRemain;
     }
 }

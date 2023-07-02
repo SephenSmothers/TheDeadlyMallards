@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditorInternal;
 using UnityEngine;
 
-public class playerControl : MonoBehaviour
+public class playerControl : MonoBehaviour, TakeDamage
 {
     private bool groundedPlayer;
     private float playerSpeed;
@@ -13,6 +13,7 @@ public class playerControl : MonoBehaviour
     [SerializeField] float playerWalkSpeed;
     [SerializeField] float playerSprintSpeed;
     [SerializeField] float jumpHeight;
+    [SerializeField] int playerHp;
     public float groundDrag;
     public float airDrag;
     public float playerHeight;
@@ -103,5 +104,14 @@ public class playerControl : MonoBehaviour
     {
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
         rb.AddForce(transform.up * jumpHeight, ForceMode.Impulse);
+    }
+
+    public void CanTakeDamage(int amount)
+    {
+        playerHp -= amount;
+        if (playerHp <= 0)
+        {
+            GameManager.instance.YoLose();
+        }
     }
 }
