@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
         _player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    // Update is called once per frame
+   // Update is called once per frame
     void Update()
     {
         if (Input.GetButtonDown("Cancel") && _activeMenu == null)
