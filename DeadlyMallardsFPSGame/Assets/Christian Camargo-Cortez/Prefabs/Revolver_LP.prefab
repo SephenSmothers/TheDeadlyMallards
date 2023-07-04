@@ -509,7 +509,7 @@ MonoBehaviour:
   magSize: 5
   bulletsPerShot: 1
   totalAmmo: 35
-  allowButtonHold: 1
+  allowButtonHold: 0
   playerCam: {fileID: 0}
   shootPos: {fileID: 267589182894152098}
   enemy:
