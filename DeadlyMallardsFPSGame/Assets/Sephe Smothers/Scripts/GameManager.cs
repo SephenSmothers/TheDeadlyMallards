@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
         _player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    // Update is called once per frame
+   // Update is called once per frame
     void Update()
     {
         if (Input.GetButtonDown("Cancel") && _activeMenu == null)
@@ -71,9 +71,10 @@ public class GameManager : MonoBehaviour
         _flashScreen.SetActive(false);
     }
 
-    int ReturnEnemyCount(int ammount)
+    public int ReturnEnemyCount(int ammount)
     {
         enemiesRemain += ammount;
+        enemiesRemainText.text = enemiesRemain.ToString("f0");
         return enemiesRemain;
     }
 }
