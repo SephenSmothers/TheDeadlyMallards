@@ -107,6 +107,7 @@ public class EnemySpawner : MonoBehaviour
         else
         {
             currentWave++;
+            enemyList.Clear();
         }        
     }
 
