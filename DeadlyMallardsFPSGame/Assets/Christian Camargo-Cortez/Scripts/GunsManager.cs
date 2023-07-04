@@ -86,7 +86,7 @@ public class GunsManager : MonoBehaviour
         if(Physics.Raycast(playerCam.transform.position, direction, out hit, range, enemy))
         {
             // wait for AI tag
-            if(hit.collider.CompareTag(" "))
+            if(hit.collider.CompareTag("Enemy"))
             {
                 hit.collider.GetComponent<TakeDamage>().CanTakeDamage(damage);
             }
