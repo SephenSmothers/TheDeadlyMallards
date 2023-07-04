@@ -9,12 +9,9 @@ public class cameraControl : MonoBehaviour
     [SerializeField] int lockVerMin;
     [SerializeField] int lockVerMax;
 
-    public Transform orientation;
-
     [SerializeField] bool invertY;
 
     float xRotation;
-    float yRotation;
 
     void Start()
     {
@@ -25,25 +22,23 @@ public class cameraControl : MonoBehaviour
     void Update()
     {
         //Getting Mouse Movement
-        float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensitivity;
-        float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensitivity;
+        float mouseY = Input.GetAxis("Mouse Y") * Time.deltaTime * sensitivity;
+        float mouseX = Input.GetAxis("Mouse X") * Time.deltaTime * sensitivity;
 
         if (invertY)
         {
             xRotation += mouseY;
-            yRotation -= mouseX;
         }
         else
         {
             xRotation -= mouseY;
-            yRotation += mouseX;
         }
 
         //Stopping camera for going too far
         xRotation = Mathf.Clamp(xRotation, lockVerMin, lockVerMax);
 
         //Rotate camera on x-axis
-        transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
-        orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+        transform.localRotation = Quaternion.Euler(xRotation,0, 0);
+        transform.parent.Rotate(Vector3.up * mouseX);
     }
 }
