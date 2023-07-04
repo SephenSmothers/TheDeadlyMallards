@@ -84,5 +84,4 @@ public class playerControl : MonoBehaviour, TakeDamage
             GameManager.instance.YoLose();
         }
     }
-
 }
