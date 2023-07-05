@@ -10,7 +10,7 @@ public class EnemySpawner : MonoBehaviour
     WaveSpawner wave = new WaveSpawner();
 
     [SerializeField] public WaveSpawner[] waves;
-    [SerializeField] private List<CharacterStats> enemyList;
+    [SerializeField] private List<GameObject> enemyList;
 
     [SerializeField] private float timeBetweenWaves = 5f;
     [SerializeField] private float waveCountdown = 0f;
@@ -72,25 +72,23 @@ public class EnemySpawner : MonoBehaviour
         int randomInt = Random.Range(1, spawners.Length);
         Transform randomSpawner = spawners[randomInt];
         GameObject newEnemy = Instantiate(enemy, randomSpawner.position, randomSpawner.rotation);
-        CharacterStats newEnemyStats = newEnemy.GetComponent<CharacterStats>();
-        enemyList.Add(newEnemyStats);
+        enemyList.Add(newEnemy);
     }
 
     private bool EnemiesAreDead()
     {
-        int i = 0;
-        foreach (CharacterStats enemy in enemyList)
+        bool allEnemiesAreDead = true;
+
+        foreach (GameObject enemy in enemyList)
         {
-            if (enemy.IsDead())
+            if (enemy != null)
             {
-                i++;
-            }
-            else
-            {
-                return false;
+                allEnemiesAreDead = false;
+                break;
             }
         }
-        return true;
+
+        return allEnemiesAreDead;
     }
 
     private void CompleteWave()
@@ -109,6 +107,7 @@ public class EnemySpawner : MonoBehaviour
         else
         {
             currentWave++;
+            enemyList.Clear();
         }        
     }
 
