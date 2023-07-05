@@ -16,11 +16,12 @@ public class GunsManager : MonoBehaviour
     //timing bools
     bool isShooting, readyToShoot, reloading;
 
-    [Header("----- Player Stuff -----")]
+    [Header("----- Components -----")]
     public Camera playerCam;
     public Transform shootPos;
     public RaycastHit hit;
     public LayerMask enemy;
+    public GameObject gunEffect, bulletHole;
 
     [Header("----- UI -----")]
     [SerializeField] TextMeshProUGUI ammoCount;
@@ -92,6 +93,9 @@ public class GunsManager : MonoBehaviour
             }
         }
 
+
+        Instantiate(bulletHole, hit.point, Quaternion.Euler(0, 180,0));
+        Instantiate(gunEffect, shootPos.position, Quaternion.identity);
         bulletsLeft--;
         Invoke(nameof(resetShot), fireRate);
     } 
