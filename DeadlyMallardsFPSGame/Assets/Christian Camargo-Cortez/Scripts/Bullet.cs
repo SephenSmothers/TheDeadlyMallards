@@ -9,14 +9,14 @@ public class Bullet : MonoBehaviour
 
     [Header("----- Stats -----")]
     [SerializeField] int damage;
-    [SerializeField] float fireRate;
+    [SerializeField] float bulletSpeed;
     [SerializeField] int range;
 
     // Start is called before the first frame update
     void Start()
     {
         Destroy(gameObject, range);
-        rb.velocity = transform.forward * fireRate;
+        rb.velocity = transform.forward * bulletSpeed;
     }
 
     private void OnTriggerEnter(Collider other)

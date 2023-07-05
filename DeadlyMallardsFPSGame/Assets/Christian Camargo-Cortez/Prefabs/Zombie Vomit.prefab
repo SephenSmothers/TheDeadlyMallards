@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 8320899992971833746}
   damage: 1
-  fireRate: 1
+  fireRate: 20
   range: 20
 --- !u!135 &2757038789234041870
 SphereCollider:

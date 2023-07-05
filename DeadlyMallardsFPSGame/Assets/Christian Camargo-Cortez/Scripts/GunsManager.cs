@@ -11,7 +11,7 @@ public class GunsManager : MonoBehaviour
     [SerializeField] float fireRate, range, spread, reloadTime;
     [SerializeField] int magSize, bulletsPerShot, totalAmmo;
     [SerializeField] bool allowButtonHold;
-    int bulletsLeft, bulletsShot;
+    int bulletsLeft, bulletsShot, maxAmmo;
 
     //timing bools
     bool isShooting, readyToShoot, reloading;
@@ -29,6 +29,7 @@ public class GunsManager : MonoBehaviour
     void Start()
     {
         //stuff to prepare the player
+        maxAmmo = totalAmmo;
         bulletsLeft = magSize;
         totalAmmo -= magSize;
         readyToShoot = true;
@@ -93,9 +94,8 @@ public class GunsManager : MonoBehaviour
             }
         }
 
-
-        Instantiate(bulletHole, hit.point, Quaternion.Euler(0, 180,0));
-        Instantiate(gunEffect, shootPos.position, Quaternion.identity);
+        //Instantiate(bulletHole, hit.point, Quaternion.Euler(0, 180,0));
+       // Instantiate(gunEffect, shootPos.position, Quaternion.identity);
         bulletsLeft--;
         Invoke(nameof(resetShot), fireRate);
     } 
@@ -110,5 +110,10 @@ public class GunsManager : MonoBehaviour
 
         //Displays the ammo count
         ammoCount.SetText(bulletsLeft + " / " + totalAmmo);
+    }
+
+    public void GetMaxAmmo()
+    {
+        totalAmmo = maxAmmo;
     }
 }
