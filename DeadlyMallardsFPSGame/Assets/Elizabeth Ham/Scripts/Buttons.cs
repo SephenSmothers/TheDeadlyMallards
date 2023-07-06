@@ -20,4 +20,14 @@ public class Buttons : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void PlayGame()
+    {
+        SceneManager.LoadScene(1);
+    }
 }
