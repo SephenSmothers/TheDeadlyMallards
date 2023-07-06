@@ -29,5 +29,6 @@ public class Buttons : MonoBehaviour
     public void PlayGame()
     {
         SceneManager.LoadScene(1);
+        GameManager.instance.UnPause();
     }
 }

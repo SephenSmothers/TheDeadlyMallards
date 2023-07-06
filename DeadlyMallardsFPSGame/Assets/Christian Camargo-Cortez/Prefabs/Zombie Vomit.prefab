@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 8320899992971833746}
   damage: 1
-  fireRate: 20
+  bulletSpeed: 20
   range: 20
 --- !u!135 &2757038789234041870
 SphereCollider:
@@ -66,7 +66,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3

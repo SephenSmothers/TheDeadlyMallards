@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class MaxHealthCrate : MonoBehaviour
 {
-    playerControl playerControl;
+   public playerControl playerControl;
     public void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
         {
             playerControl.GetMaxHealth();
+            Destroy(gameObject);
         }
     }
 }

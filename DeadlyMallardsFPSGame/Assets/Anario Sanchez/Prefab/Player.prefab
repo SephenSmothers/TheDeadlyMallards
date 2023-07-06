@@ -82,7 +82,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 7801031591332816190}
-  hp: 5
+  hp: 20
   playerWalkSpeed: 6
   playerSprintSpeed: 9
   jumpHeight: 5
@@ -216,7 +216,7 @@ Transform:
   m_Children:
   - {fileID: 1815063520046224102}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6895971384608975967
 GameObject:

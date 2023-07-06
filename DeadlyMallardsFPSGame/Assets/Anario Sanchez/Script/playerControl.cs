@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditorInternal;
+//using UnityEditorInternal;
 using UnityEngine;
 
 public class playerControl : MonoBehaviour, TakeDamage
@@ -80,6 +80,8 @@ public class playerControl : MonoBehaviour, TakeDamage
     public void CanTakeDamage(int amount)
     {
         hp -= amount;
+        StartCoroutine(GameManager.instance.FlashScreen());
+        UpdatePlayerUI();
         if (hp <= 0)
         {
             GameManager.instance.YoLose();
@@ -90,5 +92,10 @@ public class playerControl : MonoBehaviour, TakeDamage
     public void GetMaxHealth()
     {
         hp = maxHP;
+        UpdatePlayerUI();   
+    }
+    public void UpdatePlayerUI()
+    {
+        GameManager.instance.playerHpBar.fillAmount = (float)hp / maxHP;
     }
 }

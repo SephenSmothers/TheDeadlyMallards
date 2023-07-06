@@ -781,8 +781,8 @@ MonoBehaviour:
   vomit: {fileID: 0}
   hitbox: {fileID: 7165650408978483057, guid: 949ca1a187eca464b9eaa63b92d7867d, type: 3}
   headPos: {fileID: 753045697949549879}
-  viewAngle: 90
-  playerFaceSpeed: 90
+  viewAngle: 180
+  playerFaceSpeed: 500
   shooter: 0
 --- !u!195 &8986857974363761390
 NavMeshAgent:

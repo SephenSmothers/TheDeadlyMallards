@@ -36,7 +36,7 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
     // Start is called before the first frame update
     void Start()
     {
-
+        GameManager.instance.ReturnEnemyCount(1);
     }
 
     // Update is called once per frame
@@ -116,6 +116,7 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
         if (hp <= 0)
         {
             Destroy(gameObject);
+            GameManager.instance.ReturnEnemyCount(-1);
         }
     }
     IEnumerator shoot()
