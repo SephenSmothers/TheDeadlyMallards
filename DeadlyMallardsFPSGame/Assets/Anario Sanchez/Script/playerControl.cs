@@ -19,7 +19,7 @@ public class playerControl : MonoBehaviour, TakeDamage
     private float playerSpeed;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
-
+    private int maxHP;
     public MovementState state;
     public enum MovementState
     {
@@ -29,6 +29,7 @@ public class playerControl : MonoBehaviour, TakeDamage
     }
     private void Start()
     {
+        maxHP = hp;
         //rb = GetComponent<Rigidbody>();
         //rb.freezeRotation = true;
     }
@@ -82,6 +83,12 @@ public class playerControl : MonoBehaviour, TakeDamage
         if (hp <= 0)
         {
             GameManager.instance.YoLose();
+     
         }
+    }
+
+    public void GetMaxHealth()
+    {
+        hp = maxHP;
     }
 }
