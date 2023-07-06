@@ -102,7 +102,7 @@ public class EnemySpawner : MonoBehaviour
             currentWave = 0;
             Debug.Log("Completed All the waves!");
             SceneManager.LoadScene(0);
-            Cursor.lockState = CursorLockMode.None;
+            Cursor.lockState = CursorLockMode.Confined;
         }
         else
         {
