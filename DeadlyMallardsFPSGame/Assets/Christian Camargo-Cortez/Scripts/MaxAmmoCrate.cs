@@ -12,6 +12,7 @@ public class MaxAmmoCrate : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             gunsManager.GetMaxAmmo();
+            Destroy(gameObject);
         }
     }
 }
