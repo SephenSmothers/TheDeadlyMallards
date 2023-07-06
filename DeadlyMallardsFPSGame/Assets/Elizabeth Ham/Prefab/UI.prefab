@@ -66,7 +66,7 @@ MonoBehaviour:
   _loseMenu: {fileID: 4026489187816012423}
   _flashScreen: {fileID: 0}
   enemiesRemainText: {fileID: 757216073578007585}
-  playerHpBar: {fileID: 0}
+  playerHpBar: {fileID: 7019387198341980979}
 --- !u!114 &4215126377511531059
 MonoBehaviour:
   m_ObjectHideFlags: 0
