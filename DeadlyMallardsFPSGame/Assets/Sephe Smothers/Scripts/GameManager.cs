@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
     public int SetAmmoCount(int count)
     {
         ammoCountRemain = count;
-        ammoCountRemaning.text = ammoCountRemain.ToString(); // Update the UI text
+        ammoCountRemaning.text = ammoCountRemain.ToString();
         return ammoCountRemain;
     }
 
