@@ -16,11 +16,12 @@ public class GameManager : MonoBehaviour
     public GameObject _loseMenu;
     public GameObject _flashScreen;
     public TextMeshProUGUI enemiesRemainText;
-    public TextMeshProUGUI ammoCount;
+    public TextMeshProUGUI ammoCountRemaning;
     public Image playerHpBar;
     bool isPaused;
     float origTimeScale;
     int enemiesRemain;
+    int ammoCountRemain;
    
 
 
@@ -81,5 +82,11 @@ public class GameManager : MonoBehaviour
         return enemiesRemain;
     }
 
-   
+    public int SetAmmoCount(int count)
+    {
+        ammoCountRemain = count;
+        ammoCountRemaning.text = ammoCountRemain.ToString(); // Update the UI text
+        return ammoCountRemain;
+    }
+
 }

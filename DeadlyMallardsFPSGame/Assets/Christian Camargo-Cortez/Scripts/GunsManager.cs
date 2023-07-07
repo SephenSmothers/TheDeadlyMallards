@@ -23,8 +23,7 @@ public class GunsManager : MonoBehaviour
     public LayerMask enemy;
     public GameObject gunEffect, bulletHole;
 
-    [Header("----- UI -----")]
-    [SerializeField] TextMeshProUGUI ammoCount;
+    private GameManager gameManager;
 
     void Start()
     {
@@ -33,6 +32,8 @@ public class GunsManager : MonoBehaviour
         bulletsLeft = magSize;
         totalAmmo -= magSize;
         readyToShoot = true;
+
+        gameManager = GameManager.instance;
     }
 
     public void inputs()
@@ -74,6 +75,8 @@ public class GunsManager : MonoBehaviour
         totalAmmo -= restore;
         bulletsLeft = magSize;
         reloading = false;
+
+        gameManager.SetAmmoCount(totalAmmo);
     }
 
     public void shoot()
@@ -109,11 +112,12 @@ public class GunsManager : MonoBehaviour
         inputs();
 
         //Displays the ammo count
-        ammoCount.SetText(bulletsLeft + " / " + totalAmmo);
+      //  ammoCount.SetText(bulletsLeft + " / " + totalAmmo);
     }
 
     public void GetMaxAmmo()
     {
         totalAmmo = maxAmmo;
+        gameManager.SetAmmoCount(totalAmmo);
     }
 }
