@@ -16,10 +16,12 @@ public class GameManager : MonoBehaviour
     public GameObject _loseMenu;
     public GameObject _flashScreen;
     public TextMeshProUGUI enemiesRemainText;
+    public TextMeshProUGUI ammoCount;
     public Image playerHpBar;
     bool isPaused;
     float origTimeScale;
     int enemiesRemain;
+   
 
 
     void Awake()
@@ -78,4 +80,6 @@ public class GameManager : MonoBehaviour
         enemiesRemainText.text = enemiesRemain.ToString("f0");
         return enemiesRemain;
     }
+
+   
 }
