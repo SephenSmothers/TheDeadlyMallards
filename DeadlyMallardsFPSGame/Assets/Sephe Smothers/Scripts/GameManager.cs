@@ -82,6 +82,7 @@ public class GameManager : MonoBehaviour
         return enemiesRemain;
     }
 
+    // maybe output whatever string you want with string interpolation of the currentAmmo / totalAmmo or might not even need that
     public int SetAmmoCount(int count)
     {
         ammoCountRemain = count;

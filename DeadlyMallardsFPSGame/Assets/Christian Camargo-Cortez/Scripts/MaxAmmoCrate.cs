@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class MaxAmmoCrate : MonoBehaviour
 {
-    public GunsManager gunsManager;
+    public playerControl playercont;
  
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            gunsManager.GetMaxAmmo();
+            playercont.GetMaxAmmo();
             Destroy(gameObject);
         }
     }

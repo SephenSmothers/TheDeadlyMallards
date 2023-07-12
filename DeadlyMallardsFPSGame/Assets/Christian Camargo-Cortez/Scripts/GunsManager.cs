@@ -4,120 +4,18 @@ using UnityEditor;
 using UnityEngine;
 using TMPro;
 
-public class GunsManager : MonoBehaviour
+[CreateAssetMenu]
+
+public class GunsManager : ScriptableObject
 {
-    [Header("----- Gun Stats -----")]
-    [SerializeField] int damage;
-    [SerializeField] float fireRate, range, spread, reloadTime;
-    [SerializeField] int magSize, bulletsPerShot, totalAmmo;
-    [SerializeField] bool allowButtonHold;
-    int bulletsLeft, bulletsShot, maxAmmo;
+    public int damage;
+    public float fireRate, range, spread, reloadTime;
+    public int magSize, bulletsPerShot, totalAmmo;
+    public bool allowButtonHold;
 
-    //timing bools
-    bool isShooting, readyToShoot, reloading;
+    //set bullets left to the magsize and the max ammo to the beginning total ammo
+    public int bulletsLeft, maxAmmo;
 
-    [Header("----- Components -----")]
-    public Camera playerCam;
-    public Transform shootPos;
-    public RaycastHit hit;
-    public LayerMask enemy;
-    public GameObject gunEffect, bulletHole;
-
-    private GameManager gameManager;
-
-    void Start()
-    {
-        //stuff to prepare the player
-        maxAmmo = totalAmmo;
-        bulletsLeft = magSize;
-        totalAmmo -= magSize;
-        readyToShoot = true;
-
-        gameManager = GameManager.instance;
-    }
-
-    public void inputs()
-    {
-        if (allowButtonHold)
-        {
-            //Automatic guns
-            isShooting = Input.GetKey(KeyCode.Mouse0);
-        }
-        else
-        {
-            //semi-auto guns
-            isShooting = Input.GetKeyDown(KeyCode.Mouse0);
-        }
-
-        //reload input
-        if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magSize && !reloading && totalAmmo > 0)
-        {
-            reload();
-        }
-
-        //shooting input
-        if (readyToShoot && isShooting && !reloading && bulletsLeft > 0)
-        {
-            shoot();
-        }
-    }
-
-    public void reload()
-    {
-        reloading = true;
-        Invoke(nameof(reloadEnd), reloadTime);
-    }
-
-    public void reloadEnd()
-    {
-        //lets everything know when reload ends do this
-        int restore = magSize - bulletsLeft;
-        totalAmmo -= restore;
-        bulletsLeft = magSize;
-        reloading = false;
-
-        gameManager.SetAmmoCount(totalAmmo);
-    }
-
-    public void shoot()
-    {
-        readyToShoot = false;
-
-        //chooses a point where you're facing to shoot
-        float x = Random.Range(-spread, spread);
-        float y = Random.Range(-spread, spread);
-        Vector3 direction = playerCam.transform.forward + new Vector3(x,y,0);
-
-        if(Physics.Raycast(playerCam.transform.position, direction, out hit, range, enemy))
-        {
-            // wait for AI tag
-            if(hit.collider.CompareTag("Enemy"))
-            {
-                hit.collider.GetComponent<TakeDamage>().CanTakeDamage(damage);
-            }
-        }
-
-        //Instantiate(bulletHole, hit.point, Quaternion.Euler(0, 180,0));
-       // Instantiate(gunEffect, shootPos.position, Quaternion.identity);
-        bulletsLeft--;
-        Invoke(nameof(resetShot), fireRate);
-    } 
-
-    public void resetShot()
-    {
-        readyToShoot = true;
-    }
-    void Update()
-    {
-        inputs();
-
-        //Displays the ammo count
-      //  ammoCount.SetText(bulletsLeft + " / " + totalAmmo);
-    }
-
-    public void GetMaxAmmo()
-    {
-        totalAmmo = maxAmmo;
-        gameManager.SetAmmoCount(totalAmmo);
-    }
+    public GameObject model;
+    public ParticleSystem hitEffect;
 }

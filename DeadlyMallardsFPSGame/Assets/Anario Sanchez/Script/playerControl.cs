@@ -7,12 +7,26 @@ public class playerControl : MonoBehaviour, TakeDamage
 {
     [Header("----- Compents -----")]
     [SerializeField] CharacterController controller;
+    public LayerMask enemy;
 
     [Header("----- Player Stats -----")]
     [SerializeField] int hp;
     [SerializeField] float playerWalkSpeed;
     [SerializeField] float playerSprintSpeed;
     [SerializeField] float jumpHeight;
+
+    [Header("----- Gun Stats -----")]
+    [SerializeField] List<GunsManager> gunList = new List<GunsManager>();
+    [SerializeField] GameObject gunModel;
+    [SerializeField] int damage;
+    [SerializeField] float fireRate, range, spread, reloadTime;
+    [SerializeField] int magSize, bulletsPerShot, totalAmmo;
+    [SerializeField] bool allowButtonHold;
+    [SerializeField] GameObject muzzleFlash;
+    public int selectedGun;
+
+    //timing bools
+    bool isShooting, readyToShoot, reloading;
 
     Vector3 move;
     //Rigidbody rb;
@@ -32,13 +46,139 @@ public class playerControl : MonoBehaviour, TakeDamage
         maxHP = hp;
         //rb = GetComponent<Rigidbody>();
         //rb.freezeRotation = true;
+        readyToShoot = true;
     }
     void Update()
     {
         groundedPlayer = controller.isGrounded;
         stateCheck();
         movement();
+        inputs();
     }
+
+    public void inputs()
+    {
+        if (allowButtonHold)
+        {
+            //Automatic guns
+            isShooting = Input.GetKey(KeyCode.Mouse0);
+        }
+        else
+        {
+            //semi-auto guns
+            isShooting = Input.GetKeyDown(KeyCode.Mouse0);
+        }
+
+        //reload input
+        if (Input.GetKeyDown(KeyCode.R) && gunList[selectedGun].bulletsLeft < gunList[selectedGun].magSize && !reloading && gunList[selectedGun].totalAmmo > 0)
+        {
+            reload();
+        }
+
+        //shooting input
+        if (readyToShoot && isShooting && !reloading && gunList[selectedGun].bulletsLeft > 0)
+        {
+            shoot();
+        }
+    }
+
+    public void reload()
+    {
+        reloading = true;
+        Invoke(nameof(reloadEnd), gunList[selectedGun].reloadTime);
+    }
+
+    public void reloadEnd()
+    {
+        //lets everything know when reload ends do this
+        int restore = gunList[selectedGun].magSize - gunList[selectedGun].bulletsLeft;
+        gunList[selectedGun].totalAmmo -= restore;
+        gunList[selectedGun].bulletsLeft = gunList[selectedGun].magSize;
+        reloading = false;
+        UpdatePlayerUI();
+
+        //gameManager.SetAmmoCount(totalAmmo);
+    }
+
+    public void shoot()
+    {
+        readyToShoot = false;
+        StartCoroutine(muzzleFlashTimer());
+        //chooses a point where you're facing to shoot
+        float x = Random.Range(-gunList[selectedGun].spread, spread);
+        float y = Random.Range(-gunList[selectedGun].spread, spread);
+        //Vector3 direction = playerCam.transform.forward + new Vector3(x, y, 0);
+
+        RaycastHit hit;
+
+        if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, gunList[selectedGun].range, enemy))
+        {
+            // wait for AI tag
+            if (hit.collider.CompareTag("Enemy"))
+            {
+                hit.collider.GetComponent<TakeDamage>().CanTakeDamage(damage);
+            }
+        }
+
+        //Instantiate(bulletHole, hit.point, Quaternion.Euler(0, 180,0));
+        // Instantiate(gunEffect, shootPos.position, Quaternion.identity);
+        gunList[selectedGun].bulletsLeft--;
+        UpdatePlayerUI();
+        Invoke(nameof(resetShot), gunList[selectedGun].fireRate);
+    }
+
+    public void resetShot()
+    {
+        readyToShoot = true;
+    }
+
+    IEnumerator muzzleFlashTimer()
+    {
+        muzzleFlash.SetActive(true);
+        yield return new WaitForSeconds(0.05f);
+        muzzleFlash.SetActive(false);
+    }
+
+    void scrollGuns()
+    {
+        if (Input.GetAxis("Mouse ScrollWheel") >= 1 && selectedGun < gunList.Count - 1)
+        {
+            selectedGun = 1;
+            changeGunStats();
+        }
+        else if (Input.GetAxis("Mouse ScrollWheel") <= 0)
+        {
+            selectedGun = 0;
+            changeGunStats();
+        }
+    }
+
+    void changeGunStats()
+    {
+        damage = gunList[selectedGun].damage;
+        range = gunList[selectedGun].range;
+        fireRate = gunList[selectedGun].fireRate;
+        spread= gunList[selectedGun].spread;
+        reloadTime = gunList[selectedGun].reloadTime;
+        magSize= gunList[selectedGun].magSize;
+        bulletsPerShot= gunList[selectedGun].bulletsPerShot;
+        totalAmmo= gunList[selectedGun].totalAmmo;
+        allowButtonHold= gunList[selectedGun].allowButtonHold;
+
+        gunModel.GetComponent<MeshFilter>().mesh = gunList[selectedGun].model.GetComponent<MeshFilter>().sharedMesh;
+        gunModel.GetComponent<MeshRenderer>().material = gunList[selectedGun].model.GetComponent<MeshRenderer>().sharedMaterial;
+
+        UpdatePlayerUI();
+    }
+
+    public void GetMaxAmmo()
+    {
+        gunList[selectedGun].totalAmmo = gunList[selectedGun].maxAmmo;
+        UpdatePlayerUI();
+
+        //gameManager.SetAmmoCount(totalAmmo);
+    }
+
     void movement()
     {
         if (groundedPlayer && playerVelocity.y < 0)
@@ -97,5 +237,9 @@ public class playerControl : MonoBehaviour, TakeDamage
     public void UpdatePlayerUI()
     {
         GameManager.instance.playerHpBar.fillAmount = (float)hp / maxHP;
+        if (gunList.Count > 0)
+        {
+            GameManager.instance.ammoCountRemaning.SetText($"{gunList[selectedGun].bulletsLeft} / {gunList[selectedGun].totalAmmo}");
+        }
     }
 }
