@@ -338,17 +338,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79406c2739f6ee4a82ccaf1cb0b870a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1260088054 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 479478733087620276, guid: 8a24181c16333d54298dcc6a455acf2a, type: 3}
-  m_PrefabInstance: {fileID: 2048355818}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8a943aefba16364d8bdd51dad44b977, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1294440221 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 176662638154554852, guid: 45855b7fdfd90f44fb2b10bd47d886df, type: 3}
@@ -485,7 +474,7 @@ PrefabInstance:
     - target: {fileID: 5063657187297651725, guid: a56aec048385cbb4e964425ee3b5aed2, type: 3}
       propertyPath: gunsManager
       value: 
-      objectReference: {fileID: 1260088054}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -673,6 +662,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemySpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 2956486890969200567, guid: d8a65a4a552646f45bc4f57e09051260, type: 3}
+      propertyPath: waves.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956486890969200567, guid: d8a65a4a552646f45bc4f57e09051260, type: 3}
+      propertyPath: waves.Array.data[1].enemy.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956486890969200567, guid: d8a65a4a552646f45bc4f57e09051260, type: 3}
+      propertyPath: 'waves.Array.data[0].enemy.Array.data[0]'
+      value: 
+      objectReference: {fileID: 6623603057199532425, guid: c746612e967a1844ca87fb3782b3ccdb, type: 3}
+    - target: {fileID: 2956486890969200567, guid: d8a65a4a552646f45bc4f57e09051260, type: 3}
+      propertyPath: 'waves.Array.data[0].enemy.Array.data[1]'
+      value: 
+      objectReference: {fileID: 4172723062447763283, guid: f011e576521fff7469aae88f6f301a16, type: 3}
+    - target: {fileID: 2956486890969200567, guid: d8a65a4a552646f45bc4f57e09051260, type: 3}
+      propertyPath: 'waves.Array.data[0].enemy.Array.data[2]'
+      value: 
+      objectReference: {fileID: 4863869306357811220, guid: ee9376bc1e85aba47a7888754c5b8e99, type: 3}
     - target: {fileID: 3119907710496312842, guid: d8a65a4a552646f45bc4f57e09051260, type: 3}
       propertyPath: m_RootOrder
       value: 2

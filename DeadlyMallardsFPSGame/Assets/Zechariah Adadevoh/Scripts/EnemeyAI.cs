@@ -8,7 +8,7 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
 {
     [SerializeField] Renderer modle;
     [SerializeField] NavMeshAgent agent;
-    [SerializeField] int hp;
+    public int hp;
 
     [SerializeField] float shootspeed;
     [SerializeField] Transform shootingpos;

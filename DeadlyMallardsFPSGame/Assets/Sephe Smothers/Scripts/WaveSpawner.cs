@@ -8,5 +8,5 @@ public class WaveSpawner
     public string name;
     public int enemiesAmmount;
     public float delay;
-    public GameObject enemy;
+    public EnemeyAI[] enemy;
 }
