@@ -17,11 +17,15 @@ public class GameManager : MonoBehaviour
     public GameObject _flashScreen;
     public TextMeshProUGUI enemiesRemainText;
     public TextMeshProUGUI ammoCountRemaning;
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI playerCash;
     public Image playerHpBar;
     bool isPaused;
     float origTimeScale;
     int enemiesRemain;
     int ammoCountRemain;
+    int score;
+    int cash;
    
 
 
@@ -30,6 +34,7 @@ public class GameManager : MonoBehaviour
         instance = this;
         _player = GameObject.FindGameObjectWithTag("Player");
         origTimeScale = Time.timeScale;
+      
     }
 
    // Update is called once per frame
@@ -41,6 +46,7 @@ public class GameManager : MonoBehaviour
             _activeMenu = _pauseMenu;
             _activeMenu.SetActive(isPaused);
         }
+     
     }
 
     public void Pause()
@@ -85,9 +91,26 @@ public class GameManager : MonoBehaviour
     // maybe output whatever string you want with string interpolation of the currentAmmo / totalAmmo or might not even need that
     public int SetAmmoCount(int count)
     {
-        ammoCountRemain = count;
-        ammoCountRemaning.text = ammoCountRemain.ToString();
+        ammoCountRemain += count;
+        ammoCountRemaning.text = ammoCountRemain.ToString("f0");
         return ammoCountRemain;
     }
+
+    public int AddScore(int _score)
+    {
+        score += _score;
+        scoreText.text = score.ToString("f0");
+        return score;
+        
+    }
+
+    public int AddCash(int _cash) 
+    {
+        cash += _cash;
+        playerCash.text = cash.ToString("f0");
+        return cash;
+    }
+
+
 
 }
