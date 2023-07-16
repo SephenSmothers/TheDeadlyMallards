@@ -19,9 +19,9 @@ MonoBehaviour:
   reloadTime: 1.5
   magSize: 6
   bulletsPerShot: 1
-  totalAmmo: 36
+  totalAmmo: 0
   allowButtonHold: 0
-  bulletsLeft: 6
+  bulletsLeft: 5
   maxAmmo: 36
-  model: {fileID: 0}
+  model: {fileID: 919132149155446097, guid: 4df3ce82db8e66645afd54ab1d5b0262, type: 3}
   hitEffect: {fileID: 0}

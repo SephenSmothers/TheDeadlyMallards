@@ -23,5 +23,5 @@ MonoBehaviour:
   allowButtonHold: 0
   bulletsLeft: 7
   maxAmmo: 28
-  model: {fileID: 0}
+  model: {fileID: 919132149155446097, guid: c8573db8e30e916479a705831bd5040c, type: 3}
   hitEffect: {fileID: 0}

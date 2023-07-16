@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     [Header("-----Player-----")]
     public GameObject _player;
+    public GameObject _playerSpawn;
     public GameObject _activeMenu;
     public GameObject _pauseMenu;
     public GameObject _winMenu;
@@ -33,6 +34,7 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
         _player = GameObject.FindGameObjectWithTag("Player");
+        _playerSpawn = GameObject.FindGameObjectWithTag("playerSpawn");
         origTimeScale = Time.timeScale;
       
     }

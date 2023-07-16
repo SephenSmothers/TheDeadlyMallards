@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
 //using UnityEditorInternal;
@@ -26,7 +27,7 @@ public class playerControl : MonoBehaviour, TakeDamage
     public int selectedGun;
 
     //timing bools
-    bool isShooting, readyToShoot, reloading;
+    public bool isShooting, readyToShoot, reloading;
 
     Vector3 move;
     //Rigidbody rb;
@@ -47,13 +48,20 @@ public class playerControl : MonoBehaviour, TakeDamage
         //rb = GetComponent<Rigidbody>();
         //rb.freezeRotation = true;
         readyToShoot = true;
+        changeGunStats();
+        resetGuns();
+        spawnPlayer();
     }
     void Update()
     {
         groundedPlayer = controller.isGrounded;
-        stateCheck();
-        movement();
-        inputs();
+        if (GameManager.instance._activeMenu == null)
+        {
+            inputs();
+            stateCheck();
+            movement();
+            scrollGuns();
+        }
     }
 
     public void inputs()
@@ -93,7 +101,15 @@ public class playerControl : MonoBehaviour, TakeDamage
         //lets everything know when reload ends do this
         int restore = gunList[selectedGun].magSize - gunList[selectedGun].bulletsLeft;
         gunList[selectedGun].totalAmmo -= restore;
-        gunList[selectedGun].bulletsLeft = gunList[selectedGun].magSize;
+        if (gunList[selectedGun].totalAmmo < 0)
+        {
+            gunList[selectedGun].bulletsLeft = gunList[selectedGun].magSize + gunList[selectedGun].totalAmmo;
+            gunList[selectedGun].totalAmmo = 0;
+        }
+        else
+        {
+            gunList[selectedGun].bulletsLeft = gunList[selectedGun].magSize;
+        }
         reloading = false;
         UpdatePlayerUI();
 
@@ -141,14 +157,14 @@ public class playerControl : MonoBehaviour, TakeDamage
 
     void scrollGuns()
     {
-        if (Input.GetAxis("Mouse ScrollWheel") >= 1 && selectedGun < gunList.Count - 1)
+        if (Input.GetAxis("Mouse ScrollWheel") > 0 && selectedGun < gunList.Count - 1)
         {
-            selectedGun = 1;
+            selectedGun++;
             changeGunStats();
         }
-        else if (Input.GetAxis("Mouse ScrollWheel") <= 0)
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0 && selectedGun > 0)
         {
-            selectedGun = 0;
+            selectedGun--;
             changeGunStats();
         }
     }
@@ -158,12 +174,12 @@ public class playerControl : MonoBehaviour, TakeDamage
         damage = gunList[selectedGun].damage;
         range = gunList[selectedGun].range;
         fireRate = gunList[selectedGun].fireRate;
-        spread= gunList[selectedGun].spread;
+        spread = gunList[selectedGun].spread;
         reloadTime = gunList[selectedGun].reloadTime;
-        magSize= gunList[selectedGun].magSize;
-        bulletsPerShot= gunList[selectedGun].bulletsPerShot;
-        totalAmmo= gunList[selectedGun].totalAmmo;
-        allowButtonHold= gunList[selectedGun].allowButtonHold;
+        magSize = gunList[selectedGun].magSize;
+        bulletsPerShot = gunList[selectedGun].bulletsPerShot;
+        totalAmmo = gunList[selectedGun].totalAmmo;
+        allowButtonHold = gunList[selectedGun].allowButtonHold;
 
         gunModel.GetComponent<MeshFilter>().mesh = gunList[selectedGun].model.GetComponent<MeshFilter>().sharedMesh;
         gunModel.GetComponent<MeshRenderer>().material = gunList[selectedGun].model.GetComponent<MeshRenderer>().sharedMaterial;
@@ -174,6 +190,7 @@ public class playerControl : MonoBehaviour, TakeDamage
     public void GetMaxAmmo()
     {
         gunList[selectedGun].totalAmmo = gunList[selectedGun].maxAmmo;
+        gunList[selectedGun].bulletsLeft = gunList[selectedGun].magSize;
         UpdatePlayerUI();
 
         //gameManager.SetAmmoCount(totalAmmo);
@@ -202,7 +219,7 @@ public class playerControl : MonoBehaviour, TakeDamage
     }
     void stateCheck()
     {
-        if(Input.GetKey(KeyCode.LeftShift) && groundedPlayer)
+        if (Input.GetKey(KeyCode.LeftShift) && groundedPlayer)
         {
             state = MovementState.sprinting;
             playerSpeed = playerSprintSpeed;
@@ -225,21 +242,37 @@ public class playerControl : MonoBehaviour, TakeDamage
         if (hp <= 0)
         {
             GameManager.instance.YoLose();
-     
+
         }
     }
 
     public void GetMaxHealth()
     {
         hp = maxHP;
-        UpdatePlayerUI();   
+        UpdatePlayerUI();
     }
     public void UpdatePlayerUI()
     {
         GameManager.instance.playerHpBar.fillAmount = (float)hp / maxHP;
-        if (gunList.Count > 0)
+        //if (gunList.Count > 0)
+        //{
+        //    GameManager.instance.ammoCountRemaning.SetText($"{gunList[selectedGun].bulletsLeft} / {gunList[selectedGun].totalAmmo}");
+        //}
+    }
+    void spawnPlayer()
+    {
+        controller.enabled = false;
+        transform.position = GameManager.instance._playerSpawn.transform.position;
+        controller.enabled = true;
+        hp = maxHP;
+        UpdatePlayerUI();
+    }
+    void resetGuns()
+    {
+        for (int i = 0; i < gunList.Count; i++)
         {
-            GameManager.instance.ammoCountRemaning.SetText($"{gunList[selectedGun].bulletsLeft} / {gunList[selectedGun].totalAmmo}");
+            gunList[i].bulletsLeft = gunList[i].magSize;
+            gunList[i].totalAmmo = gunList[i].maxAmmo;
         }
     }
 }
