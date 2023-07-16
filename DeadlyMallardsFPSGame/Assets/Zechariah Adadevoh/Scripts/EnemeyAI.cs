@@ -33,6 +33,8 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
 
     public bool shooter;
     bool isshooting;
+
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -113,10 +115,10 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
     {
         StartCoroutine(flashDamage());
         hp -= amount;
+        GameManager.instance.AddScore(10);
+        GameManager.instance.AddCash(10);
         if (hp <= 0)
         {
-            GameManager.instance.AddScore(10);
-            GameManager.instance.AddCash(10);
             Destroy(gameObject);
             GameManager.instance.ReturnEnemyCount(-1);
         }
