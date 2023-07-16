@@ -27,8 +27,7 @@ Transform:
   m_LocalPosition: {x: 0.493, y: -0.535, z: 0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 3719511094828700520}
+  m_Children: []
   m_Father: {fileID: 7125014565992309729}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -82,10 +81,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 7801031591332816190}
+  enemy:
+    serializedVersion: 2
+    m_Bits: 0
   hp: 20
   playerWalkSpeed: 6
   playerSprintSpeed: 9
   jumpHeight: 5
+  gunList: []
+  gunModel: {fileID: 0}
+  damage: 0
+  fireRate: 0
+  range: 0
+  spread: 0
+  reloadTime: 0
+  magSize: 0
+  bulletsPerShot: 0
+  totalAmmo: 0
+  allowButtonHold: 0
+  muzzleFlash: {fileID: 0}
+  selectedGun: 0
   state: 0
 --- !u!33 &4927186664724841107
 MeshFilter:
@@ -216,7 +231,7 @@ Transform:
   m_Children:
   - {fileID: 1815063520046224102}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6895971384608975967
 GameObject:
@@ -329,76 +344,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6895971384608975967}
   m_Enabled: 1
---- !u!1001 &2677289217157656545
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 3554391748248248238}
-    m_Modifications:
-    - target: {fileID: 1637621388276268169, guid: c13d546cca625da42a630961c7cd6734, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1637621388276268169, guid: c13d546cca625da42a630961c7cd6734, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1637621388276268169, guid: c13d546cca625da42a630961c7cd6734, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.33
-      objectReference: {fileID: 0}
-    - target: {fileID: 1637621388276268169, guid: c13d546cca625da42a630961c7cd6734, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 1637621388276268169, guid: c13d546cca625da42a630961c7cd6734, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1637621388276268169, guid: c13d546cca625da42a630961c7cd6734, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1637621388276268169, guid: c13d546cca625da42a630961c7cd6734, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1637621388276268169, guid: c13d546cca625da42a630961c7cd6734, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1637621388276268169, guid: c13d546cca625da42a630961c7cd6734, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1637621388276268169, guid: c13d546cca625da42a630961c7cd6734, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1637621388276268169, guid: c13d546cca625da42a630961c7cd6734, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2558281007616807765, guid: c13d546cca625da42a630961c7cd6734, type: 3}
-      propertyPath: playerCam
-      value: 
-      objectReference: {fileID: 8923786749215985253}
-    - target: {fileID: 3799574242852220268, guid: c13d546cca625da42a630961c7cd6734, type: 3}
-      propertyPath: m_Name
-      value: Revolver_LP
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c13d546cca625da42a630961c7cd6734, type: 3}
---- !u!4 &3719511094828700520 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1637621388276268169, guid: c13d546cca625da42a630961c7cd6734, type: 3}
-  m_PrefabInstance: {fileID: 2677289217157656545}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8970260794472639341
 PrefabInstance:
   m_ObjectHideFlags: 0
