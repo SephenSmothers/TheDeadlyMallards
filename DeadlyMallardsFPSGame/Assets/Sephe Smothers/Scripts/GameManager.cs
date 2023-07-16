@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     [Header("-----Instance-----")]
     public static GameManager instance;
+    public playerControl playerScript;
     [Header("-----Player-----")]
     public GameObject _player;
     public GameObject _playerSpawn;

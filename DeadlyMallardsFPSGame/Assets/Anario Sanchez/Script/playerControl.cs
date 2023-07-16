@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using NUnit.Framework.Interfaces;
 using System.Collections;
 using System.Collections.Generic;
 //using UnityEditorInternal;
@@ -169,7 +170,27 @@ public class playerControl : MonoBehaviour, TakeDamage
         }
     }
 
-    void changeGunStats()
+    public void OnGunPickUp(GunsManager _gunStats)
+    {
+        gunList.Add(_gunStats);
+        damage = _gunStats.damage;
+        fireRate = _gunStats.fireRate;
+        range = _gunStats.range;
+        spread= _gunStats.spread;
+        reloadTime= _gunStats.reloadTime;
+        magSize= _gunStats.magSize;
+        bulletsPerShot= _gunStats.bulletsPerShot;
+        totalAmmo= _gunStats.totalAmmo;
+        allowButtonHold= _gunStats.allowButtonHold;
+
+        gunModel.GetComponent<MeshFilter>().mesh = _gunStats.model.GetComponent<MeshFilter>().sharedMesh;
+        gunModel.GetComponent<MeshRenderer>().material = _gunStats.model.GetComponent<MeshRenderer>().sharedMaterial;
+
+        selectedGun = gunList.Count - 1;
+        UpdatePlayerUI();
+    }
+
+    public void changeGunStats()
     {
         damage = gunList[selectedGun].damage;
         range = gunList[selectedGun].range;
