@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -8296963479356198466}
   - component: {fileID: 7569721654808886517}
   m_Layer: 8
-  m_Name: Hitbox
+  m_Name: TankZombieHB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f30301b0e6c975747a1b59b392f568af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 8
 --- !u!65 &7569721654808886517
 BoxCollider:
   m_ObjectHideFlags: 0

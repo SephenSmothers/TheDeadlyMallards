@@ -44,11 +44,9 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
     // Update is called once per frame
     void Update()
     {
-        if (playerInRange && canSeePlayer())
-        {
-          
-        }
-       
+        ChasePlayer();
+      
+
     }
 
 
@@ -56,43 +54,35 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
     {
         Quaternion rot = Quaternion.LookRotation(new Vector3(playerDir.x, 0, playerDir.z));
         transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * playerFaceSpeed);
+
     }
 
 
-    bool canSeePlayer()
+    void ChasePlayer()
     {
-        agent.stoppingDistance = agent.stoppingDistance;
+
         playerDir = GameManager.instance._player.transform.position - headPos.position;
         angleToPlayer = Vector3.Angle(new Vector3(playerDir.x, 0, playerDir.z), transform.forward);
 
         Debug.DrawRay(headPos.position, playerDir);
         Debug.Log(angleToPlayer);
-        RaycastHit hit;
-        if (Physics.Raycast(headPos.position, playerDir, out hit))
-        {
-            if (hit.collider.CompareTag("Player") && angleToPlayer < viewAngle)
-            {
-                agent.SetDestination(GameManager.instance._player.transform.position);
-                agent.stoppingDistance = stoppingDistanceOrig;
-                if (agent.remainingDistance <= agent.stoppingDistance)
-                {
-                    facePlayer();
 
-                }
-                if (!isshooting && shooter)
-                {
-                    StartCoroutine(shoot());
-                }
-                if(!isattacking && !shooter)
-                {
-                    StartCoroutine(attack());
-                }
-                
-                return true;
+        agent.SetDestination(GameManager.instance._player.transform.position);
+        facePlayer();
+        if (playerInRange && viewAngle > angleToPlayer)
+        {
+            if (!isshooting && shooter)
+            {
+                StartCoroutine(shoot());
             }
+            if (!isattacking && !shooter)
+            {
+                StartCoroutine(attack());
+            }
+
         }
-        agent.stoppingDistance = 0;
-        return false;
+
+
     }
     void OnTriggerEnter(Collider other)
     {
@@ -133,9 +123,9 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
     IEnumerator attack()
     {
         isattacking = true;
-        Instantiate(hitbox, attackpos.position,Quaternion.Euler(90,0,0));
+        Instantiate(hitbox, attackpos.position, Quaternion.Euler(90, 0, 0));
         yield return new WaitForSeconds(shootspeed);
-        isattacking = false;    
+        isattacking = false;
     }
 
     IEnumerator flashDamage()

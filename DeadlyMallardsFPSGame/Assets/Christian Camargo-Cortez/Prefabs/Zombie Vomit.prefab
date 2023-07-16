@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 8320899992971833746}
-  damage: 1
+  damage: 3
   bulletSpeed: 20
   range: 20
 --- !u!135 &2757038789234041870
