@@ -92,11 +92,10 @@ public class GameManager : MonoBehaviour
     }
 
     // maybe output whatever string you want with string interpolation of the currentAmmo / totalAmmo or might not even need that
-    public int SetAmmoCount(int count)
+    public void SetAmmoCount(int currentAmmo, int maxAmmo)
     {
-        ammoCountRemain += count;
-        ammoCountRemaning.text = ammoCountRemain.ToString("f0");
-        return ammoCountRemain;
+        ammoCountRemain = currentAmmo;
+        ammoCountRemaning.text = $"{currentAmmo} / {maxAmmo}";
     }
 
     public int AddScore(int _score)

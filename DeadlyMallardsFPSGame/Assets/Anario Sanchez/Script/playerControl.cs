@@ -25,7 +25,9 @@ public class playerControl : MonoBehaviour, TakeDamage
     [SerializeField] int magSize, bulletsPerShot, totalAmmo;
     [SerializeField] bool allowButtonHold;
     [SerializeField] GameObject muzzleFlash;
+    public ParticleSystem MuzzleFlash;
     public int selectedGun;
+    
 
     //timing bools
     public bool isShooting, readyToShoot, reloading;
@@ -50,8 +52,10 @@ public class playerControl : MonoBehaviour, TakeDamage
         //rb.freezeRotation = true;
         readyToShoot = true;
         changeGunStats();
+        UpdatePlayerUI();
         resetGuns();
         spawnPlayer();
+
     }
     void Update()
     {
@@ -121,6 +125,9 @@ public class playerControl : MonoBehaviour, TakeDamage
     {
         readyToShoot = false;
         StartCoroutine(muzzleFlashTimer());
+        
+       
+
         //chooses a point where you're facing to shoot
         float x = Random.Range(-gunList[selectedGun].spread, spread);
         float y = Random.Range(-gunList[selectedGun].spread, spread);
@@ -130,6 +137,7 @@ public class playerControl : MonoBehaviour, TakeDamage
 
         if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, gunList[selectedGun].range, enemy))
         {
+           
             // wait for AI tag
             if (hit.collider.CompareTag("Enemy"))
             {
@@ -142,6 +150,7 @@ public class playerControl : MonoBehaviour, TakeDamage
         gunList[selectedGun].bulletsLeft--;
         UpdatePlayerUI();
         Invoke(nameof(resetShot), gunList[selectedGun].fireRate);
+      
     }
 
     public void resetShot()
@@ -155,6 +164,7 @@ public class playerControl : MonoBehaviour, TakeDamage
         yield return new WaitForSeconds(0.05f);
         muzzleFlash.SetActive(false);
     }
+
 
     void scrollGuns()
     {
@@ -275,10 +285,10 @@ public class playerControl : MonoBehaviour, TakeDamage
     public void UpdatePlayerUI()
     {
         GameManager.instance.playerHpBar.fillAmount = (float)hp / maxHP;
-        //if (gunList.Count > 0)
-        //{
-        //    GameManager.instance.ammoCountRemaning.SetText($"{gunList[selectedGun].bulletsLeft} / {gunList[selectedGun].totalAmmo}");
-        //}
+        if (gunList.Count > 0)
+        {
+            GameManager.instance.ammoCountRemaning.SetText($"{gunList[selectedGun].bulletsLeft} / {gunList[selectedGun].totalAmmo}");
+        }
     }
     void spawnPlayer()
     {
