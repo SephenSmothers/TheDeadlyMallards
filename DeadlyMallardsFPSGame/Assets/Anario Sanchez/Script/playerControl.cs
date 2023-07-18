@@ -24,8 +24,8 @@ public class playerControl : MonoBehaviour, TakeDamage
     [SerializeField] float fireRate, range, spread, reloadTime;
     [SerializeField] int magSize, bulletsPerShot, totalAmmo;
     [SerializeField] bool allowButtonHold;
-    [SerializeField] GameObject muzzleFlash;
-    public ParticleSystem MuzzleFlash;
+    //[SerializeField] GameObject muzzleFlash;
+    //public ParticleSystem MuzzleFlash;
     public int selectedGun;
     
 
@@ -124,7 +124,7 @@ public class playerControl : MonoBehaviour, TakeDamage
     public void shoot()
     {
         readyToShoot = false;
-        StartCoroutine(muzzleFlashTimer());
+        //StartCoroutine(muzzleFlashTimer());
         
        
 
@@ -158,12 +158,12 @@ public class playerControl : MonoBehaviour, TakeDamage
         readyToShoot = true;
     }
 
-    IEnumerator muzzleFlashTimer()
-    {
-        muzzleFlash.SetActive(true);
-        yield return new WaitForSeconds(0.05f);
-        muzzleFlash.SetActive(false);
-    }
+    //IEnumerator muzzleFlashTimer()
+    //{
+    //    muzzleFlash.SetActive(true);
+    //    yield return new WaitForSeconds(0.05f);
+    //    muzzleFlash.SetActive(false);
+    //}
 
 
     void scrollGuns()
