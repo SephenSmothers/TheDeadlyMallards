@@ -119,7 +119,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 8572f0de185ccdd489ddcc60ea4e0772, type: 2}
 --- !u!1 &43117712
 GameObject:
   m_ObjectHideFlags: 0
@@ -263,6 +263,42 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696314512}
     m_Modifications:
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: hp
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: modle
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: hitbox
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: headPos
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: attackpos
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: viewAngle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: shootspeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: playerFaceSpeed
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6098965772927302268, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
       propertyPath: m_Name
       value: ZombieEnemey
@@ -311,7 +347,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -423,6 +460,42 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696314512}
     m_Modifications:
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: hp
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: modle
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: hitbox
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: headPos
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: attackpos
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: viewAngle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: shootspeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: playerFaceSpeed
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6098965772927302268, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
       propertyPath: m_Name
       value: ZombieEnemey (1)
@@ -471,7 +544,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -819,6 +893,42 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696314512}
     m_Modifications:
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: hp
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: modle
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: hitbox
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: headPos
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: attackpos
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: viewAngle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: shootspeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: playerFaceSpeed
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6098965772927302268, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
       propertyPath: m_Name
       value: ZombieEnemey (5)
@@ -867,7 +977,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -11.2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1066,6 +1177,42 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696314512}
     m_Modifications:
+    - target: {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
+      propertyPath: hp
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
+      propertyPath: modle
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
+      propertyPath: hitbox
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
+      propertyPath: headPos
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
+      propertyPath: attackpos
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
+      propertyPath: viewAngle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
+      propertyPath: shootspeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
+      propertyPath: playerFaceSpeed
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5719475534194368168, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -1114,7 +1261,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpeedZombie (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1132,6 +1280,50 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696314512}
     m_Modifications:
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: hp
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: modle
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: vomit
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: hitbox
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: headPos
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: shooter
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: viewAngle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: shootspeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: shootingpos
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: playerFaceSpeed
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3167223332931202291, guid: d884e2df8c508474db706742a69f2027, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -1180,7 +1372,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: GunZombie (3)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1198,6 +1391,42 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696314512}
     m_Modifications:
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: hp
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: modle
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: hitbox
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: headPos
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: attackpos
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: viewAngle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: shootspeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: playerFaceSpeed
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6098965772927302268, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
       propertyPath: m_Name
       value: ZombieEnemey (4)
@@ -1246,7 +1475,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1340,10 +1570,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2930897161291555120, guid: 37574faa1de1649458fe705b406568f6, type: 3}
-        m_TargetAssemblyTypeName: Buttons, Assembly-CSharp
-        m_MethodName: PlayGame
-        m_Mode: 1
+      - m_Target: {fileID: 11500000, guid: c3178f442c2274a48ad676a175050475, type: 3}
+        m_TargetAssemblyTypeName: UnityEngine.Object, UnityEngine
+        m_MethodName: set_name
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1612,6 +1842,42 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696314512}
     m_Modifications:
+    - target: {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
+      propertyPath: hp
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
+      propertyPath: modle
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
+      propertyPath: hitbox
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
+      propertyPath: headPos
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
+      propertyPath: attackpos
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
+      propertyPath: viewAngle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
+      propertyPath: shootspeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
+      propertyPath: playerFaceSpeed
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5719475534194368168, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -1660,7 +1926,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpeedZombie (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1678,6 +1945,42 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696314512}
     m_Modifications:
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: hp
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: modle
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: hitbox
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: headPos
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: attackpos
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: viewAngle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: shootspeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: playerFaceSpeed
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6098965772927302268, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
       propertyPath: m_Name
       value: ZombieEnemey (3)
@@ -1726,7 +2029,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1904,6 +2208,42 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696314512}
     m_Modifications:
+    - target: {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
+      propertyPath: hp
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
+      propertyPath: modle
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
+      propertyPath: hitbox
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
+      propertyPath: headPos
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
+      propertyPath: attackpos
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
+      propertyPath: viewAngle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
+      propertyPath: shootspeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
+      propertyPath: playerFaceSpeed
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5719475534194368168, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -1952,7 +2292,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpeedZombie
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1970,6 +2311,50 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696314512}
     m_Modifications:
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: hp
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: modle
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: vomit
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: hitbox
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: headPos
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: shooter
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: viewAngle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: shootspeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: shootingpos
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: playerFaceSpeed
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3167223332931202291, guid: d884e2df8c508474db706742a69f2027, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -2018,7 +2403,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: GunZombie (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2218,6 +2604,42 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696314512}
     m_Modifications:
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: hp
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: modle
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: hitbox
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: headPos
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: attackpos
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: viewAngle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: shootspeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
+      propertyPath: playerFaceSpeed
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6098965772927302268, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
       propertyPath: m_Name
       value: ZombieEnemey (2)
@@ -2266,7 +2688,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2284,6 +2707,42 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696314512}
     m_Modifications:
+    - target: {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
+      propertyPath: hp
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
+      propertyPath: modle
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
+      propertyPath: hitbox
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
+      propertyPath: headPos
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
+      propertyPath: attackpos
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
+      propertyPath: viewAngle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
+      propertyPath: shootspeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
+      propertyPath: playerFaceSpeed
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5719475534194368168, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -2332,7 +2791,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpeedZombie (4)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2350,6 +2810,50 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696314512}
     m_Modifications:
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: hp
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: modle
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: vomit
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: hitbox
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: headPos
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: shooter
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: viewAngle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: shootspeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: shootingpos
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: playerFaceSpeed
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3167223332931202291, guid: d884e2df8c508474db706742a69f2027, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -2398,7 +2902,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: GunZombie (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2416,6 +2921,50 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696314512}
     m_Modifications:
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: hp
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: modle
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: vomit
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: hitbox
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: headPos
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: shooter
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: viewAngle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: shootspeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: shootingpos
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: playerFaceSpeed
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3167223332931202291, guid: d884e2df8c508474db706742a69f2027, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -2464,7 +3013,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: GunZombie (4)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2482,6 +3032,50 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696314512}
     m_Modifications:
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: hp
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: modle
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: vomit
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: hitbox
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: headPos
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: shooter
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: viewAngle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: shootspeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: shootingpos
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      propertyPath: playerFaceSpeed
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3167223332931202291, guid: d884e2df8c508474db706742a69f2027, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -2530,7 +3124,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: GunZombie
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2548,6 +3143,42 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696314512}
     m_Modifications:
+    - target: {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
+      propertyPath: hp
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
+      propertyPath: modle
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
+      propertyPath: hitbox
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
+      propertyPath: headPos
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
+      propertyPath: attackpos
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
+      propertyPath: viewAngle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
+      propertyPath: shootspeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
+      propertyPath: playerFaceSpeed
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5719475534194368168, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -2596,7 +3227,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpeedZombie (3)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
