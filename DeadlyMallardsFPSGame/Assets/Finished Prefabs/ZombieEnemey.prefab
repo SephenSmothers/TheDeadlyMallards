@@ -213,7 +213,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modle: {fileID: 1479148604738300669}
   agent: {fileID: 6852614409911863265}
-  hp: 8
+  hp: 10
   shootspeed: 0.25
   shootingpos: {fileID: 0}
   attackpos: {fileID: 7234724238574150805}
