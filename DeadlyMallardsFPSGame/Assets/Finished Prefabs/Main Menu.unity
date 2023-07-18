@@ -626,7 +626,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2930897161291555120, guid: 37574faa1de1649458fe705b406568f6, type: 3}
+      - m_Target: {fileID: 6470827327786937022, guid: e397fe6b800207348a0290e227c695f1, type: 3}
         m_TargetAssemblyTypeName: Buttons, Assembly-CSharp
         m_MethodName: quit
         m_Mode: 1
@@ -1340,7 +1340,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2930897161291555120, guid: 37574faa1de1649458fe705b406568f6, type: 3}
+      - m_Target: {fileID: 6470827327786937022, guid: e397fe6b800207348a0290e227c695f1, type: 3}
         m_TargetAssemblyTypeName: Buttons, Assembly-CSharp
         m_MethodName: PlayGame
         m_Mode: 1
