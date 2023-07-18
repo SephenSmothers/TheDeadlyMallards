@@ -122,16 +122,18 @@ public class EnemySpawner : MonoBehaviour
     {
         WaveSpawner wave = new WaveSpawner();
 
-        wave.name = "Round " + 1;
+        wave.enemy = waves[currentWave].enemy;
+        wave.name = "Round " + currentWave;
         wave.delay = waveCountdown;
-        wave.enemiesAmmount += (int)(waves[currentWave].enemiesAmmount * 0.25);
+        wave.enemiesAmmount += (int)(waves[currentWave].enemiesAmmount * 1.5);
         
+
         for (int i = 0; i < waves[currentWave].enemy.Length; i++)
         {
-            wave.enemy[i] = waves[currentWave].enemy[i];
+            //wave.enemy[i] = waves[currentWave].enemy[i];
             wave.enemy[i].hp *= (int)(wave.enemy[i].hp * 0.1);
         }
         waves.Add(wave);
-        currentWave++;
+       // currentWave++;
     }
 }

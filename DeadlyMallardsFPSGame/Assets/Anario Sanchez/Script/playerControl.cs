@@ -21,7 +21,7 @@ public class playerControl : MonoBehaviour, TakeDamage
     [SerializeField] List<GunsManager> gunList = new List<GunsManager>();
     [SerializeField] GameObject gunModel;
     [SerializeField] int damage;
-    [SerializeField] float fireRate, range, spread, reloadTime;
+    [SerializeField] float fireRate, range, spread, reloadTime, timeBetweenShots;
     [SerializeField] int magSize, bulletsPerShot, totalAmmo;
     [SerializeField] bool allowButtonHold;
     //[SerializeField] GameObject muzzleFlash;
@@ -147,10 +147,14 @@ public class playerControl : MonoBehaviour, TakeDamage
 
         //Instantiate(bulletHole, hit.point, Quaternion.Euler(0, 180,0));
         // Instantiate(gunEffect, shootPos.position, Quaternion.identity);
-        gunList[selectedGun].bulletsLeft--;
         UpdatePlayerUI();
         Invoke(nameof(resetShot), gunList[selectedGun].fireRate);
-      
+        if (gunList[selectedGun].bulletsPerShot > 0 && gunList[selectedGun].bulletsLeft > 0)
+        {
+            Invoke(nameof(shoot), timeBetweenShots);
+        }
+
+        gunList[selectedGun].bulletsLeft--;
     }
 
     public void resetShot()
