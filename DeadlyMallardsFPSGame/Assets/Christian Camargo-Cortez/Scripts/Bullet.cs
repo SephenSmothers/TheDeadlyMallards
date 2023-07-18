@@ -16,7 +16,7 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         Destroy(gameObject, range);
-        rb.velocity = (GameManager.instance.playerCash.transform.position - transform.position).normalized * bulletSpeed;
+        rb.velocity = (GameManager.instance._player.transform.position - transform.position).normalized * bulletSpeed;
     }
 
     private void OnTriggerEnter(Collider other)

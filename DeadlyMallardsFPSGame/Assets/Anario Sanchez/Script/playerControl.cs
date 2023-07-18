@@ -27,6 +27,7 @@ public class playerControl : MonoBehaviour, TakeDamage
     //[SerializeField] GameObject muzzleFlash;
     //public ParticleSystem MuzzleFlash;
     public int selectedGun;
+    private int bulletCounter;
 
 
     //timing bools
@@ -52,6 +53,7 @@ public class playerControl : MonoBehaviour, TakeDamage
         //rb = GetComponent<Rigidbody>();
         //rb.freezeRotation = true;
         readyToShoot = true;
+        bulletCounter = 0;
         changeGunStats();
         UpdatePlayerUI();
         resetGuns();
@@ -125,10 +127,11 @@ public class playerControl : MonoBehaviour, TakeDamage
     public void shoot()
     {
         readyToShoot = false;
-        for(int i = 0; i < bulletsPerShot; i++)
-        {
 
-           //if else statement (if CompareTag is default, put a bullet hole) else if hit enemy
+        if (bulletCounter < bulletsPerShot)
+        {
+            bulletCounter++;
+            //if else statement (if CompareTag is default, put a bullet hole) else if hit enemy
             //StartCoroutine(muzzleFlashTimer());
 
 
@@ -136,14 +139,12 @@ public class playerControl : MonoBehaviour, TakeDamage
             //chooses a point where you're facing to shoot
             float x = Random.Range(-gunList[selectedGun].spread, spread);
             float y = Random.Range(-gunList[selectedGun].spread, spread);
-            //Vector3 direction = playerCam.transform.forward + new Vector3(x, y, 0);
+            Vector3 direction = Camera.main.transform.forward + new Vector3(x, y, 0);
 
             RaycastHit hit;
 
-            if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, gunList[selectedGun].range, enemy))
-
+            if (Physics.Raycast(Camera.main.transform.position, direction, out hit, gunList[selectedGun].range, enemy))
             {
-
                 // wait for AI tag
                 if (hit.collider.CompareTag("Enemy"))
                 {
@@ -153,16 +154,21 @@ public class playerControl : MonoBehaviour, TakeDamage
 
             //Instantiate(bulletHole, hit.point, Quaternion.Euler(0, 180,0));
             // Instantiate(gunEffect, shootPos.position, Quaternion.identity);
+            Invoke(nameof(shoot), gunList[selectedGun].timeBetweenShots);
         }
-        gunList[selectedGun].bulletsLeft--;
-        Invoke(nameof(resetShot), gunList[selectedGun].fireRate);
-        UpdatePlayerUI();
+        else
+        {
+            gunList[selectedGun].bulletsLeft--;
+            Invoke(nameof(resetShot), gunList[selectedGun].fireRate);
+            UpdatePlayerUI();
+        }
 
     }
 
     public void resetShot()
     {
         readyToShoot = true;
+        bulletCounter = 0;
     }
 
     //IEnumerator muzzleFlashTimer()
