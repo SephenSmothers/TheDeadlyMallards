@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     int enemiesRemain;
     int ammoCountRemain;
     int score;
-    int cash;
+    public int cash;
    
 
 

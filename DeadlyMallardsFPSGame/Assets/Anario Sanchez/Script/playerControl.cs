@@ -137,7 +137,7 @@ public class playerControl : MonoBehaviour, TakeDamage
 
         if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, gunList[selectedGun].range, enemy))
         {
-           
+           //if else statement (if CompareTag is default, put a bullet hole) else if hit enemy
             // wait for AI tag
             if (hit.collider.CompareTag("Enemy"))
             {
