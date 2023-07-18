@@ -79,10 +79,7 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
             {
                 StartCoroutine(attack());
             }
-
         }
-
-
     }
     void OnTriggerEnter(Collider other)
     {
