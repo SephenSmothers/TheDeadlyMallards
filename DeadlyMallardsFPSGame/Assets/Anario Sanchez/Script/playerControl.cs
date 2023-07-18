@@ -27,7 +27,7 @@ public class playerControl : MonoBehaviour, TakeDamage
     //[SerializeField] GameObject muzzleFlash;
     //public ParticleSystem MuzzleFlash;
     public int selectedGun;
-    
+
 
     //timing bools
     public bool isShooting, readyToShoot, reloading;
@@ -39,6 +39,7 @@ public class playerControl : MonoBehaviour, TakeDamage
     private bool groundedPlayer;
     private int maxHP;
     public MovementState state;
+    private int bulletShot;
     public enum MovementState
     {
         walking,
@@ -124,37 +125,39 @@ public class playerControl : MonoBehaviour, TakeDamage
     public void shoot()
     {
         readyToShoot = false;
-        //StartCoroutine(muzzleFlashTimer());
-        
-       
-
-        //chooses a point where you're facing to shoot
-        float x = Random.Range(-gunList[selectedGun].spread, spread);
-        float y = Random.Range(-gunList[selectedGun].spread, spread);
-        //Vector3 direction = playerCam.transform.forward + new Vector3(x, y, 0);
-
-        RaycastHit hit;
-
-        if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, gunList[selectedGun].range, enemy))
+        for(int i = 0; i < bulletsPerShot; i++)
         {
+
            //if else statement (if CompareTag is default, put a bullet hole) else if hit enemy
-            // wait for AI tag
-            if (hit.collider.CompareTag("Enemy"))
+            //StartCoroutine(muzzleFlashTimer());
+
+
+
+            //chooses a point where you're facing to shoot
+            float x = Random.Range(-gunList[selectedGun].spread, spread);
+            float y = Random.Range(-gunList[selectedGun].spread, spread);
+            //Vector3 direction = playerCam.transform.forward + new Vector3(x, y, 0);
+
+            RaycastHit hit;
+
+            if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, gunList[selectedGun].range, enemy))
+
             {
-                hit.collider.GetComponent<TakeDamage>().CanTakeDamage(damage);
+
+                // wait for AI tag
+                if (hit.collider.CompareTag("Enemy"))
+                {
+                    hit.collider.GetComponent<TakeDamage>().CanTakeDamage(damage);
+                }
             }
-        }
 
-        //Instantiate(bulletHole, hit.point, Quaternion.Euler(0, 180,0));
-        // Instantiate(gunEffect, shootPos.position, Quaternion.identity);
-        UpdatePlayerUI();
-        Invoke(nameof(resetShot), gunList[selectedGun].fireRate);
-        if (gunList[selectedGun].bulletsPerShot > 0 && gunList[selectedGun].bulletsLeft > 0)
-        {
-            Invoke(nameof(shoot), timeBetweenShots);
+            //Instantiate(bulletHole, hit.point, Quaternion.Euler(0, 180,0));
+            // Instantiate(gunEffect, shootPos.position, Quaternion.identity);
         }
-
         gunList[selectedGun].bulletsLeft--;
+        Invoke(nameof(resetShot), gunList[selectedGun].fireRate);
+        UpdatePlayerUI();
+
     }
 
     public void resetShot()
@@ -190,12 +193,12 @@ public class playerControl : MonoBehaviour, TakeDamage
         damage = _gunStats.damage;
         fireRate = _gunStats.fireRate;
         range = _gunStats.range;
-        spread= _gunStats.spread;
-        reloadTime= _gunStats.reloadTime;
-        magSize= _gunStats.magSize;
-        bulletsPerShot= _gunStats.bulletsPerShot;
-        totalAmmo= _gunStats.totalAmmo;
-        allowButtonHold= _gunStats.allowButtonHold;
+        spread = _gunStats.spread;
+        reloadTime = _gunStats.reloadTime;
+        magSize = _gunStats.magSize;
+        bulletsPerShot = _gunStats.bulletsPerShot;
+        totalAmmo = _gunStats.totalAmmo;
+        allowButtonHold = _gunStats.allowButtonHold;
 
         gunModel.GetComponent<MeshFilter>().mesh = _gunStats.model.GetComponent<MeshFilter>().sharedMesh;
         gunModel.GetComponent<MeshRenderer>().material = _gunStats.model.GetComponent<MeshRenderer>().sharedMaterial;
@@ -277,7 +280,6 @@ public class playerControl : MonoBehaviour, TakeDamage
         if (hp <= 0)
         {
             GameManager.instance.YoLose();
-
         }
     }
 
