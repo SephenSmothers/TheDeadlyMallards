@@ -13,15 +13,16 @@ MonoBehaviour:
   m_Name: AssultRifle
   m_EditorClassIdentifier: 
   damage: 3
-  fireRate: 0.05
+  fireRate: 0.2
   range: 75
   spread: 0.06
   reloadTime: 2.5
+  timeBetweenShots: 0
   magSize: 30
   bulletsPerShot: 1
   totalAmmo: 90
   allowButtonHold: 1
-  bulletsLeft: 30
+  bulletsLeft: 9
   maxAmmo: 90
   model: {fileID: 919132149155446097, guid: 33269b2b610f4c245a712795c1927939, type: 3}
   hitEffect: {fileID: 0}
