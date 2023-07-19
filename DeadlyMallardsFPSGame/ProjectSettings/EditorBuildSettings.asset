@@ -11,5 +11,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Finished Prefabs/MainScene1.unity
     guid: d036f1173659f4641bb7324b94586d72
+  - enabled: 1
+    path: Assets/Finished Prefabs/Level2.unity
+    guid: 54d46c09ada56504e9ce3af107c8d984
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
