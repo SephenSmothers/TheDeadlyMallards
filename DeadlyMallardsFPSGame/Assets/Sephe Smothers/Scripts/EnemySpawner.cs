@@ -101,21 +101,7 @@ public class EnemySpawner : MonoBehaviour
         waveCountdown = timeBetweenWaves;
         AddNewWave();
         currentWave++;
-        enemyList.Clear();
-
-
-        //if(currentWave + 1 > waves.Length - 1)
-        //{
-        //    currentWave = 0;
-        //    Debug.Log("Completed All the waves!");
-        //    SceneManager.LoadScene(0);
-        //    Cursor.lockState = CursorLockMode.Confined;
-        //}
-        //else
-        //{
-        //    currentWave++;
-        //    enemyList.Clear();
-        //}        
+        enemyList.Clear();      
     }
 
     private void AddNewWave()
@@ -130,10 +116,8 @@ public class EnemySpawner : MonoBehaviour
 
         for (int i = 0; i < waves[currentWave].enemy.Length; i++)
         {
-            //wave.enemy[i] = waves[currentWave].enemy[i];
             wave.enemy[i].hp *= (int)(wave.enemy[i].hp * 0.1);
         }
         waves.Add(wave);
-       // currentWave++;
     }
 }

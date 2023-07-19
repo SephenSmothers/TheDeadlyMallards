@@ -64,8 +64,8 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
         playerDir = GameManager.instance._player.transform.position - headPos.position;
         angleToPlayer = Vector3.Angle(new Vector3(playerDir.x, 0, playerDir.z), transform.forward);
 
-        Debug.DrawRay(headPos.position, playerDir);
-        Debug.Log(angleToPlayer);
+        //Debug.DrawRay(headPos.position, playerDir);
+        //Debug.Log(angleToPlayer);
 
         agent.SetDestination(GameManager.instance._player.transform.position);
         facePlayer();
