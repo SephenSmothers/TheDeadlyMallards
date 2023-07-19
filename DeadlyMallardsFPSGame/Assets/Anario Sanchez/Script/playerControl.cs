@@ -24,10 +24,13 @@ public class playerControl : MonoBehaviour, TakeDamage
     [SerializeField] float fireRate, range, spread, reloadTime, timeBetweenShots;
     [SerializeField] int magSize, bulletsPerShot, totalAmmo;
     [SerializeField] bool allowButtonHold;
-    //[SerializeField] GameObject muzzleFlash;
+    [SerializeField] GameObject muzzleFlash;
     //public ParticleSystem MuzzleFlash;
     public int selectedGun;
     private int bulletCounter;
+    public GameObject bulletHolePrefab;
+    
+    
 
 
     //timing bools
@@ -131,8 +134,7 @@ public class playerControl : MonoBehaviour, TakeDamage
         if (bulletCounter < bulletsPerShot)
         {
             bulletCounter++;
-            //if else statement (if CompareTag is default, put a bullet hole) else if hit enemy
-            //StartCoroutine(muzzleFlashTimer());
+            StartCoroutine(muzzleFlashTimer());
 
 
 
@@ -143,16 +145,38 @@ public class playerControl : MonoBehaviour, TakeDamage
 
             RaycastHit hit;
 
+            Transform bullet = transform.Find("Main Camera");
             if (Physics.Raycast(Camera.main.transform.position, direction, out hit, gunList[selectedGun].range, enemy))
             {
+                
                 // wait for AI tag
                 if (hit.collider.CompareTag("Enemy"))
                 {
                     hit.collider.GetComponent<TakeDamage>().CanTakeDamage(damage);
+                    if (gunList[selectedGun].hitEffect != null)
+                    {
+                        ParticleSystem particleEffect = Instantiate(gunList[selectedGun].hitEffect, hit.point, Quaternion.identity);
+                        particleEffect.transform.LookAt(hit.point + hit.normal);
+                        Destroy(particleEffect.gameObject, 5f);
+                    }
                 }
+
+
             }
 
-            //Instantiate(bulletHole, hit.point, Quaternion.Euler(0, 180,0));
+            if (Physics.Raycast(bullet.position, bullet.forward, out hit, 1000f) && !hit.collider.CompareTag("Enemy"))
+            {
+                GameObject bulletHole = Instantiate(bulletHolePrefab, hit.point, Quaternion.Euler(0, 180, 0)) as GameObject;
+                bulletHole.transform.LookAt(hit.point + hit.normal);
+                Destroy(bulletHole, 5f);
+                
+                if (gunList[selectedGun].hitEffect != null)
+                {
+                    ParticleSystem particleEffect = Instantiate(gunList[selectedGun].hitEffect, hit.point, Quaternion.identity);
+                    particleEffect.transform.LookAt(hit.point + hit.normal);
+                    Destroy(particleEffect.gameObject, 5f);
+                }
+            }
             // Instantiate(gunEffect, shootPos.position, Quaternion.identity);
             Invoke(nameof(shoot), gunList[selectedGun].timeBetweenShots);
         }
@@ -171,12 +195,12 @@ public class playerControl : MonoBehaviour, TakeDamage
         bulletCounter = 0;
     }
 
-    //IEnumerator muzzleFlashTimer()
-    //{
-    //    muzzleFlash.SetActive(true);
-    //    yield return new WaitForSeconds(0.05f);
-    //    muzzleFlash.SetActive(false);
-    //}
+    IEnumerator muzzleFlashTimer()
+    {
+        muzzleFlash.SetActive(true);
+        yield return new WaitForSeconds(0.05f);
+        muzzleFlash.SetActive(false);
+    }
 
 
     void scrollGuns()

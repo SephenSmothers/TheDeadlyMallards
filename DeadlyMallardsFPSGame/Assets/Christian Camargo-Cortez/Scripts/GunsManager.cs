@@ -17,5 +17,6 @@ public class GunsManager : ScriptableObject
     public int bulletsLeft, maxAmmo;
 
     public GameObject model;
-    public ParticleSystem hitEffect;
+    [SerializeField] public ParticleSystem hitEffect;
+   
 }
