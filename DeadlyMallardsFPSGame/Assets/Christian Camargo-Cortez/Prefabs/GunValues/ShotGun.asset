@@ -15,8 +15,9 @@ MonoBehaviour:
   damage: 1
   fireRate: 0.89
   range: 30
-  spread: 0.12
+  spread: 0.5
   reloadTime: 2.5
+  timeBetweenShots: 0
   magSize: 5
   bulletsPerShot: 5
   totalAmmo: 30
