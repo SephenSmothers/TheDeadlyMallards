@@ -134,7 +134,6 @@ public class playerControl : MonoBehaviour, TakeDamage
         if (bulletCounter < bulletsPerShot)
         {
             bulletCounter++;
-            //if else statement (if CompareTag is default, put a bullet hole) else if hit enemy
             StartCoroutine(muzzleFlashTimer());
 
 
@@ -149,8 +148,8 @@ public class playerControl : MonoBehaviour, TakeDamage
             Transform bullet = transform.Find("Main Camera");
             if (Physics.Raycast(Camera.main.transform.position, direction, out hit, gunList[selectedGun].range, enemy))
             {
-                //Instantiate(gunList[selectedGun].hitEffect, hit.point, Quaternion.identity);
                 
+                // wait for AI tag
                 if (hit.collider.CompareTag("Enemy"))
                 {
                     hit.collider.GetComponent<TakeDamage>().CanTakeDamage(damage);
@@ -163,14 +162,14 @@ public class playerControl : MonoBehaviour, TakeDamage
                 }
 
 
-                // wait for AI tag
             }
-            
+
             if (Physics.Raycast(bullet.position, bullet.forward, out hit, 1000f) && !hit.collider.CompareTag("Enemy"))
             {
                 GameObject bulletHole = Instantiate(bulletHolePrefab, hit.point, Quaternion.Euler(0, 180, 0)) as GameObject;
-                 bulletHole.transform.LookAt(hit.point + hit.normal);
-                 Destroy(bulletHole, 5f);
+                bulletHole.transform.LookAt(hit.point + hit.normal);
+                Destroy(bulletHole, 5f);
+                
                 if (gunList[selectedGun].hitEffect != null)
                 {
                     ParticleSystem particleEffect = Instantiate(gunList[selectedGun].hitEffect, hit.point, Quaternion.identity);
@@ -178,7 +177,6 @@ public class playerControl : MonoBehaviour, TakeDamage
                     Destroy(particleEffect.gameObject, 5f);
                 }
             }
-            //Instantiate(bulletHole, hit.point, Quaternion.Euler(0, 180,0));
             // Instantiate(gunEffect, shootPos.position, Quaternion.identity);
             Invoke(nameof(shoot), gunList[selectedGun].timeBetweenShots);
         }
