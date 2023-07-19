@@ -25,4 +25,4 @@ MonoBehaviour:
   bulletsLeft: 5
   maxAmmo: 30
   model: {fileID: 919132149155446097, guid: f62f7dc06bd890d4aab43b8fd635fe02, type: 3}
-  hitEffect: {fileID: 0}
+  hitEffect: {fileID: 6270096218230784729, guid: 484f3a90421376a4998bd530287088bf, type: 3}
