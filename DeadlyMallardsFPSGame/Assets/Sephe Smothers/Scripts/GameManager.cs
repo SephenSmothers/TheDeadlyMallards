@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     int enemiesRemain;
     int ammoCountRemain;
     int score;
-    int cash;
+    public int cash;
    
 
 
@@ -37,7 +37,6 @@ public class GameManager : MonoBehaviour
         _player = GameObject.FindGameObjectWithTag("Player");
         _playerSpawn = GameObject.FindGameObjectWithTag("playerSpawn");
         origTimeScale = Time.timeScale;
-      
     }
 
    // Update is called once per frame
@@ -112,7 +111,4 @@ public class GameManager : MonoBehaviour
         playerCash.text = cash.ToString("f0");
         return cash;
     }
-
-
-
 }

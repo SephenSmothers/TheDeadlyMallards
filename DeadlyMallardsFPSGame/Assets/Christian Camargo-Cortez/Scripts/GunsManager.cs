@@ -9,7 +9,7 @@ using TMPro;
 public class GunsManager : ScriptableObject
 {
     public int damage;
-    public float fireRate, range, spread, reloadTime;
+    public float fireRate, range, spread, reloadTime, timeBetweenShots;
     public int magSize, bulletsPerShot, totalAmmo;
     public bool allowButtonHold;
 
