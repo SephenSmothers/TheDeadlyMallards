@@ -12,9 +12,10 @@ public class Buttons : MonoBehaviour
 
     public void Restart()
     {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         GameManager.instance.UnPause();
         GameManager.instance.playerScript.resetGuns();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        
     }
 
     public void quit()

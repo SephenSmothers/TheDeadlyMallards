@@ -733,6 +733,7 @@ GameObject:
   - component: {fileID: 3034641422232311442}
   - component: {fileID: 6609728244277007986}
   - component: {fileID: 8986857974363761390}
+  - component: {fileID: 6609728244277007986}
   - component: {fileID: 7139299098705429106}
   - component: {fileID: 4483714714921440688}
   m_Layer: 7
@@ -829,6 +830,28 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!95 &6609728244277007986
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6098965772927302268}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
+  m_Controller: {fileID: 9100000, guid: 88d94b245a047104b848a4f33dd6133a, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!135 &7139299098705429106
 SphereCollider:
   m_ObjectHideFlags: 0
