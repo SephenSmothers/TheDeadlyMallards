@@ -1707,7 +1707,7 @@ RectTransform:
   - {fileID: 4463106147118772178}
   - {fileID: 7195838727478879624}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1739,6 +1739,7 @@ MonoBehaviour:
   scoreText: {fileID: 4380617224739722349}
   playerCash: {fileID: 6927958043741973498}
   playerHpBar: {fileID: 4707043121282668623}
+  cash: 0
 --- !u!114 &6470827327786937022
 MonoBehaviour:
   m_ObjectHideFlags: 0

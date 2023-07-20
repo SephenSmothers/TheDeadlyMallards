@@ -236,7 +236,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4926572047297011294}
   - component: {fileID: 3862666026294156513}
-  - component: {fileID: 7062833521611038124}
   - component: {fileID: 6161223996371657999}
   - component: {fileID: 7062833521611038124}
   - component: {fileID: 4301378476205099065}
@@ -278,7 +277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa19d6196ccec7f4687e723b950c1d3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modle: {fileID: 13700000, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
+  modle: {fileID: 6292379029496106636}
   agent: {fileID: 6161223996371657999}
   hp: 20
   shootspeed: 1
@@ -291,28 +290,6 @@ MonoBehaviour:
   viewAngle: 45
   playerFaceSpeed: 500
   shooter: 0
---- !u!95 &7062833521611038124
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2420944998124642665}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
-  m_Controller: {fileID: 9100000, guid: c7b54f37cd61b3447afaea165d1ba987, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!195 &6161223996371657999
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -397,7 +374,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.3
   m_Height: 1.5
   m_Direction: 1
   m_Center: {x: 0, y: 0.5, z: 0}

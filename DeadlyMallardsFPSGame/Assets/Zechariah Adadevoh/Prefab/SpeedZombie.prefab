@@ -168,7 +168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modle: {fileID: 5719475534206226352}
   agent: {fileID: 2786975695514436971}
-  hp: 4
+  hp: 5
   shootspeed: 0.25
   shootingpos: {fileID: 0}
   attackpos: {fileID: 5395066703960755797}
@@ -198,7 +198,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1000
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &8982172422462340778
 CapsuleCollider:

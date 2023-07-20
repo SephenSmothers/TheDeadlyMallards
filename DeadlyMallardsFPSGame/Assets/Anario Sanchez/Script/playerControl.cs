@@ -42,7 +42,7 @@ public class playerControl : MonoBehaviour, TakeDamage
     private Vector3 playerVelocity;
     private bool groundedPlayer;
     public int maxHP;
-    private List<GunsManager> usedGuns = new List<GunsManager>();
+    public List<GunsManager> usedGuns = new List<GunsManager>();
     public MovementState state;
     private int bulletShot;
     public enum MovementState
@@ -241,7 +241,7 @@ public class playerControl : MonoBehaviour, TakeDamage
         gunModel.GetComponent<MeshRenderer>().material = _gunStats.model.GetComponent<MeshRenderer>().sharedMaterial;
 
         selectedGun = gunList.Count - 1;
-        if (!checkGunSlots(_gunStats.name, gunList))
+        if (checkGunSlots(_gunStats.name, gunList))
         {
             usedGuns.Add(_gunStats);
         }
