@@ -216,11 +216,11 @@ public class playerControl : MonoBehaviour, TakeDamage
         }
     }
 
-    public void OnGunPickUp(GunsManager _gunStats)
+    public bool OnGunPickUp(GunsManager _gunStats)
     {
         if (checkGunSlots(_gunStats.name, gunList))
         {
-            return;
+            return false;
         }
         gunList.Add(_gunStats);
         if(gunList.Count > 2)
@@ -246,6 +246,7 @@ public class playerControl : MonoBehaviour, TakeDamage
             usedGuns.Add(_gunStats);
         }
         UpdatePlayerUI();
+        return true;
     }
 
     public void changeGunStats()

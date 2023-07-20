@@ -26,7 +26,7 @@ public class interactable : MonoBehaviour
         {
             if (hitInfo.collider.gameObject.TryGetComponent(out Interactables interacted))
             {
-                promptShow(interacted);
+                promptText.text = interacted.promptUi();
                 uiPanel.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.E))
                 {
@@ -38,10 +38,5 @@ public class interactable : MonoBehaviour
         {
             uiPanel.SetActive(false);
         }
-    }
-
-    public void promptShow(Interactables interacted)
-    {
-        promptText.text = interacted.promptUi();
     }
 }
