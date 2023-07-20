@@ -28,4 +28,4 @@ MonoBehaviour:
   model: {fileID: 919132149155446097, guid: 33269b2b610f4c245a712795c1927939, type: 3}
   hitEffect: {fileID: 7548617410811184617, guid: 45a1b6e7744a75448a4e6a2a4d32e5a1, type: 3}
   upgradedGun: 0
-  origDamage: 3
+  gunPrice: 1500

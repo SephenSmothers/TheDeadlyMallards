@@ -163,7 +163,7 @@ public class playerControl : MonoBehaviour, TakeDamage
 
             }
 
-            if (Physics.Raycast(bullet.position, bullet.forward, out hit, 1000f) && !hit.collider.CompareTag("Enemy"))
+            if (Physics.Raycast(bullet.position, bullet.forward, out hit, 1000f) && !hit.collider.CompareTag("Enemy") || !hit.collider.CompareTag("Player"))
             {
                 GameObject bulletHole = Instantiate(bulletHolePrefab, hit.point, Quaternion.Euler(0, 180, 0)) as GameObject;
                 bulletHole.transform.LookAt(hit.point + hit.normal);
@@ -216,11 +216,11 @@ public class playerControl : MonoBehaviour, TakeDamage
         }
     }
 
-    public void OnGunPickUp(GunsManager _gunStats)
+    public bool OnGunPickUp(GunsManager _gunStats)
     {
         if (checkGunSlots(_gunStats.name, gunList))
         {
-            return;
+            return false;
         }
         gunList.Add(_gunStats);
         if(gunList.Count > 2)
@@ -246,6 +246,7 @@ public class playerControl : MonoBehaviour, TakeDamage
             usedGuns.Add(_gunStats);
         }
         UpdatePlayerUI();
+        return true;
     }
 
     public void changeGunStats()

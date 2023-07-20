@@ -21,8 +21,9 @@ public class GunsManager : ScriptableObject
     public GameObject model;
     [SerializeField] public ParticleSystem hitEffect;
     public bool upgradedGun;
+    public int gunPrice;
 
-    public int origDamage;
+    int origDamage;
     float origFireRate;
     float origRange;
     float origReloadTime;

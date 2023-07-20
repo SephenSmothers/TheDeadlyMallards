@@ -111,4 +111,10 @@ public class GameManager : MonoBehaviour
         playerCash.text = cash.ToString("f0");
         return cash;
     }
+    public int RemoveCash(int _cash)
+    {
+        cash -= _cash;
+        playerCash.text = cash.ToString("f0");
+        return cash;
+    }
 }
