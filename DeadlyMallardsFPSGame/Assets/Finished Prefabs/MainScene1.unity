@@ -890,7 +890,7 @@ PrefabInstance:
     - target: {fileID: 2956486890969200567, guid: d8a65a4a552646f45bc4f57e09051260, type: 3}
       propertyPath: 'waves.Array.data[0].enemy.Array.data[1]'
       value: 
-      objectReference: {fileID: 4172723062447763283, guid: f011e576521fff7469aae88f6f301a16, type: 3}
+      objectReference: {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
     - target: {fileID: 2956486890969200567, guid: d8a65a4a552646f45bc4f57e09051260, type: 3}
       propertyPath: 'waves.Array.data[0].enemy.Array.data[2]'
       value: 

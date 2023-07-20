@@ -107,6 +107,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: db4149ecabade4b438cff9611dfd3975, type: 2}
     - target: {fileID: 13700000, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -171,6 +175,7 @@ MonoBehaviour:
   vomit: {fileID: 0}
   hitbox: {fileID: 7165650408978483057, guid: 949ca1a187eca464b9eaa63b92d7867d, type: 3}
   headPos: {fileID: 5719475534194368146}
+  anim: {fileID: 5719475534202122608}
   viewAngle: 180
   playerFaceSpeed: 500
   shooter: 0
@@ -240,6 +245,11 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!95 &5719475534202122608 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9500000, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
+  m_PrefabInstance: {fileID: 5719475534194754576}
+  m_PrefabAsset: {fileID: 0}
 --- !u!137 &5719475534206226352 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 13700000, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
