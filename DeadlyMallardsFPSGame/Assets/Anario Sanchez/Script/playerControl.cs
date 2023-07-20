@@ -2,6 +2,7 @@ using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 //using UnityEditorInternal;
 using UnityEngine;
 
@@ -12,13 +13,13 @@ public class playerControl : MonoBehaviour, TakeDamage
     public LayerMask enemy;
 
     [Header("----- Player Stats -----")]
-    [SerializeField] int hp;
+    public int hp;
     [SerializeField] float playerWalkSpeed;
     [SerializeField] float playerSprintSpeed;
     [SerializeField] float jumpHeight;
 
     [Header("----- Gun Stats -----")]
-    [SerializeField] List<GunsManager> gunList = new List<GunsManager>();
+    public List<GunsManager> gunList = new List<GunsManager>();
     [SerializeField] GameObject gunModel;
     [SerializeField] int damage;
     [SerializeField] float fireRate, range, spread, reloadTime, timeBetweenShots;
@@ -29,19 +30,19 @@ public class playerControl : MonoBehaviour, TakeDamage
     public int selectedGun;
     private int bulletCounter;
     public GameObject bulletHolePrefab;
-    
-    
+
+
 
 
     //timing bools
     public bool isShooting, readyToShoot, reloading;
 
     Vector3 move;
-    //Rigidbody rb;
     private float playerSpeed;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
-    private int maxHP;
+    public int maxHP;
+    private List<GunsManager> usedGuns = new List<GunsManager>();
     public MovementState state;
     private int bulletShot;
     public enum MovementState
@@ -53,13 +54,11 @@ public class playerControl : MonoBehaviour, TakeDamage
     private void Start()
     {
         maxHP = hp;
-        //rb = GetComponent<Rigidbody>();
-        //rb.freezeRotation = true;
         readyToShoot = true;
         bulletCounter = 0;
+        usedGuns.Add(gunList[selectedGun]);
         changeGunStats();
         UpdatePlayerUI();
-        resetGuns();
         spawnPlayer();
 
     }
@@ -148,7 +147,7 @@ public class playerControl : MonoBehaviour, TakeDamage
             Transform bullet = transform.Find("Main Camera");
             if (Physics.Raycast(Camera.main.transform.position, direction, out hit, gunList[selectedGun].range, enemy))
             {
-                
+
                 // wait for AI tag
                 if (hit.collider.CompareTag("Enemy"))
                 {
@@ -169,7 +168,7 @@ public class playerControl : MonoBehaviour, TakeDamage
                 GameObject bulletHole = Instantiate(bulletHolePrefab, hit.point, Quaternion.Euler(0, 180, 0)) as GameObject;
                 bulletHole.transform.LookAt(hit.point + hit.normal);
                 Destroy(bulletHole, 5f);
-                
+
                 if (gunList[selectedGun].hitEffect != null)
                 {
                     ParticleSystem particleEffect = Instantiate(gunList[selectedGun].hitEffect, hit.point, Quaternion.identity);
@@ -219,7 +218,15 @@ public class playerControl : MonoBehaviour, TakeDamage
 
     public void OnGunPickUp(GunsManager _gunStats)
     {
+        if (checkGunSlots(_gunStats.name, gunList))
+        {
+            return;
+        }
         gunList.Add(_gunStats);
+        if(gunList.Count > 2)
+        {
+            gunList.RemoveAt(selectedGun);
+        }
         damage = _gunStats.damage;
         fireRate = _gunStats.fireRate;
         range = _gunStats.range;
@@ -234,6 +241,10 @@ public class playerControl : MonoBehaviour, TakeDamage
         gunModel.GetComponent<MeshRenderer>().material = _gunStats.model.GetComponent<MeshRenderer>().sharedMaterial;
 
         selectedGun = gunList.Count - 1;
+        if (!checkGunSlots(_gunStats.name, gunList))
+        {
+            usedGuns.Add(_gunStats);
+        }
         UpdatePlayerUI();
     }
 
@@ -248,6 +259,7 @@ public class playerControl : MonoBehaviour, TakeDamage
         bulletsPerShot = gunList[selectedGun].bulletsPerShot;
         totalAmmo = gunList[selectedGun].totalAmmo;
         allowButtonHold = gunList[selectedGun].allowButtonHold;
+
 
         gunModel.GetComponent<MeshFilter>().mesh = gunList[selectedGun].model.GetComponent<MeshFilter>().sharedMesh;
         gunModel.GetComponent<MeshRenderer>().material = gunList[selectedGun].model.GetComponent<MeshRenderer>().sharedMaterial;
@@ -334,12 +346,22 @@ public class playerControl : MonoBehaviour, TakeDamage
         hp = maxHP;
         UpdatePlayerUI();
     }
-    void resetGuns()
+    public void resetGuns()
     {
-        for (int i = 0; i < gunList.Count; i++)
+        for (int i = 0; i < usedGuns.Count; i++)
         {
-            gunList[i].bulletsLeft = gunList[i].magSize;
-            gunList[i].totalAmmo = gunList[i].maxAmmo;
+            usedGuns[i].resetGunStats();
         }
+    }
+    public bool checkGunSlots(string name, List<GunsManager> guns)
+    {
+        for (int i = 0; i < guns.Count; i++)
+        {
+            if (guns[i].name == name)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

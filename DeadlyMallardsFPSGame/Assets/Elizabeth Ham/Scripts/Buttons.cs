@@ -13,6 +13,7 @@ public class Buttons : MonoBehaviour
     public void Restart()
     {
         GameManager.instance.UnPause();
+        GameManager.instance.playerScript.resetGuns();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
@@ -29,6 +30,7 @@ public class Buttons : MonoBehaviour
     public void PlayGame()
     {
         SceneManager.LoadScene(1);
+        GameManager.instance.playerScript.resetGuns();
         GameManager.instance.UnPause();
     }
 }

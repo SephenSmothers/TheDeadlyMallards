@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using TMPro;
+using JetBrains.Annotations;
 
 [CreateAssetMenu]
 
 public class GunsManager : ScriptableObject
 {
+    public string gunName;
     public int damage;
     public float fireRate, range, spread, reloadTime, timeBetweenShots;
     public int magSize, bulletsPerShot, totalAmmo;
@@ -18,5 +20,40 @@ public class GunsManager : ScriptableObject
 
     public GameObject model;
     [SerializeField] public ParticleSystem hitEffect;
-   
+    public bool upgradedGun;
+
+    public int origDamage;
+    float origFireRate;
+    float origRange;
+    float origReloadTime;
+    int origBulletsPerShot;
+    int origMagSize;
+    int origMaxAmmo;
+
+
+    private void Awake()
+    {
+        origDamage = damage;
+        origFireRate = fireRate;
+        origRange = range;
+        origReloadTime = reloadTime;
+        origBulletsPerShot = bulletsPerShot;
+        origMagSize = magSize;
+        origMaxAmmo = maxAmmo;
+    }
+  
+    public void resetGunStats()
+    {
+        damage = origDamage;
+        fireRate = origFireRate;
+        bulletsPerShot = origBulletsPerShot;
+        range = origRange;
+        reloadTime = origReloadTime;
+        magSize = origMagSize;
+        maxAmmo = origMaxAmmo;
+        model.GetComponent<MeshRenderer>().sharedMaterial.color = Color.white;
+        bulletsLeft = magSize;
+        totalAmmo = maxAmmo;
+        upgradedGun = false;
+    }
 }

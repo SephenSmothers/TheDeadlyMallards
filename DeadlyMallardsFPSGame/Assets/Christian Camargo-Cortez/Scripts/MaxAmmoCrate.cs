@@ -2,17 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MaxAmmoCrate : MonoBehaviour
+public class MaxAmmoCrate : MonoBehaviour, Interactables
 {
-    public playerControl playercont;
- 
-
-    private void OnTriggerEnter(Collider other)
+    public void Interact()
     {
-        if (other.CompareTag("Player"))
+        GunsManager curGun = GameManager.instance.playerScript.gunList[GameManager.instance.playerScript.selectedGun];
+        if (curGun.totalAmmo != curGun.maxAmmo)
         {
-            playercont.GetMaxAmmo();
-            Destroy(gameObject);
+            GameManager.instance.playerScript.GetMaxAmmo();
         }
+        else
+        {
+            Debug.Log("You have max Ammo!");
+        }
+    }
+    public string promptUi()
+    {
+        return null;
     }
 }

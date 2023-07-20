@@ -110,8 +110,8 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
 
     public void CanTakeDamage(int amount)
     {
-        StartCoroutine(flashDamage());
         hp -= amount;
+        StartCoroutine(flashDamage());
         GameManager.instance.AddScore(10);
         GameManager.instance.AddCash(10);
         if (hp <= 0)
@@ -137,7 +137,7 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
     }
     IEnumerator attack()
     {
-     
+
         isattacking = true;
         anim.SetTrigger("Attack");
         anim.SetTrigger("speedAttack");
@@ -150,8 +150,8 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
     IEnumerator flashDamage()
     {
         Color currColor = modle.materials[0].color;
-        modle.materials[0].color = Color.red;
         Color currColor2 = modle.materials[1].color;
+        modle.materials[0].color = Color.red;
         modle.materials[1].color = Color.red;
         yield return new WaitForSeconds(0.1f);
         modle.materials[0].color = currColor;

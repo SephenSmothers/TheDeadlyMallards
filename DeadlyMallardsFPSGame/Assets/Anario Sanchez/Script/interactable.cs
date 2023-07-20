@@ -1,28 +1,47 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
-interface Interactables
+public interface Interactables
 {
     public void Interact();
+    public string promptUi();
 }
 public class interactable : MonoBehaviour
 {
     public Transform interactableObject;
+    public GameObject uiPanel;
+    public TextMeshProUGUI promptText;
     public float interactableRange;
 
+    private void Start()
+    {
+        uiPanel.SetActive(false);
+    }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        Ray ray = new Ray(interactableObject.position, interactableObject.forward);
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, interactableRange))
         {
-            Ray ray = new Ray(interactableObject.position, interactableObject.forward);
-            if(Physics.Raycast(ray, out RaycastHit hitInfo, interactableRange)) 
-            { 
-                if(hitInfo.collider.gameObject.TryGetComponent(out Interactables interacted))
+            if (hitInfo.collider.gameObject.TryGetComponent(out Interactables interacted))
+            {
+                promptShow(interacted);
+                uiPanel.SetActive(true);
+                if (Input.GetKeyDown(KeyCode.E))
                 {
                     interacted.Interact();
                 }
             }
         }
+        else
+        {
+            uiPanel.SetActive(false);
+        }
+    }
+
+    public void promptShow(Interactables interacted)
+    {
+        promptText.text = interacted.promptUi();
     }
 }

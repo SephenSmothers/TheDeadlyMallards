@@ -34,7 +34,7 @@ Transform:
   m_Children:
   - {fileID: 606772538260626593}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5063657187297651725
 MonoBehaviour:
@@ -48,7 +48,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86330fe54ad966c47bfb34d0d58f57fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunsManager: {fileID: 0}
 --- !u!33 &2375180989962036607
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -114,11 +113,11 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3, y: 3, z: 3}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &604805347320246003
 PrefabInstance:

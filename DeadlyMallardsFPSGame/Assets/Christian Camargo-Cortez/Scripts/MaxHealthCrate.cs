@@ -2,15 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MaxHealthCrate : MonoBehaviour
+public class MaxHealthCrate : MonoBehaviour, Interactables
 {
-   public playerControl playerControl;
-    public void OnTriggerEnter(Collider other)
+    public void Interact()
     {
-        if(other.CompareTag("Player"))
+        if (GameManager.instance.playerScript.hp != GameManager.instance.playerScript.maxHP)
         {
-            playerControl.GetMaxHealth();
-            Destroy(gameObject);
+            GameManager.instance.playerScript.GetMaxHealth();
         }
+        else
+        {
+            Debug.Log("You have full health!");
+        }
+    }
+    public string promptUi()
+    {
+        return null;
     }
 }

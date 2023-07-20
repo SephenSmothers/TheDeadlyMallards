@@ -12,17 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8a943aefba16364d8bdd51dad44b977, type: 3}
   m_Name: Revolver
   m_EditorClassIdentifier: 
+  gunName: Revolver
   damage: 2
-  fireRate: 0.28
+  fireRate: 0.27
   range: 50
   spread: 0.05
   reloadTime: 1.5
   timeBetweenShots: 0
   magSize: 6
   bulletsPerShot: 1
-  totalAmmo: 78
+  totalAmmo: 84
   allowButtonHold: 0
-  bulletsLeft: 3
+  bulletsLeft: 6
   maxAmmo: 84
   model: {fileID: 919132149155446097, guid: 4df3ce82db8e66645afd54ab1d5b0262, type: 3}
   hitEffect: {fileID: 1279405948704577569, guid: f59e2a30d8ee4b849b13cfa9bf84469e, type: 3}
+  upgradedGun: 0
+  origDamage: 2
