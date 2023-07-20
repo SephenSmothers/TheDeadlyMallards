@@ -731,10 +731,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8208202771309608275}
   - component: {fileID: 3034641422232311442}
+  - component: {fileID: 6609728244277007986}
   - component: {fileID: 8986857974363761390}
   - component: {fileID: 7139299098705429106}
   - component: {fileID: 4483714714921440688}
-  - component: {fileID: 6609728244277007986}
   m_Layer: 7
   m_Name: ZombieEnemey
   m_TagString: Enemy
@@ -781,9 +781,32 @@ MonoBehaviour:
   vomit: {fileID: 0}
   hitbox: {fileID: 7165650408978483057, guid: 949ca1a187eca464b9eaa63b92d7867d, type: 3}
   headPos: {fileID: 753045697949549879}
+  anim: {fileID: 6609728244277007986}
   viewAngle: 180
   playerFaceSpeed: 500
   shooter: 0
+--- !u!95 &6609728244277007986
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6098965772927302268}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
+  m_Controller: {fileID: 9100000, guid: 88d94b245a047104b848a4f33dd6133a, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!195 &8986857974363761390
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -850,28 +873,6 @@ CapsuleCollider:
   m_Height: 1.5
   m_Direction: 1
   m_Center: {x: 0, y: 0.5, z: 0}
---- !u!95 &6609728244277007986
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6098965772927302268}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6467057654588649371
 GameObject:
   m_ObjectHideFlags: 0
