@@ -18,6 +18,7 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
 
     [SerializeField] GameObject hitbox;
     [SerializeField] Transform headPos;
+    [SerializeField] Animator anim;
     [SerializeField] int viewAngle;
     [SerializeField] int playerFaceSpeed;
 
@@ -34,7 +35,7 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
     public bool shooter;
     bool isshooting;
 
-   
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,8 +45,17 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
     // Update is called once per frame
     void Update()
     {
-        ChasePlayer();
-      
+        if (agent.isActiveAndEnabled)
+        {
+            ChasePlayer();
+            anim.SetFloat("speed", agent.velocity.normalized.magnitude);
+            anim.SetFloat("speedZombie", agent.velocity.normalized.magnitude);
+            anim.SetFloat("speedTank", agent.velocity.normalized.magnitude);
+            anim.SetFloat("speedGun", agent.velocity.normalized.magnitude);
+
+        }
+
+
 
     }
 
@@ -106,9 +116,17 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
         GameManager.instance.AddCash(10);
         if (hp <= 0)
         {
-            Destroy(gameObject);
             GameManager.instance.ReturnEnemyCount(-1);
+            anim.SetBool("Dead", true);
+            anim.SetBool("deadSpeed", true);
+            anim.SetBool("deadTank", true);
+            anim.SetBool("DeadGun", true);
+            agent.enabled = false;
+            GetComponent<CapsuleCollider>().enabled = false;
+            Destroy(gameObject,5);
+
         }
+
     }
     IEnumerator shoot()
     {
@@ -119,7 +137,11 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
     }
     IEnumerator attack()
     {
+     
         isattacking = true;
+        anim.SetTrigger("Attack");
+        anim.SetTrigger("speedAttack");
+        anim.SetTrigger("tankAttack");
         Instantiate(hitbox, attackpos.position, Quaternion.Euler(90, 0, 0));
         yield return new WaitForSeconds(shootspeed);
         isattacking = false;

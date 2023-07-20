@@ -280,12 +280,13 @@ MonoBehaviour:
   modle: {fileID: 13700000, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
   agent: {fileID: 6161223996371657999}
   hp: 20
-  shootspeed: 0.25
+  shootspeed: 1
   shootingpos: {fileID: 0}
   attackpos: {fileID: 8826250300492266776}
   vomit: {fileID: 0}
   hitbox: {fileID: 7165650408978483057, guid: 9917e4bf1f35254438fa02e79d9151b1, type: 3}
   headPos: {fileID: 388604685633476278}
+  anim: {fileID: 0}
   viewAngle: 45
   playerFaceSpeed: 500
   shooter: 0
