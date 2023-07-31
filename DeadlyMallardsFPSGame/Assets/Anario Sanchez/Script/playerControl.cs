@@ -98,6 +98,10 @@ public class playerControl : MonoBehaviour, TakeDamage
         {
             shoot();
         }
+        else if (gunList[selectedGun].bulletsLeft <= 0 && Input.GetKey(KeyCode.Mouse0))
+        {
+            reload();
+        }
     }
 
     public void reload()
@@ -121,6 +125,7 @@ public class playerControl : MonoBehaviour, TakeDamage
             gunList[selectedGun].bulletsLeft = gunList[selectedGun].magSize;
         }
         reloading = false;
+        readyToShoot = true;
         UpdatePlayerUI();
 
         //gameManager.SetAmmoCount(totalAmmo);
@@ -185,7 +190,6 @@ public class playerControl : MonoBehaviour, TakeDamage
             Invoke(nameof(resetShot), gunList[selectedGun].fireRate);
             UpdatePlayerUI();
         }
-
     }
 
     public void resetShot()
@@ -223,7 +227,7 @@ public class playerControl : MonoBehaviour, TakeDamage
             return false;
         }
         gunList.Add(_gunStats);
-        if(gunList.Count > 2)
+        if (gunList.Count > 2)
         {
             gunList.RemoveAt(selectedGun);
         }
