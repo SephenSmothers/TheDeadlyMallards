@@ -6,13 +6,13 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Finished Prefabs/Main Menu.unity
+    path: Assets/Finished Prefabs/MainScenes/Main Menu.unity
     guid: 26cede8c10ddc5f44994fc53cd37fd6a
   - enabled: 1
-    path: Assets/Finished Prefabs/MainScene1.unity
+    path: Assets/Finished Prefabs/Mission1_Scenes/M1Level1.unity
     guid: d036f1173659f4641bb7324b94586d72
   - enabled: 1
-    path: Assets/Finished Prefabs/Level2.unity
+    path: Assets/Finished Prefabs/Mission1_Scenes/M1Level2.unity
     guid: 54d46c09ada56504e9ce3af107c8d984
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
