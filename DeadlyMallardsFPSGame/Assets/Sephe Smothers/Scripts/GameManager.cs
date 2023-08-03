@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     int ammoCountRemain;
     int score;
     public int cash;
+    public int zombiesKilled; 
    
 
 
@@ -116,5 +117,14 @@ public class GameManager : MonoBehaviour
         cash -= _cash;
         playerCash.text = cash.ToString("f0");
         return cash;
+    }
+
+    public int GetZombiesKilled()
+    { 
+        return zombiesKilled; 
+    }
+    public void OnZombieKilled()
+    {
+        zombiesKilled++;
     }
 }

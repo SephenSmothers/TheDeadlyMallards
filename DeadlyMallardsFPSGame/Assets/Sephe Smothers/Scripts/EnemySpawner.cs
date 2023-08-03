@@ -8,16 +8,17 @@ public class EnemySpawner : MonoBehaviour
 {
     public enum SpawnState { SPAWNING, WAITING, COUNTING }
 
+    public static EnemySpawner instance;
+
     [SerializeField] public List<WaveSpawner> waves;
     [SerializeField] private List<EnemeyAI> enemyList;
-    int[] test;
 
     [SerializeField] private float timeBetweenWaves = 5f;
     [SerializeField] private float waveCountdown = 0f;
 
     private SpawnState state = SpawnState.COUNTING;
 
-    private int currentWave;
+    int currentWave;
 
     [SerializeField] private Transform[] spawners;
 
@@ -25,6 +26,7 @@ public class EnemySpawner : MonoBehaviour
     {
         waveCountdown = timeBetweenWaves;
         currentWave = 0;
+        instance = this;
     }
 
     private void Update()
@@ -119,5 +121,10 @@ public class EnemySpawner : MonoBehaviour
             wave.enemy[i].hp *= (int)(wave.enemy[i].hp * 0.1);
         }
         waves.Add(wave);
+    }
+
+    public int GetCurrentWave()
+    {
+        return currentWave + 1;
     }
 }
