@@ -79,11 +79,13 @@ public class playerControl : MonoBehaviour, TakeDamage
         if (allowButtonHold)
         {
             //Automatic guns
+            readyToShoot = true;
             isShooting = Input.GetKey(KeyCode.Mouse0);
         }
         else
         {
             //semi-auto guns
+            readyToShoot = true;
             isShooting = Input.GetKeyDown(KeyCode.Mouse0);
         }
 
