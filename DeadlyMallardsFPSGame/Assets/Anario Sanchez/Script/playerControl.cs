@@ -51,7 +51,7 @@ public class playerControl : MonoBehaviour, TakeDamage
         sprinting,
         air
     }
-    private void Start()
+    private void Awake()
     {
         maxHP = hp;
         readyToShoot = true;

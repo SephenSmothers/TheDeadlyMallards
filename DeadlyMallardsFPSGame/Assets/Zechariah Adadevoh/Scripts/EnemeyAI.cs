@@ -113,7 +113,7 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
         hp -= amount;
         StartCoroutine(flashDamage());
         GameManager.instance.AddScore(10);
-        GameManager.instance.AddCash(10);
+        GameManager.instance.AddCash(1000);
         if (hp <= 0)
         {
             GameManager.instance.ReturnEnemyCount(-1);
@@ -124,7 +124,7 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
             agent.enabled = false;
             GetComponent<CapsuleCollider>().enabled = false;
             Destroy(gameObject,5);
-
+            GameManager.instance.OnZombieKilled();
         }
 
     }
@@ -157,4 +157,5 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
         modle.materials[0].color = currColor;
         modle.materials[1].color = currColor2;
     }
+
 }

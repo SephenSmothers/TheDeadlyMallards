@@ -2,41 +2,95 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class ObjectiveManager : MonoBehaviour
+public class ObjectiveManager : MonoBehaviour, Interactables
 {
-
-    [SerializeField] List<List<Collectible>> Objectives; 
-    bool AllObjectivesCompleted;
+    public int nextScene;
+    [SerializeField] List<Collectible> Objectives;
+    [SerializeField] int roundToReach;
+    public int zombiesToKill;
+    public bool AllObjectivesCompleted;
 
     // Start is called before the first frame update
     void Start()
     {
-        AllObjectivesCompleted = false; 
+        AllObjectivesCompleted = false;
+        // nextScene = SceneManager.GetActiveScene().buildIndex + 1;
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    //void OnDisable()
+    //{
+    //    GameManager.instance.LoadAllStats();
+    //}
 
-    void CheckObjectivesComplete() 
+    void CheckObjectivesComplete()
     {
         for (int i = 0; i < Objectives.Count; i++)
         {
-            for (int j = 0; j < Objectives[i].Count; j++)
+
+            if (CheckObjectives() && CheckZombies() && CheckWaves())
             {
-                if (Objectives[i][j].completed)
-                {
-                    AllObjectivesCompleted = true;
-                }
-                else
-                {
-                    AllObjectivesCompleted = false;
-                    return; 
-                }
+                AllObjectivesCompleted = true;
+                GameManager.instance.SaveAllStats();
+                SceneManager.LoadScene(nextScene);
+            }
+            else
+            {
+                AllObjectivesCompleted = false;
+                return;
             }
         }
+    }
+
+    private bool CheckObjectives()
+    {
+        bool complete = false;
+        for (int i = 0; i < Objectives.Count; i++)
+        {
+            if (Objectives[i].completed)
+            {
+                complete = true;
+            }
+            else
+            {
+                complete = false;
+                break;
+            }
+        }
+        return complete;
+    }
+    private bool CheckZombies()
+    {
+        bool complete = false;
+
+        if (zombiesToKill <= GameManager.instance.GetZombiesKilled())
+        {
+            complete = true;
+        }
+
+        return complete;
+    }
+    private bool CheckWaves()
+    {
+        bool complete = false;
+
+        if (roundToReach <= EnemySpawner.instance.GetCurrentWave())
+        {
+            complete = true;
+        }
+
+        return complete;
+    }
+
+    public void Interact()
+    {
+        CheckObjectivesComplete();
+    }
+
+    public string promptUi()
+    {
+        return "Press 'E' To Continue";
     }
 }

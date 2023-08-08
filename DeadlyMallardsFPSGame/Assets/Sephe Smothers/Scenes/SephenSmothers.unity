@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.2139894, g: 0.2139894, b: 0.2139894, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -811,6 +811,10 @@ PrefabInstance:
       propertyPath: playerScript
       value: 
       objectReference: {fileID: 807020559}
+    - target: {fileID: 2874073456481811570, guid: e397fe6b800207348a0290e227c695f1, type: 3}
+      propertyPath: SaveDataStats
+      value: 
+      objectReference: {fileID: 11400000, guid: d43020f4e3b67c64e943237423c65d1c, type: 2}
     - target: {fileID: 4092236685428807495, guid: e397fe6b800207348a0290e227c695f1, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -950,7 +954,7 @@ PrefabInstance:
       objectReference: {fileID: 129416604}
     - target: {fileID: 3863002071822523067, guid: 01a92abf37636d24fa47a3578449365c, type: 3}
       propertyPath: waves.Array.data[0].name
-      value: w1
+      value: Round 1
       objectReference: {fileID: 0}
     - target: {fileID: 3863002071822523067, guid: 01a92abf37636d24fa47a3578449365c, type: 3}
       propertyPath: waves.Array.data[0].delay
@@ -958,20 +962,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3863002071822523067, guid: 01a92abf37636d24fa47a3578449365c, type: 3}
       propertyPath: waves.Array.data[0].enemiesAmmount
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3863002071822523067, guid: 01a92abf37636d24fa47a3578449365c, type: 3}
       propertyPath: waves.Array.data[0].enemy.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3863002071822523067, guid: 01a92abf37636d24fa47a3578449365c, type: 3}
       propertyPath: 'waves.Array.data[0].enemy.Array.data[0]'
       value: 
-      objectReference: {fileID: 965941329803303726, guid: d884e2df8c508474db706742a69f2027, type: 3}
+      objectReference: {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
     - target: {fileID: 3863002071822523067, guid: 01a92abf37636d24fa47a3578449365c, type: 3}
       propertyPath: 'waves.Array.data[0].enemy.Array.data[1]'
       value: 
-      objectReference: {fileID: 5112939696905311384, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
+      objectReference: {fileID: 3034641422232311442, guid: d6cb92f060a84f74d87817a2dee9c092, type: 3}
     - target: {fileID: 3863002071822523067, guid: 01a92abf37636d24fa47a3578449365c, type: 3}
       propertyPath: 'waves.Array.data[0].enemy.Array.data[2]'
       value: 
@@ -1021,6 +1025,7 @@ GameObject:
   - component: {fileID: 1010611781}
   - component: {fileID: 1010611780}
   - component: {fileID: 1010611779}
+  - component: {fileID: 1010611783}
   m_Layer: 0
   m_Name: T3Collectible (2)
   m_TagString: Untagged
@@ -1043,7 +1048,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -1107,13 +1112,28 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1010611778}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 427.06696, y: 549.4827, z: -134.65344}
+  m_LocalPosition: {x: 2.18, y: 2.42, z: 10.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1010611783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1010611778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e4d39c722b4ee84481cbeca8ecc735f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToCollect: {fileID: 1010611778}
+  DestroyGameObject: 1
+  completed: 0
 --- !u!1 &1109219110
 GameObject:
   m_ObjectHideFlags: 0
@@ -1126,6 +1146,7 @@ GameObject:
   - component: {fileID: 1109219113}
   - component: {fileID: 1109219112}
   - component: {fileID: 1109219111}
+  - component: {fileID: 1109219115}
   m_Layer: 0
   m_Name: T1Collectible
   m_TagString: Untagged
@@ -1148,7 +1169,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -1212,13 +1233,28 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1109219110}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 427.06696, y: 549.4827, z: -134.65344}
+  m_LocalPosition: {x: -2.95, y: 1.93, z: 10.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1109219115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109219110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e4d39c722b4ee84481cbeca8ecc735f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToCollect: {fileID: 1109219110}
+  DestroyGameObject: 1
+  completed: 0
 --- !u!4 &1151367736 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4431005849754184, guid: 13965946c7fbbc64ebf335e90fc5bafe, type: 3}
@@ -1242,7 +1278,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4318467188646559514, guid: 8a24181c16333d54298dcc6a455acf2a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.33
+      value: 2.63
       objectReference: {fileID: 0}
     - target: {fileID: 4318467188646559514, guid: 8a24181c16333d54298dcc6a455acf2a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1559,6 +1595,7 @@ GameObject:
   - component: {fileID: 1636609769}
   - component: {fileID: 1636609768}
   - component: {fileID: 1636609767}
+  - component: {fileID: 1636609771}
   m_Layer: 0
   m_Name: T2Collectible (1)
   m_TagString: Untagged
@@ -1581,7 +1618,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -1645,13 +1682,28 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1636609766}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 427.06696, y: 549.4827, z: -134.65344}
+  m_LocalPosition: {x: 0, y: 2.29, z: 10.48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1636609771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1636609766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e4d39c722b4ee84481cbeca8ecc735f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToCollect: {fileID: 1636609766}
+  DestroyGameObject: 1
+  completed: 0
 --- !u!1 &1695378370
 GameObject:
   m_ObjectHideFlags: 0
@@ -1661,6 +1713,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1695378374}
+  - component: {fileID: 1695378375}
   - component: {fileID: 1695378373}
   - component: {fileID: 1695378372}
   - component: {fileID: 1695378371}
@@ -1686,7 +1739,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -1757,6 +1810,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1695378375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1695378370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2706f8469ba29244fb046fecc0d28be7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextScene: 4
+  Objectives:
+  - {fileID: 1109219115}
+  - {fileID: 1636609771}
+  - {fileID: 1010611783}
+  roundToReach: 0
+  zombiesToKill: 0
+  AllObjectivesCompleted: 0
 --- !u!1 &1821252707
 GameObject:
   m_ObjectHideFlags: 0
@@ -1972,7 +2045,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &1892380390
 BoxCollider:
   m_ObjectHideFlags: 0
