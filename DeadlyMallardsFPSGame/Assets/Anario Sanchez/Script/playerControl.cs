@@ -79,13 +79,11 @@ public class playerControl : MonoBehaviour, TakeDamage
         if (allowButtonHold)
         {
             //Automatic guns
-            readyToShoot = true;
             isShooting = Input.GetKey(KeyCode.Mouse0);
         }
         else
         {
             //semi-auto guns
-            readyToShoot = true;
             isShooting = Input.GetKeyDown(KeyCode.Mouse0);
         }
 
@@ -100,7 +98,7 @@ public class playerControl : MonoBehaviour, TakeDamage
         {
             shoot();
         }
-        else if (gunList[selectedGun].bulletsLeft <= 0 && Input.GetKey(KeyCode.Mouse0))
+        else if (gunList[selectedGun].bulletsLeft <= 0 && Input.GetKey(KeyCode.Mouse0) && !reloading)
         {
             reload();
         }
