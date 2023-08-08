@@ -811,6 +811,10 @@ PrefabInstance:
       propertyPath: playerScript
       value: 
       objectReference: {fileID: 807020559}
+    - target: {fileID: 2874073456481811570, guid: e397fe6b800207348a0290e227c695f1, type: 3}
+      propertyPath: SaveDataStats
+      value: 
+      objectReference: {fileID: 11400000, guid: d43020f4e3b67c64e943237423c65d1c, type: 2}
     - target: {fileID: 4092236685428807495, guid: e397fe6b800207348a0290e227c695f1, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -1274,7 +1278,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4318467188646559514, guid: 8a24181c16333d54298dcc6a455acf2a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.33
+      value: 2.63
       objectReference: {fileID: 0}
     - target: {fileID: 4318467188646559514, guid: 8a24181c16333d54298dcc6a455acf2a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1818,12 +1822,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2706f8469ba29244fb046fecc0d28be7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextScene: 4
   Objectives:
   - {fileID: 1109219115}
   - {fileID: 1636609771}
   - {fileID: 1010611783}
-  roundToReach: 2
-  zombiesToKill: 4
+  roundToReach: 0
+  zombiesToKill: 0
   AllObjectivesCompleted: 0
 --- !u!1 &1821252707
 GameObject:

@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ObjectiveManager : MonoBehaviour, Interactables
 {
-
+    public int nextScene;
     [SerializeField] List<Collectible> Objectives;
     [SerializeField] int roundToReach;
     public int zombiesToKill;
@@ -15,22 +16,25 @@ public class ObjectiveManager : MonoBehaviour, Interactables
     void Start()
     {
         AllObjectivesCompleted = false;
+        // nextScene = SceneManager.GetActiveScene().buildIndex + 1;
     }
 
     // Update is called once per frame
-    void Update()
-    {
-
-    }
+    //void OnDisable()
+    //{
+    //    GameManager.instance.LoadAllStats();
+    //}
 
     void CheckObjectivesComplete()
     {
         for (int i = 0; i < Objectives.Count; i++)
         {
 
-            if (Objectives[i].completed && zombiesToKill <= GameManager.instance.GetZombiesKilled() && roundToReach <= EnemySpawner.instance.GetCurrentWave())
+            if (CheckObjectives() && CheckZombies() && CheckWaves())
             {
                 AllObjectivesCompleted = true;
+                GameManager.instance.SaveAllStats();
+                SceneManager.LoadScene(nextScene);
             }
             else
             {
@@ -38,6 +42,46 @@ public class ObjectiveManager : MonoBehaviour, Interactables
                 return;
             }
         }
+    }
+
+    private bool CheckObjectives()
+    {
+        bool complete = false;
+        for (int i = 0; i < Objectives.Count; i++)
+        {
+            if (Objectives[i].completed)
+            {
+                complete = true;
+            }
+            else
+            {
+                complete = false;
+                break;
+            }
+        }
+        return complete;
+    }
+    private bool CheckZombies()
+    {
+        bool complete = false;
+
+        if (zombiesToKill <= GameManager.instance.GetZombiesKilled())
+        {
+            complete = true;
+        }
+
+        return complete;
+    }
+    private bool CheckWaves()
+    {
+        bool complete = false;
+
+        if (roundToReach <= EnemySpawner.instance.GetCurrentWave())
+        {
+            complete = true;
+        }
+
+        return complete;
     }
 
     public void Interact()

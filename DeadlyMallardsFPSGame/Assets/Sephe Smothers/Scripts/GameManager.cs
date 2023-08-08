@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     [Header("-----Instance-----")]
     public static GameManager instance;
     public playerControl playerScript;
+    [SerializeField] public SaveStats SaveDataStats;
     [Header("-----Player-----")]
     public GameObject _player;
     public GameObject _playerSpawn;
@@ -28,8 +29,8 @@ public class GameManager : MonoBehaviour
     int ammoCountRemain;
     int score;
     public int cash;
-    public int zombiesKilled; 
-   
+    public int zombiesKilled;
+
 
 
     void Awake()
@@ -39,8 +40,13 @@ public class GameManager : MonoBehaviour
         _playerSpawn = GameObject.FindGameObjectWithTag("playerSpawn");
         origTimeScale = Time.timeScale;
     }
+    private void Start()
+    {
+        //SaveAllStats();
+        LoadAllStats();
+    }
 
-   // Update is called once per frame
+    // Update is called once per frame
     void Update()
     {
         if (Input.GetButtonDown("Cancel") && _activeMenu == null)
@@ -49,11 +55,16 @@ public class GameManager : MonoBehaviour
             _activeMenu = _pauseMenu;
             _activeMenu.SetActive(isPaused);
         }
-     
+    }
+
+    void OnApplicationQuit()
+    {
+        ResetAllStats();
     }
 
     public void Pause()
     {
+        //LoadAllStats();
         Time.timeScale = 0;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
@@ -103,10 +114,10 @@ public class GameManager : MonoBehaviour
         score += _score;
         scoreText.text = score.ToString("f0");
         return score;
-        
+
     }
 
-    public int AddCash(int _cash) 
+    public int AddCash(int _cash)
     {
         cash += _cash;
         playerCash.text = cash.ToString("f0");
@@ -120,11 +131,33 @@ public class GameManager : MonoBehaviour
     }
 
     public int GetZombiesKilled()
-    { 
-        return zombiesKilled; 
+    {
+        return zombiesKilled;
     }
     public void OnZombieKilled()
     {
         zombiesKilled++;
     }
+
+    public void LoadAllStats()
+    {
+        GameManager.instance.cash = GameManager.instance.SaveDataStats._cash;
+        GameManager.instance.playerScript.gunList = GameManager.instance.SaveDataStats._guns;
+        //EnemySpawner.instance = GameManager.instance.SaveDataStats._spawnerRef;
+    }
+    public void SaveAllStats()
+    {
+        GameManager.instance.SaveDataStats._cash = GameManager.instance.cash;
+        GameManager.instance.SaveDataStats._guns = GameManager.instance.playerScript.gunList;
+        //EnemySpawner.instance = GameManager.instance.SaveDataStats._spawnerRef;
+    }
+
+    public void ResetAllStats()
+    {
+        GameManager.instance.SaveDataStats._cash = 0;
+        GameManager.instance.SaveDataStats._guns = GameManager.instance.playerScript.usedGuns;
+       // GameManager.instance.SaveDataStats._guns = new List<GunsManager>();
+
+    }
+
 }
