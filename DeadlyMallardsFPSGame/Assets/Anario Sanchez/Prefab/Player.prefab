@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 1815063520046224102}
   - component: {fileID: 5728855779039728330}
   - component: {fileID: 8969867459062821838}
+  - component: {fileID: 9123147521267399482}
   - component: {fileID: 4927186664724841107}
   - component: {fileID: 4913604231394439433}
   - component: {fileID: 5232433426215162514}
@@ -151,25 +152,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 7801031591332816190}
-  enemy:
-    serializedVersion: 2
-    m_Bits: 128
   hp: 20
   playerWalkSpeed: 6
   playerSprintSpeed: 9
   jumpHeight: 5
+  maxHP: 0
+  state: 0
+--- !u!114 &9123147521267399482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3257992319394329671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87e5dc3af4a610d45bfcc60e0bcfc488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy:
+    serializedVersion: 2
+    m_Bits: 128
   gunList:
   - {fileID: 11400000, guid: db08fffd15e3c2146aabd166466c5b5d, type: 2}
   gunModel: {fileID: 1880819164249809558}
-  damage: 5
-  fireRate: 2
-  range: 10
-  spread: 0.1
-  reloadTime: 1.25
+  damage: 0
+  fireRate: 0
+  range: 0
+  spread: 0
+  reloadTime: 0
   timeBetweenShots: 0
-  magSize: 6
-  bulletsPerShot: 1
-  totalAmmo: 56
+  magSize: 0
+  bulletsPerShot: 0
+  totalAmmo: 0
   allowButtonHold: 0
   muzzleFlash: {fileID: 3930096882263354300}
   selectedGun: 0
@@ -177,8 +192,7 @@ MonoBehaviour:
   isShooting: 0
   readyToShoot: 0
   reloading: 0
-  maxHP: 0
-  state: 0
+  usedGuns: []
 --- !u!33 &4927186664724841107
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -717,7 +731,7 @@ Transform:
   m_Children:
   - {fileID: 1815063520046224102}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6895971384608975967
 GameObject:

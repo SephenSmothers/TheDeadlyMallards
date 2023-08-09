@@ -224,6 +224,10 @@ PrefabInstance:
       propertyPath: playerScript
       value: 
       objectReference: {fileID: 1165383917}
+    - target: {fileID: 2874073456481811570, guid: e397fe6b800207348a0290e227c695f1, type: 3}
+      propertyPath: shootingScript
+      value: 
+      objectReference: {fileID: 1165383918}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -555,6 +559,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a79406c2739f6ee4a82ccaf1cb0b870a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1165383918 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9123147521267399482, guid: 8a24181c16333d54298dcc6a455acf2a, type: 3}
+  m_PrefabInstance: {fileID: 3829495871499617427}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87e5dc3af4a610d45bfcc60e0bcfc488, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1242792548
