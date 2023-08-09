@@ -17,7 +17,6 @@ public class playerControl : MonoBehaviour, TakeDamage
     [SerializeField] float playerWalkSpeed;
     [SerializeField] float playerSprintSpeed;
     [SerializeField] float jumpHeight;
-
     Vector3 move;
     private float playerSpeed;
     private Vector3 playerVelocity;
@@ -36,8 +35,6 @@ public class playerControl : MonoBehaviour, TakeDamage
     {
         maxHP = hp;
         spawnPlayer();
-        
-        soundManager = GetComponent<PlayerSoundsManager>();
     }
     void Update()
     {

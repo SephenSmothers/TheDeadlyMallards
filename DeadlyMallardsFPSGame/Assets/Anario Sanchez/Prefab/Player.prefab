@@ -92,6 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1815063520046224102}
+  - component: {fileID: 1877497074111646722}
   - component: {fileID: 5728855779039728330}
   - component: {fileID: 8969867459062821838}
   - component: {fileID: 9123147521267399482}
@@ -99,6 +100,7 @@ GameObject:
   - component: {fileID: 4913604231394439433}
   - component: {fileID: 5232433426215162514}
   - component: {fileID: 7801031591332816190}
+  - component: {fileID: 5516086986001936459}
   m_Layer: 6
   m_Name: Player Model
   m_TagString: Player
@@ -123,6 +125,65 @@ Transform:
   m_Father: {fileID: 4318467188646559514}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1877497074111646722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3257992319394329671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 829dab9df20f1374693f58bdddb8ac73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 5516086986001936459}
+  revolverDryFire: {fileID: 8300000, guid: bb09f1dc52cffa74bb38b5f8ee5e4ded, type: 3}
+  revolverShoot: {fileID: 8300000, guid: d7a5fda2732147d48be0f01361d94c53, type: 3}
+  revolverOpenCyl: {fileID: 8300000, guid: 756c3497119b3f640b3b0c2091f70be7, type: 3}
+  revolverCloseCyl: {fileID: 8300000, guid: 8138a120c663cb745b1100dcee589885, type: 3}
+  revolverCocking: {fileID: 8300000, guid: 8aef821a67524e143aa07a82fa682549, type: 3}
+  revolverReload:
+  - {fileID: 8300000, guid: 70633d2d78d3c1c4f8eb1b310f4444d3, type: 3}
+  - {fileID: 8300000, guid: 9cfc0656fc4c30d42af8ca6b3538104d, type: 3}
+  - {fileID: 8300000, guid: d489e8eabd9e5ec47b2ebd1995260dfe, type: 3}
+  - {fileID: 8300000, guid: 73fd0914d355b0a46baaa0340920d856, type: 3}
+  shotgunDryFire: {fileID: 8300000, guid: 33c0170f9d9e524428090b1445bbb86b, type: 3}
+  shotgunShoot:
+  - {fileID: 8300000, guid: 35019b066571fb444a90a0cc456e5ab8, type: 3}
+  - {fileID: 8300000, guid: abf830f8b74397b409adda8bcc796889, type: 3}
+  - {fileID: 8300000, guid: cd3c854735e75294f9df5083ed388f38, type: 3}
+  shotgunReload:
+  - {fileID: 8300000, guid: 5c0a97b16abce074f9cfef7872cd1a4f, type: 3}
+  - {fileID: 8300000, guid: e9427246ffe4dc949bfcf52b5985e024, type: 3}
+  - {fileID: 8300000, guid: 97af451693fc351489381664090f66ae, type: 3}
+  - {fileID: 8300000, guid: ee0c7ca59f2aca849bd4dcd453a64c43, type: 3}
+  - {fileID: 8300000, guid: 8765defb4ae76864595b639a60f47dce, type: 3}
+  shotgunCocking:
+  - {fileID: 8300000, guid: acde2cdebf711fb479be076a7f1b4c91, type: 3}
+  - {fileID: 8300000, guid: 1cd6352c4cdd2fd4abe4a419621aeac4, type: 3}
+  - {fileID: 8300000, guid: f4f2a5e7d39adf84bbf677f5bb0d7011, type: 3}
+  rifleDryFire: {fileID: 8300000, guid: d55635c544f9c8542b43626962833a91, type: 3}
+  rifleShoot: {fileID: 8300000, guid: c35c04d8c98f75047a7f65cd23152f47, type: 3}
+  rifleReload:
+  - {fileID: 8300000, guid: a9e7b0a47ea78f94eae53b2bed174581, type: 3}
+  - {fileID: 8300000, guid: b48365855e5d5384e9b1b6243b93ce3e, type: 3}
+  - {fileID: 8300000, guid: 2ec9146df847c5c438a234bb5bb04e62, type: 3}
+  - {fileID: 8300000, guid: c8599c88deee47543848d1b1e895e15c, type: 3}
+  - {fileID: 8300000, guid: 351988dd158ef8c49a7aeae2a8a9e484, type: 3}
+  rifleCocking: {fileID: 8300000, guid: e9de008865fc88644b991b9746254196, type: 3}
+  rifleSafetySwitch: {fileID: 8300000, guid: ac19403f6bd85114a891324d533f9fdb, type: 3}
+  assaultRifleDryFire: {fileID: 8300000, guid: 955f4438f78f1e745ae12ae28adb686e, type: 3}
+  assaultRifleShoot: {fileID: 8300000, guid: 36760748b1a2b3a43b6e7943bcd12099, type: 3}
+  assaultRifleReload:
+  - {fileID: 8300000, guid: 23e7f1390c8c64f459fe0d95ff706067, type: 3}
+  - {fileID: 8300000, guid: 9a4b21077ed775e4484bae28fa259977, type: 3}
+  - {fileID: 8300000, guid: dc24a3a858b4ee1419af6498c4425a53, type: 3}
+  assaultRifleUnload:
+  - {fileID: 8300000, guid: 7c1794841b6acea4ab6f6cec60e4422d, type: 3}
+  - {fileID: 8300000, guid: 2adaee5d64199c84585ba98665f81c3d, type: 3}
+  - {fileID: 8300000, guid: 2f57d6b1c0272b248b9d450cbea8fe83, type: 3}
+  assaultRifleSafetySwitch: {fileID: 8300000, guid: 7b775bf0fa222d244b942ea7f52f2407, type: 3}
 --- !u!114 &5728855779039728330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,6 +353,102 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!82 &5516086986001936459
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3257992319394329671}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &3930096882263354300
 GameObject:
   m_ObjectHideFlags: 0
@@ -731,7 +888,7 @@ Transform:
   m_Children:
   - {fileID: 1815063520046224102}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6895971384608975967
 GameObject:

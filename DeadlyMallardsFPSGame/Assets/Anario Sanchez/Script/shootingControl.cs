@@ -19,13 +19,14 @@ public class shootingControl : MonoBehaviour
 
     public bool isShooting, readyToShoot, reloading;
     public List<GunsManager> usedGuns = new List<GunsManager>();
-
+    PlayerSoundsManager soundManager;
     // Start is called before the first frame update
     void Start()
     {
         readyToShoot = true;
         bulletCounter = 0;
         usedGuns.Add(gunList[selectedGun]);
+        soundManager = GetComponent<PlayerSoundsManager>();
     }
 
     // Update is called once per frame
@@ -60,11 +61,17 @@ public class shootingControl : MonoBehaviour
         //shooting input
         if (readyToShoot && isShooting && !reloading && gunList[selectedGun].bulletsLeft > 0)
         {
+            soundManager.PlayShootingSound();
             shoot();
         }
-        else if (gunList[selectedGun].bulletsLeft <= 0 && Input.GetKey(KeyCode.Mouse0) && !reloading)
+        else if (gunList[selectedGun].bulletsLeft <= 0 && isShooting && !reloading)
         {
             reload();
+        }
+
+        if (gunList[selectedGun].bulletsLeft <= 0 && gunList[selectedGun].totalAmmo <= 0 && isShooting)
+        {
+            soundManager.PlayDryFireSound();
         }
     }
     public void reload()
