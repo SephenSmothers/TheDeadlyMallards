@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     [Header("-----Instance-----")]
     public static GameManager instance;
     public playerControl playerScript;
+    public shootingControl shootingScript;
     [SerializeField] public SaveStats SaveDataStats;
     [Header("-----Player-----")]
     public GameObject _player;
@@ -39,6 +40,7 @@ public class GameManager : MonoBehaviour
         _player = GameObject.FindGameObjectWithTag("Player");
         _playerSpawn = GameObject.FindGameObjectWithTag("playerSpawn");
         origTimeScale = Time.timeScale;
+        zombiesKilled = 0;
     }
     private void Start()
     {
@@ -129,7 +131,14 @@ public class GameManager : MonoBehaviour
         playerCash.text = cash.ToString("f0");
         return cash;
     }
-
+    public void UpdatePlayerUI()
+    {
+        playerHpBar.fillAmount = (float)playerScript.hp / playerScript.maxHP;
+        if (shootingScript.gunList.Count > 0)
+        {
+            ammoCountRemaning.SetText($"{shootingScript.gunList[shootingScript.selectedGun].bulletsLeft} / {shootingScript.gunList[shootingScript.selectedGun].totalAmmo}");
+        }
+    }
     public int GetZombiesKilled()
     {
         return zombiesKilled;
@@ -142,20 +151,20 @@ public class GameManager : MonoBehaviour
     public void LoadAllStats()
     {
         GameManager.instance.cash = GameManager.instance.SaveDataStats._cash;
-        GameManager.instance.playerScript.gunList = GameManager.instance.SaveDataStats._guns;
+        GameManager.instance.shootingScript.gunList = GameManager.instance.SaveDataStats._guns;
         //EnemySpawner.instance = GameManager.instance.SaveDataStats._spawnerRef;
     }
     public void SaveAllStats()
     {
         GameManager.instance.SaveDataStats._cash = GameManager.instance.cash;
-        GameManager.instance.SaveDataStats._guns = GameManager.instance.playerScript.gunList;
+        GameManager.instance.SaveDataStats._guns = GameManager.instance.shootingScript.gunList;
         //EnemySpawner.instance = GameManager.instance.SaveDataStats._spawnerRef;
     }
 
     public void ResetAllStats()
     {
         GameManager.instance.SaveDataStats._cash = 0;
-        GameManager.instance.SaveDataStats._guns = GameManager.instance.playerScript.usedGuns;
+        GameManager.instance.SaveDataStats._guns = GameManager.instance.shootingScript.usedGuns;
        // GameManager.instance.SaveDataStats._guns = new List<GunsManager>();
 
     }
