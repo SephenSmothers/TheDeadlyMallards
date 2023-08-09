@@ -16,14 +16,14 @@ MonoBehaviour:
   damage: 1
   fireRate: 0.89
   range: 30
-  spread: 0.5
+  spread: 0.11
   reloadTime: 2.5
   timeBetweenShots: 0
   magSize: 5
   bulletsPerShot: 5
-  totalAmmo: 30
+  totalAmmo: 5
   allowButtonHold: 0
-  bulletsLeft: 5
+  bulletsLeft: 1
   maxAmmo: 30
   model: {fileID: 919132149155446097, guid: f62f7dc06bd890d4aab43b8fd635fe02, type: 3}
   hitEffect: {fileID: 6270096218230784729, guid: 484f3a90421376a4998bd530287088bf, type: 3}
