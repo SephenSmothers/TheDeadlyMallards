@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 //using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class playerControl : MonoBehaviour, TakeDamage
 {
@@ -22,7 +23,9 @@ public class playerControl : MonoBehaviour, TakeDamage
     private Vector3 playerVelocity;
     private bool groundedPlayer;
     public int maxHP;
-   
+    public GameObject pointer;
+  
+
     public MovementState state;
 
     public enum MovementState
@@ -87,12 +90,30 @@ public class playerControl : MonoBehaviour, TakeDamage
     public void CanTakeDamage(int amount)
     {
         hp -= amount;
-        StartCoroutine(GameManager.instance.FlashScreen());
+      
+        
+        GameObject HitMarker = Instantiate(pointer, transform.position, Quaternion.identity);
+        Vector3 directional = transform.position - HitMarker.transform.position; 
+
+        Quaternion rotation = Quaternion.LookRotation(directional);
+        rotation.z = -rotation.y;
+        rotation.y = 0;
+        rotation.x = 0;
+        Vector3 Northdirection = new Vector3(0, 0, transform.eulerAngles.y);
+        GameManager.instance.damageIndicator.transform.localRotation = rotation * Quaternion.Euler(Northdirection);    
+        StartCoroutine(GameManager.instance.DamageDirection());
+
+        Destroy(HitMarker, .5f);
         GameManager.instance.UpdatePlayerUI();
+        if(hp < 10)
+        {
+            StartCoroutine(GameManager.instance.FlashScreen());
+        }
         if (hp <= 0)
         {
             GameManager.instance.YoLose();
         }
+        
     }
 
     public void GetMaxHealth()
@@ -108,4 +129,6 @@ public class playerControl : MonoBehaviour, TakeDamage
         hp = maxHP;
         GameManager.instance.UpdatePlayerUI();
     }
+
+   
 }

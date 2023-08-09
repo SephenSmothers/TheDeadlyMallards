@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
     int score;
     public int cash;
     public int zombiesKilled;
-
+    public GameObject damageIndicator;
 
 
     void Awake()
@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         //SaveAllStats();
-        LoadAllStats();
+       // LoadAllStats();
     }
 
     // Update is called once per frame
@@ -95,6 +95,13 @@ public class GameManager : MonoBehaviour
         _flashScreen.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         _flashScreen.SetActive(false);
+    }
+
+    public IEnumerator DamageDirection()
+    {
+        damageIndicator.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        damageIndicator.SetActive(false);
     }
 
     public int ReturnEnemyCount(int ammount)
@@ -148,12 +155,12 @@ public class GameManager : MonoBehaviour
         zombiesKilled++;
     }
 
-    public void LoadAllStats()
-    {
-        GameManager.instance.cash = GameManager.instance.SaveDataStats._cash;
-        GameManager.instance.shootingScript.gunList = GameManager.instance.SaveDataStats._guns;
-        //EnemySpawner.instance = GameManager.instance.SaveDataStats._spawnerRef;
-    }
+    //public void LoadAllStats()
+    //{
+    //    GameManager.instance.cash = GameManager.instance.SaveDataStats._cash;
+    //    GameManager.instance.shootingScript.gunList = GameManager.instance.SaveDataStats._guns;
+    //    //EnemySpawner.instance = GameManager.instance.SaveDataStats._spawnerRef;
+    //}
     public void SaveAllStats()
     {
         GameManager.instance.SaveDataStats._cash = GameManager.instance.cash;
