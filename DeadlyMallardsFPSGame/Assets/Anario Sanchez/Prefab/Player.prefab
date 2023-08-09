@@ -218,6 +218,7 @@ MonoBehaviour:
   playerSprintSpeed: 9
   jumpHeight: 5
   maxHP: 0
+  pointer: {fileID: 0}
   state: 0
 --- !u!114 &9123147521267399482
 MonoBehaviour:
@@ -888,7 +889,7 @@ Transform:
   m_Children:
   - {fileID: 1815063520046224102}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6895971384608975967
 GameObject:

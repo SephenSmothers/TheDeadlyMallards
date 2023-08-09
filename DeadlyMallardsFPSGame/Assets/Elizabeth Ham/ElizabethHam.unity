@@ -128,10 +128,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3257992319394329671, guid: 8a24181c16333d54298dcc6a455acf2a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4318467188646559514, guid: 8a24181c16333d54298dcc6a455acf2a, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -183,15 +179,7 @@ PrefabInstance:
     - target: {fileID: 8969867459062821838, guid: 8a24181c16333d54298dcc6a455acf2a, type: 3}
       propertyPath: pointer
       value: 
-      objectReference: {fileID: 1212807079}
-    - target: {fileID: 8969867459062821838, guid: 8a24181c16333d54298dcc6a455acf2a, type: 3}
-      propertyPath: damageIndicator
-      value: 
-      objectReference: {fileID: 265394709}
-    - target: {fileID: 8969867459062821838, guid: 8a24181c16333d54298dcc6a455acf2a, type: 3}
-      propertyPath: bulletHolePrefab
-      value: 
-      objectReference: {fileID: 612759733}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -277,11 +265,6 @@ CanvasRenderer:
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2246535896476208562, guid: e397fe6b800207348a0290e227c695f1, type: 3}
   m_PrefabInstance: {fileID: 1042643998}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &612759733 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5411891487209824601, guid: 067c72812e7c2404fa4cbbbc9ddaf95c, type: 3}
-  m_PrefabInstance: {fileID: 2383561156212275785}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &623455086
 PrefabInstance:
@@ -731,6 +714,10 @@ PrefabInstance:
       propertyPath: damageIndicator
       value: 
       objectReference: {fileID: 947631255}
+    - target: {fileID: 3080676473650803098, guid: e397fe6b800207348a0290e227c695f1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -739,37 +726,6 @@ PrefabInstance:
       addedObject: {fileID: 1262237306}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e397fe6b800207348a0290e227c695f1, type: 3}
---- !u!1 &1212807079
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1212807080}
-  m_Layer: 0
-  m_Name: Damage point test
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1212807080
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1212807079}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 533.5581, y: 219.05952, z: -2.4353733}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1262237305
 GameObject:
   m_ObjectHideFlags: 0
