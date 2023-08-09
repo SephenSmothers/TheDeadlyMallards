@@ -15,7 +15,6 @@ public class Buttons : MonoBehaviour
         GameManager.instance.shootingScript.resetGuns();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         GameManager.instance.UnPause();
-        
     }
 
     public void quit()
