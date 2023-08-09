@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class ObjectiveManager : MonoBehaviour, Interactables
 {
-    public int nextScene;
+    int nextScene;
     [SerializeField] List<Collectible> Objectives;
     [SerializeField] int roundToReach;
     public int zombiesToKill;
@@ -16,7 +16,7 @@ public class ObjectiveManager : MonoBehaviour, Interactables
     void Start()
     {
         AllObjectivesCompleted = false;
-        // nextScene = SceneManager.GetActiveScene().buildIndex + 1;
+        nextScene = SceneManager.GetActiveScene().buildIndex + 1;
     }
 
     // Update is called once per frame
@@ -47,18 +47,27 @@ public class ObjectiveManager : MonoBehaviour, Interactables
     private bool CheckObjectives()
     {
         bool complete = false;
-        for (int i = 0; i < Objectives.Count; i++)
+
+        if (Objectives.Count == 0 || Objectives == null)
         {
-            if (Objectives[i].completed)
+            complete = true;
+        }
+        else
+        {
+            for (int i = 0; i < Objectives.Count; i++)
             {
-                complete = true;
-            }
-            else
-            {
-                complete = false;
-                break;
+                if (Objectives[i].completed)
+                {
+                    complete = true;
+                }
+                else
+                {
+                    complete = false;
+                    break;
+                }
             }
         }
+
         return complete;
     }
     private bool CheckZombies()
