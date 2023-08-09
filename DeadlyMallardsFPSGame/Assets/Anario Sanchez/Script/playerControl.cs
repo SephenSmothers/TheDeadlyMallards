@@ -45,6 +45,7 @@ public class playerControl : MonoBehaviour, TakeDamage
     public List<GunsManager> usedGuns = new List<GunsManager>();
     public MovementState state;
     private int bulletShot;
+    private PlayerSoundsManager soundManager;
     public enum MovementState
     {
         walking,
@@ -60,7 +61,8 @@ public class playerControl : MonoBehaviour, TakeDamage
         changeGunStats();
         UpdatePlayerUI();
         spawnPlayer();
-
+        
+        soundManager = GetComponent<PlayerSoundsManager>();
     }
     void Update()
     {
@@ -96,10 +98,12 @@ public class playerControl : MonoBehaviour, TakeDamage
         //shooting input
         if (readyToShoot && isShooting && !reloading && gunList[selectedGun].bulletsLeft > 0)
         {
+            soundManager.PlayShootingSound();
             shoot();
         }
         else if (gunList[selectedGun].bulletsLeft <= 0 && Input.GetKey(KeyCode.Mouse0) && !reloading)
         {
+            soundManager.PlayDryFireSound();
             reload();
         }
     }
@@ -134,7 +138,6 @@ public class playerControl : MonoBehaviour, TakeDamage
     public void shoot()
     {
         readyToShoot = false;
-
         if (bulletCounter < bulletsPerShot)
         {
             bulletCounter++;
@@ -189,6 +192,7 @@ public class playerControl : MonoBehaviour, TakeDamage
             gunList[selectedGun].bulletsLeft--;
             Invoke(nameof(resetShot), gunList[selectedGun].fireRate);
             UpdatePlayerUI();
+
         }
     }
 
