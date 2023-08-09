@@ -37,7 +37,7 @@ public class PlayerSoundsManager : MonoBehaviour
 
     public void PlayDryFireSound()
     {
-        GunsManager curGun = GameManager.instance.playerScript.gunList[GameManager.instance.playerScript.selectedGun];
+        GunsManager curGun = GameManager.instance.shootingScript.gunList[GameManager.instance.shootingScript.selectedGun];
         if (curGun.gunName == "Revolver")
         {
             audioSource.PlayOneShot(revolverDryFire);
@@ -58,7 +58,7 @@ public class PlayerSoundsManager : MonoBehaviour
 
     public void PlayShootingSound()
     {
-        GunsManager curGun = GameManager.instance.playerScript.gunList[GameManager.instance.playerScript.selectedGun];
+        GunsManager curGun = GameManager.instance.shootingScript.gunList[GameManager.instance.shootingScript.selectedGun];
         if (curGun.gunName == "Revolver")
         {
             audioSource.PlayOneShot(revolverShoot);
