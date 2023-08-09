@@ -138,7 +138,7 @@ public class shootingControl : MonoBehaviour
 
             }
 
-            if (Physics.Raycast(bullet.position, bullet.forward, out hit, 1000f) && !hit.collider.CompareTag("Enemy") && !hit.collider.CompareTag("Player"))
+            if (Physics.Raycast(bullet.position, direction, out hit, 1000f) && !hit.collider.CompareTag("Enemy") && !hit.collider.CompareTag("Player"))
             {
                 GameObject bulletHole = Instantiate(bulletHolePrefab, hit.point, Quaternion.Euler(0, 180, 0)) as GameObject;
                 bulletHole.transform.LookAt(hit.point + hit.normal);
