@@ -18,7 +18,7 @@ public class EnemySpawner : MonoBehaviour
 
     private SpawnState state = SpawnState.COUNTING;
 
-    int currentWave;
+    public int currentWave;
 
     [SerializeField] private Transform[] spawners;
 
@@ -28,6 +28,7 @@ public class EnemySpawner : MonoBehaviour
         currentWave = 0;
         instance = this;
     }
+
 
     private void Update()
     {
@@ -39,7 +40,6 @@ public class EnemySpawner : MonoBehaviour
             }
             else
             {
-                Debug.Log("Wave Completed");
                 CompleteWave();
             }
         }
@@ -49,6 +49,7 @@ public class EnemySpawner : MonoBehaviour
             if (state != SpawnState.SPAWNING)
             {
                 StartCoroutine(SpawnWave(waves[currentWave]));
+                //something goes here
             }
         }
         else
