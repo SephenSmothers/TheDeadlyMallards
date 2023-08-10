@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         //SaveAllStats();
-       // LoadAllStats();
+        LoadAllStats();
     }
 
     // Update is called once per frame
@@ -66,7 +66,6 @@ public class GameManager : MonoBehaviour
 
     public void Pause()
     {
-        //LoadAllStats();
         Time.timeScale = 0;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
@@ -155,12 +154,12 @@ public class GameManager : MonoBehaviour
         zombiesKilled++;
     }
 
-    //public void LoadAllStats()
-    //{
-    //    GameManager.instance.cash = GameManager.instance.SaveDataStats._cash;
-    //    GameManager.instance.shootingScript.gunList = GameManager.instance.SaveDataStats._guns;
-    //    //EnemySpawner.instance = GameManager.instance.SaveDataStats._spawnerRef;
-    //}
+    public void LoadAllStats()
+    {
+        GameManager.instance.cash = GameManager.instance.SaveDataStats._cash;
+        GameManager.instance.shootingScript.gunList = GameManager.instance.SaveDataStats._guns;
+        //EnemySpawner.instance = GameManager.instance.SaveDataStats._spawnerRef;
+    }
     public void SaveAllStats()
     {
         GameManager.instance.SaveDataStats._cash = GameManager.instance.cash;

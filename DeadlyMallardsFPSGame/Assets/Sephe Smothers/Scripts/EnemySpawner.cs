@@ -117,10 +117,10 @@ public class EnemySpawner : MonoBehaviour
         wave.enemiesAmmount += (int)(waves[currentWave].enemiesAmmount * 1.5);
         
 
-        for (int i = 0; i < waves[currentWave].enemy.Length; i++)
-        {
-            wave.enemy[i].hp *= (int)(wave.enemy[i].hp * 0.1);
-        }
+        //for (int i = 0; i < waves[currentWave].enemy.Length; i++)
+        //{
+        //    wave.enemy[i].hp *= (int)(wave.enemy[i].hp * 0.1);
+        //}
         waves.Add(wave);
     }
 

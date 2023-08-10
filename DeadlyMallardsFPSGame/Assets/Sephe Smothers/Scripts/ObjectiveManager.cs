@@ -11,6 +11,8 @@ public class ObjectiveManager : MonoBehaviour, Interactables
     [SerializeField] int roundToReach;
     public int zombiesToKill;
     public bool AllObjectivesCompleted;
+    [SerializeField] bool LastObjective;
+
 
     // Start is called before the first frame update
     void Start()
@@ -32,9 +34,18 @@ public class ObjectiveManager : MonoBehaviour, Interactables
 
             if (CheckObjectives() && CheckZombies() && CheckWaves())
             {
-                AllObjectivesCompleted = true;
-                GameManager.instance.SaveAllStats();
-                SceneManager.LoadScene(nextScene);
+                //if (LastObjective)
+                //{
+                //    AllObjectivesCompleted = true;
+                //    GameManager.instance.ResetAllStats();
+                //    SceneManager.LoadScene(nextScene);
+                //}
+                //else
+                //{
+                    AllObjectivesCompleted = true;
+                    GameManager.instance.SaveAllStats();
+                    SceneManager.LoadScene(nextScene);
+               // } 
             }
             else
             {
