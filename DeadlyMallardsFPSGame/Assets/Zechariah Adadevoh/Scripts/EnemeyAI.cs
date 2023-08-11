@@ -31,6 +31,7 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
     Vector3 playerDir;
     Vector3 startingPos;
     bool destinationChosen;
+    public GameObject DamagePopUp;
 
     public bool shooter;
     bool isshooting;
@@ -125,6 +126,15 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
             GetComponent<CapsuleCollider>().enabled = false;
             Destroy(gameObject,5);
             GameManager.instance.OnZombieKilled();
+        }
+        else
+        {
+          
+            GameObject DamagetextObject = Instantiate(DamagePopUp, transform.position + Vector3.up, Quaternion.identity);
+            DamageText damageText = DamagetextObject.GetComponent<DamageText>();
+            damageText.damageText.enabled = true;
+            damageText.DisplayDamage(amount);
+
         }
 
     }
