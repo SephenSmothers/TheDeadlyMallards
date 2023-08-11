@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5899527860671035767}
   - component: {fileID: 4592489522143771820}
   m_Layer: 3
-  m_Name: SM_Env_Train_Track_Curve_01
+  m_Name: LeftCurveTrack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,7 +35,7 @@ Transform:
   m_Children:
   - {fileID: 6687247180905140394}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7807388063769730251
 MeshFilter:
@@ -128,11 +128,11 @@ MonoBehaviour:
     width: 0.2
   m_Looped: 0
   m_Waypoints:
-  - position: {x: 0, y: 0, z: 0}
-    tangent: {x: 0, y: 0, z: 13.5}
-    roll: 0
   - position: {x: 25, y: 0, z: 25}
-    tangent: {x: 13.5, y: 0, z: 0}
+    tangent: {x: -13.5, y: 0, z: 0}
+    roll: 0
+  - position: {x: 0, y: 0, z: 0}
+    tangent: {x: 0, y: 0, z: -13.5}
     roll: 0
 --- !u!114 &4592489522143771820
 MonoBehaviour:
