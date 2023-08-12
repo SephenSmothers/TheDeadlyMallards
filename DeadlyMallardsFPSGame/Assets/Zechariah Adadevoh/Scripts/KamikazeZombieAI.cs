@@ -2,45 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UIElements;
+using UnityEngine.Networking;
 
-public class EnemeyAI : MonoBehaviour, TakeDamage
+public class KamikazeZombieAI : MonoBehaviour, TakeDamage
 {
     [SerializeField] Renderer modle;
     [SerializeField] NavMeshAgent agent;
-    public int hp;
-
-    [SerializeField] float shootspeed;
-    [SerializeField] Transform shootingpos;
-    [SerializeField] Transform attackpos;
-
-    [SerializeField] GameObject vomit;
-
-    [SerializeField] GameObject hitbox;
     [SerializeField] Transform headPos;
     [SerializeField] Animator anim;
     [SerializeField] int viewAngle;
     [SerializeField] int playerFaceSpeed;
-
+    public int hp;
     bool playerInRange;
     float angleToPlayer;
-    bool isShooting;
     float stoppingDistanceOrig;
-    bool isattacking;
+
 
     Vector3 playerDir;
+    Vector3 enemyDir;
     Vector3 startingPos;
+
     bool destinationChosen;
-    public GameObject DamagePopUp;
-
-    public bool shooter;
-    bool isshooting;
-
-
     // Start is called before the first frame update
     void Start()
     {
         GameManager.instance.ReturnEnemyCount(1);
+
     }
 
     // Update is called once per frame
@@ -49,17 +36,11 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
         if (agent.isActiveAndEnabled)
         {
             ChasePlayer();
-            anim.SetFloat("speed", agent.velocity.normalized.magnitude);
-            anim.SetFloat("speedZombie", agent.velocity.normalized.magnitude);
-            anim.SetFloat("speedTank", agent.velocity.normalized.magnitude);
-            anim.SetFloat("speedGun", agent.velocity.normalized.magnitude);
+            anim.SetFloat("speedBoom", agent.velocity.normalized.magnitude);
 
         }
 
-
-
     }
-
 
     void facePlayer()
     {
@@ -67,7 +48,6 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
         transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * playerFaceSpeed);
 
     }
-
 
     void ChasePlayer()
     {
@@ -82,14 +62,7 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
         facePlayer();
         if (playerInRange && viewAngle > angleToPlayer)
         {
-            if (!isshooting && shooter)
-            {
-                StartCoroutine(shoot());
-            }
-            if (!isattacking && !shooter)
-            {
-                StartCoroutine(attack());
-            }
+
         }
     }
     void OnTriggerEnter(Collider other)
@@ -108,55 +81,25 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
             playerInRange = false;
         }
     }
-
     public void CanTakeDamage(int amount)
     {
         hp -= amount;
         StartCoroutine(flashDamage());
         GameManager.instance.AddScore(10);
-        GameManager.instance.AddCash(1000);
+        GameManager.instance.AddCash(10);
         if (hp <= 0)
         {
             GameManager.instance.ReturnEnemyCount(-1);
-            anim.SetBool("Dead", true);
-            anim.SetBool("deadSpeed", true);
-            anim.SetBool("deadTank", true);
-            anim.SetBool("DeadGun", true);
+            anim.SetBool("deadBoom", true);
             agent.enabled = false;
             GetComponent<CapsuleCollider>().enabled = false;
-            Destroy(gameObject,5);
+            Destroy(gameObject, 5);
             GameManager.instance.OnZombieKilled();
-        }
-        else
-        {
-          
-            GameObject DamagetextObject = Instantiate(DamagePopUp, transform.position + Vector3.up, Quaternion.identity);
-            DamageText damageText = DamagetextObject.GetComponent<DamageText>();
-            damageText.enabled = true;
-            damageText.DisplayDamage(amount);
 
         }
 
     }
-    IEnumerator shoot()
-    {
-        isshooting = true;
-        Instantiate(vomit, shootingpos.position, transform.rotation);
-        yield return new WaitForSeconds(shootspeed);
-        isshooting = false;
-    }
-    IEnumerator attack()
-    {
-
-        isattacking = true;
-        anim.SetTrigger("Attack");
-        anim.SetTrigger("speedAttack");
-        anim.SetTrigger("tankAttack");
-        Instantiate(hitbox, attackpos.position, Quaternion.Euler(90, 0, 0));
-        yield return new WaitForSeconds(shootspeed);
-        isattacking = false;
-    }
-
+    
     IEnumerator flashDamage()
     {
         Color currColor = modle.materials[0].color;
@@ -167,5 +110,4 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
         modle.materials[0].color = currColor;
         modle.materials[1].color = currColor2;
     }
-
 }
