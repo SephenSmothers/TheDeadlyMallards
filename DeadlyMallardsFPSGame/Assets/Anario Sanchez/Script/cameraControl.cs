@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class cameraControl : MonoBehaviour
 {
+    [Header ("----Camera Settings----")]
     [SerializeField] int sensitivity;
 
     [SerializeField] int lockVerMin;
@@ -41,4 +42,5 @@ public class cameraControl : MonoBehaviour
         transform.localRotation = Quaternion.Euler(xRotation,0, 0);
         transform.parent.Rotate(Vector3.up * mouseX);
     }
+   
 }

@@ -129,12 +129,10 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
         }
         else
         {
-          
             GameObject DamagetextObject = Instantiate(DamagePopUp, transform.position + Vector3.up, Quaternion.identity);
             DamageText damageText = DamagetextObject.GetComponent<DamageText>();
             damageText.enabled = true;
             damageText.DisplayDamage(amount);
-
         }
 
     }
