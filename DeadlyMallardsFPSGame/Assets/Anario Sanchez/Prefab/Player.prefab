@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3065869003393913111}
   - component: {fileID: 5642199350211054571}
   - component: {fileID: 8294793559072932381}
-  - component: {fileID: 687854785440516358}
+  - component: {fileID: 7333782536544478024}
   m_Layer: 0
   m_Name: Gun Position
   m_TagString: Untagged
@@ -176,7 +176,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2adaee5d64199c84585ba98665f81c3d, type: 3}
   - {fileID: 8300000, guid: 2f57d6b1c0272b248b9d450cbea8fe83, type: 3}
   assaultRifleSafetySwitch: {fileID: 8300000, guid: 7b775bf0fa222d244b942ea7f52f2407, type: 3}
---- !u!95 &687854785440516358
+--- !u!95 &7333782536544478024
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
@@ -865,7 +865,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8447829139387839754
 RectTransform:
   m_ObjectHideFlags: 0
