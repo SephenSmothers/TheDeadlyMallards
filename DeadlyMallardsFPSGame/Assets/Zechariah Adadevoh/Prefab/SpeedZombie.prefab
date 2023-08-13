@@ -169,15 +169,16 @@ MonoBehaviour:
   modle: {fileID: 5719475534206226352}
   agent: {fileID: 2786975695514436971}
   hp: 5
-  shootspeed: 0.25
+  shootspeed: 1
   shootingpos: {fileID: 0}
   attackpos: {fileID: 5395066703960755797}
   vomit: {fileID: 0}
   hitbox: {fileID: 7165650408978483057, guid: 949ca1a187eca464b9eaa63b92d7867d, type: 3}
   headPos: {fileID: 5719475534194368146}
   anim: {fileID: 5719475534202122608}
-  viewAngle: 180
-  playerFaceSpeed: 500
+  viewAngle: 45
+  playerFaceSpeed: 10
+  DamagePopUp: {fileID: 3830295708246891327, guid: 313942a27a6572843ac4895e5f4170e9, type: 3}
   shooter: 0
 --- !u!135 &1422823510059836802
 SphereCollider:
@@ -198,7 +199,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1
+  m_Radius: 1.25
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &8982172422462340778
 CapsuleCollider:
@@ -220,7 +221,7 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Height: 1.5
+  m_Height: 0.1
   m_Direction: 1
   m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!195 &2786975695514436971
@@ -233,13 +234,13 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 7
-  m_Acceleration: 10
+  m_Speed: 15
+  m_Acceleration: 30
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 2
+  m_StoppingDistance: 4
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 0

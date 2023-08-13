@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class EnemySpawner : MonoBehaviour
 {
+    public TextMeshProUGUI RoundIndicatorText;
     public enum SpawnState { SPAWNING, WAITING, COUNTING }
 
     public static EnemySpawner instance;
@@ -27,6 +29,13 @@ public class EnemySpawner : MonoBehaviour
         waveCountdown = timeBetweenWaves;
         currentWave = 0;
         instance = this;
+
+        RoundIndicatorText = GameObject.Find("RoundText").GetComponent<TextMeshProUGUI>();
+    }
+
+    private void UpdateRoundDisplay()
+    {
+        RoundIndicatorText.text = "Round: " + GetCurrentWave();
     }
 
 
@@ -56,6 +65,8 @@ public class EnemySpawner : MonoBehaviour
         {
             waveCountdown -= Time.deltaTime;
         }
+
+        UpdateRoundDisplay();
     }
 
     private IEnumerator SpawnWave(WaveSpawner wave)
@@ -104,6 +115,7 @@ public class EnemySpawner : MonoBehaviour
         waveCountdown = timeBetweenWaves;
         AddNewWave();
         currentWave++;
+        UpdateRoundDisplay();
         enemyList.Clear();      
     }
 

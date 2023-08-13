@@ -31,6 +31,7 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
     Vector3 playerDir;
     Vector3 startingPos;
     bool destinationChosen;
+    public GameObject DamagePopUp;
 
     public bool shooter;
     bool isshooting;
@@ -54,9 +55,6 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
             anim.SetFloat("speedGun", agent.velocity.normalized.magnitude);
 
         }
-
-
-
     }
 
 
@@ -114,6 +112,7 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
         StartCoroutine(flashDamage());
         GameManager.instance.AddScore(10);
         GameManager.instance.AddCash(1000);
+        //ScoreManager.instance.UpdateTotalDamageDealt(amount);
         if (hp <= 0)
         {
             GameManager.instance.ReturnEnemyCount(-1);
@@ -125,6 +124,14 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
             GetComponent<CapsuleCollider>().enabled = false;
             Destroy(gameObject,5);
             GameManager.instance.OnZombieKilled();
+            ScoreManager.instance.UpdateZombiesKilled(1);
+        }
+        else
+        {
+            GameObject DamagetextObject = Instantiate(DamagePopUp, transform.position + Vector3.up, Quaternion.identity);
+            DamageText damageText = DamagetextObject.GetComponent<DamageText>();
+            damageText.enabled = true;
+            damageText.DisplayDamage(amount);
         }
 
     }

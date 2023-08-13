@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400056, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 400056, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
       propertyPath: m_LocalScale.x
@@ -183,15 +183,16 @@ MonoBehaviour:
   modle: {fileID: 3167223332926291435}
   agent: {fileID: 7146194797648411924}
   hp: 12
-  shootspeed: 3
+  shootspeed: 2
   shootingpos: {fileID: 576227238418376201}
   attackpos: {fileID: 0}
   vomit: {fileID: 9218647842726862668, guid: d08a192b21a25bd41b767ce80239345c, type: 3}
-  hitbox: {fileID: 7165650408978483057, guid: 949ca1a187eca464b9eaa63b92d7867d, type: 3}
+  hitbox: {fileID: 7165650408978483057, guid: 704bf9cd71382b347ae417bf529977c1, type: 3}
   headPos: {fileID: 3167223332931202249}
   anim: {fileID: 3167223332922164011}
-  viewAngle: 180
+  viewAngle: 45
   playerFaceSpeed: 500
+  DamagePopUp: {fileID: 3830295708246891327, guid: 313942a27a6572843ac4895e5f4170e9, type: 3}
   shooter: 1
 --- !u!135 &7746467895500329628
 SphereCollider:
@@ -212,7 +213,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 15
+  m_Radius: 10
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &1396822047924465302
 CapsuleCollider:
@@ -233,7 +234,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.3
   m_Height: 1.5
   m_Direction: 1
   m_Center: {x: 0, y: 0.5, z: 0}

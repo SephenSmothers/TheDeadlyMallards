@@ -197,7 +197,7 @@ Transform:
   - {fileID: 2603451823741704537}
   - {fileID: 7234724238574150805}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4863869306357811220
 MonoBehaviour:
@@ -220,8 +220,10 @@ MonoBehaviour:
   vomit: {fileID: 0}
   hitbox: {fileID: 7165650408978483057, guid: 949ca1a187eca464b9eaa63b92d7867d, type: 3}
   headPos: {fileID: 8358527793740700272}
+  anim: {fileID: 1340546817583290113}
   viewAngle: 90
   playerFaceSpeed: 90
+  DamagePopUp: {fileID: 0}
   shooter: 0
 --- !u!195 &6852614409911863265
 NavMeshAgent:
