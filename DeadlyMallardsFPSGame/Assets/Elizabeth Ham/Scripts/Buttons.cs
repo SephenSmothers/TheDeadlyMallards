@@ -34,4 +34,6 @@ public class Buttons : MonoBehaviour
         SceneManager.LoadScene(1);
         GameManager.instance.UnPause();
     }
+
+
 }

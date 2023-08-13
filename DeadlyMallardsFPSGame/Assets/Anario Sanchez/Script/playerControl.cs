@@ -30,6 +30,7 @@ public class playerControl : MonoBehaviour, TakeDamage
     private bool tired;
     public int maxHP;
     public GameObject pointer;
+   
 
 
     public MovementState state;
@@ -151,7 +152,8 @@ public class playerControl : MonoBehaviour, TakeDamage
 
         Destroy(HitMarker, .5f);
         GameManager.instance.UpdatePlayerUI();
-        if (hp < 10)
+        ScoreManager.instance.UpdateTotalDamageTaken(amount);
+        if (hp < 10) 
         {
             StartCoroutine(GameManager.instance.FlashScreen());
         }

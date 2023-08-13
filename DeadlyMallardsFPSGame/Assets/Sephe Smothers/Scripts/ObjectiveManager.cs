@@ -13,12 +13,13 @@ public class ObjectiveManager : MonoBehaviour, Interactables
     public bool AllObjectivesCompleted;
     [SerializeField] bool LastObjective;
 
-
+   
     // Start is called before the first frame update
     void Start()
     {
         AllObjectivesCompleted = false;
         nextScene = SceneManager.GetActiveScene().buildIndex + 1;
+       
     }
 
     // Update is called once per frame
@@ -43,7 +44,7 @@ public class ObjectiveManager : MonoBehaviour, Interactables
                 //else
                 //{
                     AllObjectivesCompleted = true;
-                    GameManager.instance.SaveAllStats();
+                GameManager.instance.SaveAllStats();
                     SceneManager.LoadScene(nextScene);
                // } 
             }
