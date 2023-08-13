@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UIElements;
+//using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class BossEnemy : MonoBehaviour, TakeDamage
 {
     [SerializeField] Renderer modle;
     [SerializeField] NavMeshAgent agent;
     public int hp;
+    public int maxHp;
 
     [SerializeField] float shootspeed;
     [SerializeField] Transform shootingpos;
@@ -21,6 +23,7 @@ public class BossEnemy : MonoBehaviour, TakeDamage
     [SerializeField] Animator anim;
     [SerializeField] int viewAngle;
     [SerializeField] int playerFaceSpeed;
+    public Image bossHealthBar;
 
     bool playerInRange;
     float angleToPlayer;
@@ -34,7 +37,7 @@ public class BossEnemy : MonoBehaviour, TakeDamage
     // Start is called before the first frame update
     void Start()
     {
-
+        maxHp = hp;
     }
 
     // Update is called once per frame
@@ -43,7 +46,7 @@ public class BossEnemy : MonoBehaviour, TakeDamage
         if (agent.isActiveAndEnabled)
         {
             ChasePlayer();
-            anim.SetFloat("BosZombie", agent.velocity.normalized.magnitude);
+            anim.SetFloat("BossZombie", agent.velocity.normalized.magnitude);
         }
     }
 
@@ -98,13 +101,11 @@ public class BossEnemy : MonoBehaviour, TakeDamage
         StartCoroutine(flashDamage());
         GameManager.instance.AddScore(10);
         GameManager.instance.AddCash(1000);
+        bossHealthBar.fillAmount = (float)hp / (float)maxHp;
         if (hp <= 0)
         {
-            GameManager.instance.ReturnEnemyCount(-1);
-            anim.SetBool("Dead", true);
-            anim.SetBool("deadSpeed", true);
-            anim.SetBool("deadTank", true);
-            anim.SetBool("DeadGun", true);
+           // GameManager.instance.ReturnEnemyCount(-1);
+            anim.SetBool("deadBoss", true);
             agent.enabled = false;
             GetComponent<CapsuleCollider>().enabled = false;
             Destroy(gameObject, 5);
@@ -123,6 +124,7 @@ public class BossEnemy : MonoBehaviour, TakeDamage
     {
         isshooting = true;
         Instantiate(vomit, shootingpos.position, transform.rotation);
+        
         yield return new WaitForSeconds(shootspeed);
         isshooting = false;
     }
