@@ -23,7 +23,7 @@ public class PlayerSoundsManager : MonoBehaviour
     public Transform rayStart;
     public float range;
     public LayerMask ground;
-    [SerializeField] float walkSpeedDelay, runSpeedDelay;
+    [SerializeField] float walkSpeedDelay, runSpeedDelay, tiredSpeedDelay;
     private bool isPlayingFootsteps = false;
     private bool isGrounded;
 
@@ -253,9 +253,13 @@ public class PlayerSoundsManager : MonoBehaviour
 
     private float GetInterval()
     {
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift) && !GameManager.instance.playerScript.isTiredChecker())
         {
             return runSpeedDelay;
+        }
+        else if(GameManager.instance.playerScript.isTiredChecker())
+        {
+            return tiredSpeedDelay;
         }
         else
         {

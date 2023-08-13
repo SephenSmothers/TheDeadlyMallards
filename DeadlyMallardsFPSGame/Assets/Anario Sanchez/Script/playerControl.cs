@@ -173,4 +173,9 @@ public class playerControl : MonoBehaviour, TakeDamage
         hp = maxHP;
         GameManager.instance.UpdatePlayerUI();
     }
+
+    public bool isTiredChecker()
+    {
+        return tired;
+    }
 }

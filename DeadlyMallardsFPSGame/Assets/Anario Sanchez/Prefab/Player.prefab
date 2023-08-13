@@ -135,6 +135,7 @@ MonoBehaviour:
     m_Bits: 8
   walkSpeedDelay: 0.8
   runSpeedDelay: 0.5
+  tiredSpeedDelay: 1.1
   revolverDryFire: {fileID: 8300000, guid: bb09f1dc52cffa74bb38b5f8ee5e4ded, type: 3}
   revolverShoot: {fileID: 8300000, guid: d7a5fda2732147d48be0f01361d94c53, type: 3}
   revolverOpenCyl: {fileID: 8300000, guid: 756c3497119b3f640b3b0c2091f70be7, type: 3}
@@ -318,6 +319,7 @@ MonoBehaviour:
   readyToShoot: 0
   reloading: 0
   usedGuns: []
+  soundManager: {fileID: 8294793559072932381}
 --- !u!33 &4927186664724841107
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -850,7 +852,7 @@ Transform:
   - {fileID: 1815063520046224102}
   - {fileID: 8250367583141367117}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5685288592081153806
 GameObject:
