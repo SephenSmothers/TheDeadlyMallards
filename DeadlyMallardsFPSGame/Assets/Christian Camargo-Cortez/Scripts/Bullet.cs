@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet : MonoBehaviour, TakeDamage
 {
     [Header("----- Components -----")]
     [SerializeField] Rigidbody rb;
@@ -11,6 +11,9 @@ public class Bullet : MonoBehaviour
     [SerializeField] int damage;
     [SerializeField] float bulletSpeed;
     [SerializeField] int range;
+    [SerializeField] ParticleSystem onDestroy;
+    public bool TakeDamage;
+    int hp = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -28,5 +31,20 @@ public class Bullet : MonoBehaviour
             damageable.CanTakeDamage(damage);
         }
         Destroy(gameObject);
+    }
+
+    public void CanTakeDamage(int amount)
+    {
+        if (TakeDamage)
+        {
+            hp -= amount;
+            Debug.Log("Made Contact");
+            if (hp <= 0)
+            {
+                Instantiate(onDestroy,transform.position, transform.rotation);
+                Destroy(gameObject);
+                
+            }
+        }
     }
 }
