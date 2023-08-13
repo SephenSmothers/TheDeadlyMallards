@@ -4,8 +4,24 @@ using UnityEngine;
 
 public class PlayerSoundsManager : MonoBehaviour
 {
-    [Header("----- Audio Source -----")] 
-    public AudioSource audioSource;
+    [Header("----- Audio Sources -----")]
+    public AudioSource shootingSounds;
+    public AudioSource reloadSounds;
+    public AudioSource cockingSounds;
+    public AudioSource footStepSounds;
+
+    [Header("----- Footstep Sounds -----")]
+
+    public AudioClip[] concreteSteps, CaveSteps, woodSteps;
+
+    [Header("----- Footstep Components -----")]
+    RaycastHit hit;
+    public Transform rayStart;
+    public float range;
+    public LayerMask ground;
+    [SerializeField] float walkSpeedDelay, runSpeedDelay;
+    private bool isPlayingFootsteps = false;
+    private bool isGrounded;
 
     [Header("----- Revolver Sounds -----")]
     public AudioClip revolverDryFire;
@@ -35,116 +51,191 @@ public class PlayerSoundsManager : MonoBehaviour
     public AudioClip[] assaultRifleUnload;
     public AudioClip assaultRifleSafetySwitch;
 
+    private void Update()
+    {
+        Debug.DrawRay(rayStart.position, rayStart.transform.up * range * -1, Color.green);
+        isGrounded = Physics.Raycast(rayStart.position, rayStart.transform.up * -1, out hit, range, ground);
+        bool isMoving = FootStepChecker();
+
+        if (isMoving && !isPlayingFootsteps)
+        {
+            StartCoroutine(PlayFootSteps());
+            isPlayingFootsteps = true;
+        }
+        else if (!isMoving && isPlayingFootsteps)
+        {
+            StopAllCoroutines();
+
+            isPlayingFootsteps = false;
+        }
+
+    }
+
     public void PlayDryFireSound()
     {
         GunsManager curGun = GameManager.instance.shootingScript.gunList[GameManager.instance.shootingScript.selectedGun];
         if (curGun.gunName == "Revolver")
         {
-            audioSource.PlayOneShot(revolverDryFire);
-        }
-        else if(curGun.gunName == "AssaultRifle")
-        {
-            audioSource.PlayOneShot(assaultRifleDryFire);
-        }
-        else if(curGun.gunName == "Shotgun")
-        {
-            audioSource.PlayOneShot(shotgunDryFire);
-        }
-        else if(curGun.gunName == "SniperRifle")
-        {
-            audioSource.PlayOneShot(rifleDryFire);
-        }
-    }
-
-    public void PlayShootingSound()
-    {
-        GunsManager curGun = GameManager.instance.shootingScript.gunList[GameManager.instance.shootingScript.selectedGun];
-        if (curGun.gunName == "Revolver")
-        {
-            audioSource.PlayOneShot(revolverShoot);
+            shootingSounds.PlayOneShot(revolverDryFire);
         }
         else if (curGun.gunName == "AssaultRifle")
         {
-            audioSource.PlayOneShot(assaultRifleShoot);
+            shootingSounds.PlayOneShot(assaultRifleDryFire);
         }
         else if (curGun.gunName == "Shotgun")
         {
-            int randClipNum = Random.Range(0, shotgunShoot.Length);
-            audioSource.PlayOneShot(shotgunShoot[randClipNum]);
+            shootingSounds.PlayOneShot(shotgunDryFire);
         }
         else if (curGun.gunName == "SniperRifle")
         {
-            audioSource.PlayOneShot(rifleShoot);
+            shootingSounds.PlayOneShot(rifleDryFire);
         }
     }
+
+    public void PlayRevolverShootingSound()
+    {
+            shootingSounds.PlayOneShot(revolverShoot);
+        
+    }
+
 
     //REVOLVER SOUNDS
     public void PlayRevolverReloadSound()
     {
-        int randClipNum = Random.Range(0, revolverReload.Length);
-        audioSource.PlayOneShot(revolverReload[randClipNum]);
+        shootingSounds.PlayOneShot(revolverReload[Random.Range(0, revolverReload.Length)]);
     }
 
     public void PlayRevolverOpenCyl()
     {
-        audioSource.PlayOneShot(revolverOpenCyl);
+        reloadSounds.PlayOneShot(revolverOpenCyl);
     }
 
     public void PlayRevolverCloseCyl()
     {
-        audioSource.PlayOneShot(revolverCloseCyl);
+        reloadSounds.PlayOneShot(revolverCloseCyl);
     }
 
     public void PlayRevolverCocking()
     {
-        audioSource.PlayOneShot(revolverCocking);
+        cockingSounds.PlayOneShot(revolverCocking);
     }
 
     //SHOTGUN SOUNDS
+    public void PlayShotgunShootingSound()
+    {
+        shootingSounds.PlayOneShot(shotgunShoot[Random.Range(0, shotgunShoot.Length)]);
+    }
     public void PlayShotgunReload()
     {
-        int randClipNum = Random.Range(0, shotgunReload.Length);
-        audioSource.PlayOneShot(shotgunReload[randClipNum]);
+        reloadSounds.PlayOneShot(shotgunReload[Random.Range(0, shotgunReload.Length)]);
     }
 
     public void PlayShotGunCocking()
     {
-        int randClipNum = Random.Range(0, shotgunCocking.Length);
-        audioSource.PlayOneShot(shotgunCocking[randClipNum]);
+        cockingSounds.PlayOneShot(shotgunCocking[Random.Range(0, shotgunCocking.Length)]);
     }
 
     //RIFLE SOUNDS
+    public void PlayRifleShootingSound()
+    {
+        shootingSounds.PlayOneShot(rifleShoot);
+    }
+
     public void PlayRifleReload()
     {
-        int randClipNum = Random.Range(0, rifleReload.Length);
-        audioSource.PlayOneShot(rifleReload[randClipNum]);
+        reloadSounds.PlayOneShot(rifleReload[Random.Range(0, rifleReload.Length)]);
     }
 
     public void PlayRifleCocking()
     {
-        audioSource.PlayOneShot(rifleCocking);
+        cockingSounds.PlayOneShot(rifleCocking);
     }
 
     public void PlayRifleSafetySwitch()
     {
-        audioSource.PlayOneShot(rifleSafetySwitch);
+        reloadSounds.PlayOneShot(rifleSafetySwitch);
     }
 
     //ASSAULT-RIFLE SOUNDS
+    public void PlayAssaultRifleShoot()
+    {
+            shootingSounds.PlayOneShot(assaultRifleShoot);
+    }
+
     public void PlayAssaultRifleReload()
     {
-        int randClipNum = Random.Range(0, assaultRifleReload.Length);
-        audioSource.PlayOneShot(assaultRifleReload[randClipNum]);
+        reloadSounds.PlayOneShot(assaultRifleReload[Random.Range(0, assaultRifleReload.Length)]);
     }
 
     public void PlayAssaultRifleUnload()
     {
-        int randClipNum = Random.Range(0, assaultRifleUnload.Length);
-        audioSource.PlayOneShot(assaultRifleUnload[randClipNum]);
+        reloadSounds.PlayOneShot(assaultRifleUnload[Random.Range(0, assaultRifleUnload.Length)]);
     }
 
     public void PlayAssaultRifleSafetySwitch()
     {
-        audioSource.PlayOneShot(assaultRifleSafetySwitch);
+        cockingSounds.PlayOneShot(assaultRifleSafetySwitch);
+    }
+
+    //FOOT STEPS
+    public IEnumerator PlayFootSteps()
+    {
+        while (true)
+        {
+            if (FootStepChecker() && isGrounded)
+            {
+                PlayFootstepSound();
+                yield return new WaitForSeconds(GetInterval());
+            }
+            else
+            {
+                yield return new WaitForSeconds(0.1f);
+            }
+        }
+    }
+
+    public void PlayFootstepSound()
+    {
+        if (Physics.Raycast(rayStart.position, rayStart.transform.up * -1, out hit, range, ground))
+        {
+            if (hit.collider.CompareTag("Concrete"))
+            {
+                GetFootstepSound(concreteSteps);
+            }
+            else if (hit.collider.CompareTag("CaveGround"))
+            {
+                GetFootstepSound(CaveSteps);
+            }
+            else if (hit.collider.CompareTag("Wood"))
+            {
+                GetFootstepSound(woodSteps);
+            }
+            else
+            {
+                GetFootstepSound(concreteSteps);
+            }
+        }
+
+    }
+    private void GetFootstepSound(AudioClip[] clips)
+    {
+        footStepSounds.PlayOneShot(clips[Random.Range(0, clips.Length)]);
+    }
+
+    private bool FootStepChecker()
+    {
+        return Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D);
+    }
+
+    private float GetInterval()
+    {
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            return runSpeedDelay;
+        }
+        else
+        {
+            return walkSpeedDelay;
+        }
     }
 }

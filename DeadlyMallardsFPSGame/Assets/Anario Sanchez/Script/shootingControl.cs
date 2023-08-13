@@ -61,7 +61,6 @@ public class shootingControl : MonoBehaviour
         //shooting input
         if (readyToShoot && isShooting && !reloading && gunList[selectedGun].bulletsLeft > 0)
         {
-            soundManager.PlayShootingSound();
             shoot();
         }
         else if (gunList[selectedGun].bulletsLeft <= 0 && isShooting && !reloading)

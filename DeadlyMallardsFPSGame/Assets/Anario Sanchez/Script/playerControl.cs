@@ -30,9 +30,6 @@ public class playerControl : MonoBehaviour, TakeDamage
     private bool tired;
     public int maxHP;
     public GameObject pointer;
-   
-
-
     public MovementState state;
 
     public enum MovementState
@@ -70,7 +67,6 @@ public class playerControl : MonoBehaviour, TakeDamage
                 (transform.forward * Input.GetAxis("Vertical"));
 
         controller.Move(move * Time.deltaTime * playerSpeed);
-
 
         // Changes the height position of the player..
         if (Input.GetButton("Jump") && groundedPlayer)
