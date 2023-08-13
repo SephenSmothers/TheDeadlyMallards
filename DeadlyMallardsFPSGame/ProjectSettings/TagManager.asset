@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Enemy
   - playerSpawn
+  - Concrete
+  - CaveGround
+  - Wood
   layers:
   - Default
   - TransparentFX
