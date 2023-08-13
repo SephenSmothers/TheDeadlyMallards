@@ -55,9 +55,6 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
             anim.SetFloat("speedGun", agent.velocity.normalized.magnitude);
 
         }
-
-
-
     }
 
 
@@ -115,8 +112,7 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
         StartCoroutine(flashDamage());
         GameManager.instance.AddScore(10);
         GameManager.instance.AddCash(1000);
-        ScoreManager.instance.AddScore(10);
-        ScoreManager.instance.UpdateTotalDamageDealt(amount);
+        //ScoreManager.instance.UpdateTotalDamageDealt(amount);
         if (hp <= 0)
         {
             GameManager.instance.ReturnEnemyCount(-1);
