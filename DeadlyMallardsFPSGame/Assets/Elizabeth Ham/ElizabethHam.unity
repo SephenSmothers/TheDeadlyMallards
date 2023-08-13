@@ -427,6 +427,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45855b7fdfd90f44fb2b10bd47d886df, type: 3}
+--- !u!114 &937077170 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3598761965931638925, guid: cd8a27309b18bce49949d3848542df67, type: 3}
+  m_PrefabInstance: {fileID: 3313238736386453024}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8482c66e2582bfd4bb852a79e09a6adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1254330950
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -745,6 +756,10 @@ PrefabInstance:
       propertyPath: playerScript
       value: 
       objectReference: {fileID: 679281776}
+    - target: {fileID: 2625644171906973313, guid: 108989b8ed158984cb7a2cbb3c6ad406, type: 3}
+      propertyPath: scoreManager
+      value: 
+      objectReference: {fileID: 937077170}
     - target: {fileID: 2625644171906973313, guid: 108989b8ed158984cb7a2cbb3c6ad406, type: 3}
       propertyPath: shootingScript
       value: 
