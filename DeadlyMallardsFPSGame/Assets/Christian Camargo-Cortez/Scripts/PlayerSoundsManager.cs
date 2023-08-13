@@ -53,7 +53,7 @@ public class PlayerSoundsManager : MonoBehaviour
 
     private void Update()
     {
-        //Debug.DrawRay(rayStart.position, rayStart.transform.up * range * -1, Color.green);
+        Debug.DrawRay(rayStart.position, rayStart.transform.up * range * -1, Color.green);
         isGrounded = Physics.Raycast(rayStart.position, rayStart.transform.up * -1, out hit, range, ground);
         bool isMoving = FootStepChecker();
 
@@ -64,17 +64,11 @@ public class PlayerSoundsManager : MonoBehaviour
         }
         else if (!isMoving && isPlayingFootsteps)
         {
-            StopAllCoroutines(/*PlayFootSteps()*/);
+            StopAllCoroutines();
 
             isPlayingFootsteps = false;
         }
 
-    }
-
-    private void Start()
-    {
-        //characterController = GetComponent<CharacterController>();
-        //StartCoroutine(PlayFootSteps());
     }
 
     public void PlayDryFireSound()
@@ -98,26 +92,12 @@ public class PlayerSoundsManager : MonoBehaviour
         }
     }
 
-    public void PlayShootingSound()
+    public void PlayRevolverShootingSound()
     {
-        GunsManager curGun = GameManager.instance.shootingScript.gunList[GameManager.instance.shootingScript.selectedGun];
-        if (curGun.gunName == "Revolver")
-        {
             shootingSounds.PlayOneShot(revolverShoot);
-        }
-        else if (curGun.gunName == "AssaultRifle")
-        {
-            shootingSounds.PlayOneShot(assaultRifleShoot);
-        }
-        else if (curGun.gunName == "Shotgun")
-        {
-            shootingSounds.PlayOneShot(shotgunShoot[Random.Range(0, shotgunShoot.Length)]);
-        }
-        else if (curGun.gunName == "SniperRifle")
-        {
-            shootingSounds.PlayOneShot(rifleShoot);
-        }
+        
     }
+
 
     //REVOLVER SOUNDS
     public void PlayRevolverReloadSound()
@@ -141,6 +121,10 @@ public class PlayerSoundsManager : MonoBehaviour
     }
 
     //SHOTGUN SOUNDS
+    public void PlayShotgunShootingSound()
+    {
+        shootingSounds.PlayOneShot(shotgunShoot[Random.Range(0, shotgunShoot.Length)]);
+    }
     public void PlayShotgunReload()
     {
         reloadSounds.PlayOneShot(shotgunReload[Random.Range(0, shotgunReload.Length)]);
@@ -152,6 +136,11 @@ public class PlayerSoundsManager : MonoBehaviour
     }
 
     //RIFLE SOUNDS
+    public void PlayRifleShootingSound()
+    {
+        shootingSounds.PlayOneShot(rifleShoot);
+    }
+
     public void PlayRifleReload()
     {
         reloadSounds.PlayOneShot(rifleReload[Random.Range(0, rifleReload.Length)]);
@@ -168,6 +157,11 @@ public class PlayerSoundsManager : MonoBehaviour
     }
 
     //ASSAULT-RIFLE SOUNDS
+    public void PlayAssaultRifleShoot()
+    {
+            shootingSounds.PlayOneShot(assaultRifleShoot);
+    }
+
     public void PlayAssaultRifleReload()
     {
         reloadSounds.PlayOneShot(assaultRifleReload[Random.Range(0, assaultRifleReload.Length)]);
