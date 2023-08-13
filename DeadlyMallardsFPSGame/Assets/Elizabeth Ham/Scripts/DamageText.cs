@@ -16,7 +16,7 @@ public class DamageText : MonoBehaviour
 
    public void DisplayDamage(int amount)
    {
-        Debug.Log("DisplayDamage: " + amount);
+       
         damageText.text = amount.ToString();
         StartCoroutine(MoveAndDestroy());
 

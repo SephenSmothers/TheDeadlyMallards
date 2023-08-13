@@ -15,4 +15,4 @@ MonoBehaviour:
   _cash: 0
   _currWave: 0
   _guns:
-  - {fileID: 11400000, guid: a93e423a4db64034f98c4caa43efc493, type: 2}
+  - {fileID: 11400000, guid: 03ff97e52f7a14e49ba247cfef773e10, type: 2}

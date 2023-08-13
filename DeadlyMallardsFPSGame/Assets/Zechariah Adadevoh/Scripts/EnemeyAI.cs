@@ -109,6 +109,7 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
     public void CanTakeDamage(int amount)
     {
         hp -= amount;
+        
         StartCoroutine(flashDamage());
         GameManager.instance.AddScore(10);
         GameManager.instance.AddCash(1000);
@@ -122,6 +123,10 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
             anim.SetBool("DeadGun", true);
             agent.enabled = false;
             GetComponent<CapsuleCollider>().enabled = false;
+            if(gameObject.GetComponent("splitZombie") as splitZombie)
+            {
+                GetComponent<splitZombie>().OnDeath();
+            }
             Destroy(gameObject,5);
             GameManager.instance.OnZombieKilled();
             ScoreManager.instance.UpdateZombiesKilled(1);

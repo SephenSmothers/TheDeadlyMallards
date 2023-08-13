@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     public int cash;
     public int zombiesKilled;
     public GameObject damageIndicator;
+    public ScoreManager scoreManager;
 
 
     void Awake()
@@ -56,6 +57,11 @@ public class GameManager : MonoBehaviour
             Pause();
             _activeMenu = _pauseMenu;
             _activeMenu.SetActive(isPaused);
+            if (scoreManager != null)
+            {
+                scoreManager.ScoreBoard.SetActive(true);
+            }
+
         }
     }
 
@@ -70,6 +76,12 @@ public class GameManager : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
         isPaused = !isPaused;
+        if (scoreManager != null)
+        {
+            scoreManager.ScoreBoard.SetActive(true);
+        }
+
+
     }
 
     public void UnPause()
@@ -80,6 +92,11 @@ public class GameManager : MonoBehaviour
         isPaused = !isPaused;
         _activeMenu.SetActive(false);
         _activeMenu = null;
+        if (scoreManager != null)
+        {
+            scoreManager.ScoreBoard.SetActive(false);
+        }
+
     }
 
     public void YoLose()
