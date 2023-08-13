@@ -123,6 +123,10 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
             anim.SetBool("DeadGun", true);
             agent.enabled = false;
             GetComponent<CapsuleCollider>().enabled = false;
+            if(gameObject.GetComponent("splitZombie") as splitZombie)
+            {
+                GetComponent<splitZombie>().OnDeath();
+            }
             Destroy(gameObject,5);
             GameManager.instance.OnZombieKilled();
             ScoreManager.instance.UpdateZombiesKilled(1);
