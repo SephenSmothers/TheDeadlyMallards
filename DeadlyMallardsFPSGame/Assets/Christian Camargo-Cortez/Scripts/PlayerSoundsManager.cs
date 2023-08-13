@@ -9,6 +9,10 @@ public class PlayerSoundsManager : MonoBehaviour
     public AudioSource reloadSounds;
     public AudioSource cockingSounds;
     public AudioSource footStepSounds;
+    public AudioSource extraSounds;
+
+    [Header("----- Extra Sounds -----")]
+    public AudioClip[] equipGuns;
 
     [Header("----- Footstep Sounds -----")]
 
@@ -92,14 +96,34 @@ public class PlayerSoundsManager : MonoBehaviour
         }
     }
 
+    public void PlayAllShots()
+    {
+        GunsManager curGun = GameManager.instance.shootingScript.gunList[GameManager.instance.shootingScript.selectedGun];
+        if (curGun.gunName == "Revolver")
+        {
+            PlayRevolverShootingSound();
+        }
+        else if (curGun.gunName == "AssaultRifle")
+        {
+            PlayAssaultRifleShoot();
+        }
+        else if (curGun.gunName == "Shotgun")
+        {
+            PlayShotgunShootingSound();
+        }
+        else if (curGun.gunName == "SniperRifle")
+        {
+            PlayRifleShootingSound();
+        }
+    }
+
+    //REVOLVER SOUNDS
     public void PlayRevolverShootingSound()
     {
             shootingSounds.PlayOneShot(revolverShoot);
         
     }
 
-
-    //REVOLVER SOUNDS
     public void PlayRevolverReloadSound()
     {
         shootingSounds.PlayOneShot(revolverReload[Random.Range(0, revolverReload.Length)]);
@@ -238,4 +262,11 @@ public class PlayerSoundsManager : MonoBehaviour
             return walkSpeedDelay;
         }
     }
+
+    //EQUIPMENT 
+    public void PlaySwapGuns()
+    {
+        extraSounds.PlayOneShot(equipGuns[Random.Range(0, equipGuns.Length)]);
+    }
+
 }
