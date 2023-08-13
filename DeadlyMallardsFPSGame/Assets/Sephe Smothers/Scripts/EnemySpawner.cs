@@ -21,6 +21,7 @@ public class EnemySpawner : MonoBehaviour
     private SpawnState state = SpawnState.COUNTING;
 
     public int currentWave;
+    int round;
 
     [SerializeField] private Transform[] spawners;
 
@@ -28,6 +29,7 @@ public class EnemySpawner : MonoBehaviour
     {
         waveCountdown = timeBetweenWaves;
         currentWave = 0;
+        round = 0;
         instance = this;
 
         RoundIndicatorText = GameObject.Find("RoundText").GetComponent<TextMeshProUGUI>();
@@ -35,7 +37,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void UpdateRoundDisplay()
     {
-        RoundIndicatorText.text = "Round: " + GetCurrentWave();
+        RoundIndicatorText.text = "Round: " + GetRoundForText();
     }
 
 
@@ -115,6 +117,7 @@ public class EnemySpawner : MonoBehaviour
         waveCountdown = timeBetweenWaves;
         AddNewWave();
         currentWave++;
+        round++;
         UpdateRoundDisplay();
         enemyList.Clear();      
     }
@@ -139,5 +142,9 @@ public class EnemySpawner : MonoBehaviour
     public int GetCurrentWave()
     {
         return currentWave + 1;
+    }
+    public int GetRoundForText()
+    {
+        return round + 1;
     }
 }
