@@ -8,8 +8,8 @@ public class ObjectiveManager : MonoBehaviour, Interactables
 {
     int nextScene;
     public List<Collectible> Objectives;
-    [SerializeField] int roundToReach;
-    public int zombiesToKill;
+    //[SerializeField] int roundToReach;
+   // public int zombiesToKill;
     public bool AllObjectivesCompleted;
     [SerializeField] bool LastObjective;
 
@@ -33,7 +33,7 @@ public class ObjectiveManager : MonoBehaviour, Interactables
         for (int i = 0; i < Objectives.Count; i++)
         {
 
-            if (CheckObjectives() && CheckZombies() && CheckWaves())
+            if (CheckObjectives())
             {
                 //if (LastObjective)
                 //{
@@ -82,28 +82,28 @@ public class ObjectiveManager : MonoBehaviour, Interactables
 
         return complete;
     }
-    private bool CheckZombies()
-    {
-        bool complete = false;
+    //private bool CheckZombies()
+    //{
+    //    bool complete = false;
 
-        if (zombiesToKill <= GameManager.instance.GetZombiesKilled())
-        {
-            complete = true;
-        }
+    //    if (zombiesToKill <= GameManager.instance.GetZombiesKilled())
+    //    {
+    //        complete = true;
+    //    }
 
-        return complete;
-    }
-    private bool CheckWaves()
-    {
-        bool complete = false;
+    //    return complete;
+    //}
+    //private bool CheckWaves()
+    //{
+    //    bool complete = false;
 
-        if (roundToReach <= EnemySpawner.instance.GetCurrentWave())
-        {
-            complete = true;
-        }
+    //    if (roundToReach <= EnemySpawner.instance.GetCurrentWave())
+    //    {
+    //        complete = true;
+    //    }
 
-        return complete;
-    }
+    //    return complete;
+    //}
 
     public void Interact()
     {

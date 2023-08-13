@@ -784,6 +784,7 @@ MonoBehaviour:
   anim: {fileID: 6609728244277007986}
   viewAngle: 180
   playerFaceSpeed: 500
+  DamagePopUp: {fileID: 3830295708246891327, guid: 313942a27a6572843ac4895e5f4170e9, type: 3}
   shooter: 0
 --- !u!195 &8986857974363761390
 NavMeshAgent:
