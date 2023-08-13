@@ -152,7 +152,7 @@ public class playerControl : MonoBehaviour, TakeDamage
 
         Destroy(HitMarker, .5f);
         GameManager.instance.UpdatePlayerUI();
-        ScoreManager.instance.UpdateTotalDamageTaken(amount);
+        //ScoreManager.instance.UpdateTotalDamageTaken(amount);
         if (hp < 10) 
         {
             StartCoroutine(GameManager.instance.FlashScreen());

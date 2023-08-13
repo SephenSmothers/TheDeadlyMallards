@@ -1,18 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ObjectiveUI : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] ObjectiveManager manager;
+    [SerializeField] List<GameObject> checks;
+
     void Start()
     {
-        
+        for(int i = 0; i < checks.Count; i++)
+        {
+            checks[i].SetActive(false);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+       for( int i = 0;i < manager.Objectives.Count; i++)
+       {
+            if (manager.Objectives[i].completed)
+            {
+                checks[i].SetActive(true);
+            }
+       }
     }
 }

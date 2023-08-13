@@ -7,19 +7,19 @@ using UnityEngine.SceneManagement;
 public class ObjectiveManager : MonoBehaviour, Interactables
 {
     int nextScene;
-    [SerializeField] List<Collectible> Objectives;
+    public List<Collectible> Objectives;
     [SerializeField] int roundToReach;
     public int zombiesToKill;
     public bool AllObjectivesCompleted;
     [SerializeField] bool LastObjective;
 
-   
+
     // Start is called before the first frame update
     void Start()
     {
         AllObjectivesCompleted = false;
         nextScene = SceneManager.GetActiveScene().buildIndex + 1;
-       
+
     }
 
     // Update is called once per frame
@@ -28,8 +28,8 @@ public class ObjectiveManager : MonoBehaviour, Interactables
     //    GameManager.instance.LoadAllStats();
     //}
 
-    void CheckObjectivesComplete()
-    {
+    public void CheckObjectivesComplete()
+    { 
         for (int i = 0; i < Objectives.Count; i++)
         {
 
@@ -43,10 +43,10 @@ public class ObjectiveManager : MonoBehaviour, Interactables
                 //}
                 //else
                 //{
-                    AllObjectivesCompleted = true;
+                AllObjectivesCompleted = true;
                 GameManager.instance.SaveAllStats();
-                    SceneManager.LoadScene(nextScene);
-               // } 
+                SceneManager.LoadScene(nextScene);
+                // } 
             }
             else
             {
