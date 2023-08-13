@@ -2186,10 +2186,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 981802456}
     - target: {fileID: 2874073456481811570, guid: e397fe6b800207348a0290e227c695f1, type: 3}
-      propertyPath: SaveDataStats
-      value: 
-      objectReference: {fileID: 11400000, guid: d43020f4e3b67c64e943237423c65d1c, type: 2}
-    - target: {fileID: 2874073456481811570, guid: e397fe6b800207348a0290e227c695f1, type: 3}
       propertyPath: shootingScript
       value: 
       objectReference: {fileID: 981802457}

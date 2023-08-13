@@ -1746,7 +1746,7 @@ RectTransform:
   - {fileID: 7195838727478879624}
   - {fileID: 7671504352892160421}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1767,7 +1767,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerScript: {fileID: 0}
   shootingScript: {fileID: 0}
-  SaveDataStats: {fileID: 0}
+  SaveDataStats: {fileID: 11400000, guid: d43020f4e3b67c64e943237423c65d1c, type: 2}
   _player: {fileID: 0}
   _playerSpawn: {fileID: 0}
   _activeMenu: {fileID: 0}

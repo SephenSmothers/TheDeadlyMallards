@@ -158,20 +158,17 @@ public class GameManager : MonoBehaviour
     {
         GameManager.instance.cash = GameManager.instance.SaveDataStats._cash;
         GameManager.instance.shootingScript.gunList = GameManager.instance.SaveDataStats._guns;
-        //EnemySpawner.instance = GameManager.instance.SaveDataStats._spawnerRef;
     }
     public void SaveAllStats()
     {
         GameManager.instance.SaveDataStats._cash = GameManager.instance.cash;
         GameManager.instance.SaveDataStats._guns = GameManager.instance.shootingScript.gunList;
-        //EnemySpawner.instance = GameManager.instance.SaveDataStats._spawnerRef;
     }
 
     public void ResetAllStats()
     {
         GameManager.instance.SaveDataStats._cash = 0;
         GameManager.instance.SaveDataStats._guns = GameManager.instance.shootingScript.usedGuns;
-       // GameManager.instance.SaveDataStats._guns = new List<GunsManager>();
 
     }
 

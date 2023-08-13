@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8962679ee3c6a774491a8c64aa4232cc, type: 3}
-  m_Name: SaveStatsObj
+  m_Name: TrainSaveData
   m_EditorClassIdentifier: 
   _cash: 0
   _currWave: 0
   _guns:
-  - {fileID: 11400000, guid: db08fffd15e3c2146aabd166466c5b5d, type: 2}
+  - {fileID: 11400000, guid: a93e423a4db64034f98c4caa43efc493, type: 2}
