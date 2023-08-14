@@ -13,7 +13,7 @@ public class TrackCreator : MonoBehaviour
 
     void Start()
     {
-        // GenerateTrack();
+         GenerateTrack();
 
     }
 

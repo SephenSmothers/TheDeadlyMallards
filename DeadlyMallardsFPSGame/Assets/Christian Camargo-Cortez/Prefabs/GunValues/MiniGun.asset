@@ -21,9 +21,9 @@ MonoBehaviour:
   timeBetweenShots: 0
   magSize: 30
   bulletsPerShot: 1
-  totalAmmo: 90
+  totalAmmo: 75
   allowButtonHold: 1
-  bulletsLeft: 12
+  bulletsLeft: 15
   maxAmmo: 120
   model: {fileID: 4714650542566397468, guid: 47dd5881eac3e284a817035b30395d0f, type: 3}
   hitEffect: {fileID: 7548617410811184617, guid: 45a1b6e7744a75448a4e6a2a4d32e5a1, type: 3}

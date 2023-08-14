@@ -68,11 +68,11 @@ public class ScoreManager : MonoBehaviour
         PlayerPrefs.Save();
     }
 
-    public int UpdateZombiesKilled(int zombiesKilledIncrement)
+    public void UpdateZombiesKilled(int zombiesKilledIncrement)
     {
         zombiesKilled += zombiesKilledIncrement;
         zomsKilledText.text = "Zombies Killed: " + zombiesKilled.ToString();
-        return zombiesKilled;
+       // return zombiesKilled;
     }
 
     //public float UpdateCompletionTime(float newCompletionTime)
