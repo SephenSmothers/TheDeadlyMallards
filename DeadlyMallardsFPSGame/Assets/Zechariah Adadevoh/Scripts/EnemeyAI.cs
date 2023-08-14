@@ -111,8 +111,8 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
         hp -= amount;
         
         StartCoroutine(flashDamage());
-        GameManager.instance.AddScore(10);
-        GameManager.instance.AddCash(1000);
+        GameManager.instance.AddScore(50);
+        GameManager.instance.AddCash(50);
         //ScoreManager.instance.UpdateTotalDamageDealt(amount);
         if (hp <= 0)
         {

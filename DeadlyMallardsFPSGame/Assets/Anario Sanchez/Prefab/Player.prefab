@@ -236,7 +236,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3257992319394329671}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 14.55, y: 2.89, z: 3.82}
+  m_LocalPosition: {x: 1, y: 1, z: 3.82}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -280,9 +280,9 @@ MonoBehaviour:
   playerWalkSpeed: 6
   playerSprintSpeed: 9
   stamina: 5
-  jumpHeight: 5
+  jumpHeight: 4
   maxHP: 0
-  pointer: {fileID: 0}
+  pointer: {fileID: 5344089196946095140, guid: ad8fb208ec8ea0e48b5aa58926f4c0e6, type: 3}
   state: 0
 --- !u!114 &9123147521267399482
 MonoBehaviour:
@@ -852,7 +852,7 @@ Transform:
   - {fileID: 1815063520046224102}
   - {fileID: 8250367583141367117}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5685288592081153806
 GameObject:
@@ -1134,7 +1134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8414c6e1c1e67a647a5da8480e012ea3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensitivity: 900
+  sensitivity: 500
   lockVerMin: -90
   lockVerMax: 90
   invertY: 0

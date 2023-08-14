@@ -2388,6 +2388,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2956486890969200567, guid: d8a65a4a552646f45bc4f57e09051260, type: 3}
+      propertyPath: waves.Array.data[0].enemiesAmmount
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956486890969200567, guid: d8a65a4a552646f45bc4f57e09051260, type: 3}
       propertyPath: waves.Array.data[0].enemy.Array.size
       value: 3
       objectReference: {fileID: 0}
