@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -45,7 +46,6 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        //SaveAllStats();
         LoadAllStats();
     }
 
@@ -188,5 +188,4 @@ public class GameManager : MonoBehaviour
         GameManager.instance.SaveDataStats._guns = GameManager.instance.shootingScript.usedGuns;
 
     }
-
 }
