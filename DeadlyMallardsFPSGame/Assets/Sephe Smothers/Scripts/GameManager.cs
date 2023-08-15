@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI ammoCountRemaning;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI playerCash;
+    public Image playerStaminaBar;
     public Image playerHpBar;
     bool isPaused;
     float origTimeScale;
@@ -157,6 +158,7 @@ public class GameManager : MonoBehaviour
     public void UpdatePlayerUI()
     {
         playerHpBar.fillAmount = (float)playerScript.hp / playerScript.maxHP;
+        playerStaminaBar.fillAmount = playerScript.stamina / playerScript.maxStamina;
         if (shootingScript.gunList.Count > 0)
         {
             ammoCountRemaning.SetText($"{shootingScript.gunList[shootingScript.selectedGun].bulletsLeft} / {shootingScript.gunList[shootingScript.selectedGun].totalAmmo}");

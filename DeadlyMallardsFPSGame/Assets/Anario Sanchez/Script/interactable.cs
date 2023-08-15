@@ -22,6 +22,7 @@ public class interactable : MonoBehaviour
     void Update()
     {
         Ray ray = new Ray(interactableObject.position, interactableObject.forward);
+        Debug.DrawRay(interactableObject.position, interactableObject.forward);
         if (Physics.Raycast(ray, out RaycastHit hitInfo, interactableRange))
         {
             if (hitInfo.collider.gameObject.TryGetComponent(out Interactables interacted))

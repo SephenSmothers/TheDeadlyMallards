@@ -18,10 +18,10 @@ public class playerControl : MonoBehaviour, TakeDamage
     public int hp;
     [SerializeField] float playerWalkSpeed;
     [SerializeField] float playerSprintSpeed;
-    [SerializeField] float stamina;
+    public float stamina;
     [SerializeField] float jumpHeight;
 
-    private float maxStamina;
+    public float maxStamina;
     Vector3 move;
     private float playerSpeed;
     private Vector3 playerVelocity;
@@ -104,6 +104,7 @@ public class playerControl : MonoBehaviour, TakeDamage
         }
         else
         {
+            staminaRegen();
             state = MovementState.air;
         }
     }
