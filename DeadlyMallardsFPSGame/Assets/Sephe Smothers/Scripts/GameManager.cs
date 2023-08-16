@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         //SaveAllStats();
-        LoadAllStats();
+        //LoadAllStats();
     }
 
     // Update is called once per frame
