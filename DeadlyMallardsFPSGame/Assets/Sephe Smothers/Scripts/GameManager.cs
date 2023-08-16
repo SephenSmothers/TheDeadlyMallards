@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -162,6 +163,7 @@ public class GameManager : MonoBehaviour
         if (shootingScript.gunList.Count > 0)
         {
             ammoCountRemaning.SetText($"{shootingScript.gunList[shootingScript.selectedGun].bulletsLeft} / {shootingScript.gunList[shootingScript.selectedGun].totalAmmo}");
+            LowAmmoColorChange();
         }
     }
     public int GetZombiesKilled()
@@ -189,5 +191,22 @@ public class GameManager : MonoBehaviour
         GameManager.instance.SaveDataStats._cash = 0;
         GameManager.instance.SaveDataStats._guns = GameManager.instance.shootingScript.usedGuns;
 
+    }
+
+    private void LowAmmoColorChange()
+    {
+        if (shootingScript.gunList[shootingScript.selectedGun].bulletsLeft > (int)(shootingScript.gunList[shootingScript.selectedGun].magSize / 3) * 2)
+        {
+            ammoCountRemaning.SetText($"{shootingScript.gunList[shootingScript.selectedGun].bulletsLeft} / {shootingScript.gunList[shootingScript.selectedGun].totalAmmo}");
+            ammoCountRemaning.color = Color.white;
+        }
+        else if (shootingScript.gunList[shootingScript.selectedGun].bulletsLeft < (int)(shootingScript.gunList[shootingScript.selectedGun].magSize / 3))
+        {
+            ammoCountRemaning.color = Color.red;
+        }
+        else
+        {
+            ammoCountRemaning.color = Color.yellow;
+        }
     }
 }
