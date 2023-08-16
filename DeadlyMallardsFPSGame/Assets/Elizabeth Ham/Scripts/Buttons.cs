@@ -35,5 +35,17 @@ public class Buttons : MonoBehaviour
         GameManager.instance.UnPause();
     }
 
+    public void Settings()
+    {
+        GameManager.instance._pauseMenu.SetActive(false);
+        GameManager.instance._settings.SetActive(true);
+        GameManager.instance._activeMenu = GameManager.instance._settings;
+    }
 
+    public void GoBackFromSettings()
+    {
+        GameManager.instance._pauseMenu.SetActive(true);
+        GameManager.instance._settings.SetActive(false);
+        GameManager.instance._activeMenu = GameManager.instance._pauseMenu;
+    }
 }

@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public GameObject _winMenu;
     public GameObject _loseMenu;
     public GameObject _flashScreen;
+    public GameObject _settings;
     public TextMeshProUGUI enemiesRemainText;
     public TextMeshProUGUI ammoCountRemaning;
     public TextMeshProUGUI reloadPopUp;
@@ -37,6 +38,7 @@ public class GameManager : MonoBehaviour
     public int zombiesKilled;
     public GameObject damageIndicator;
     public ScoreManager scoreManager;
+    public SliderSettings sliderSettings;
 
 
     void Awake()
@@ -49,6 +51,7 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        _settings.SetActive(false);
         LoadAllStats();
     }
 

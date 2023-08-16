@@ -5,7 +5,7 @@ using UnityEngine;
 public class cameraControl : MonoBehaviour
 {
     [Header ("----Camera Settings----")]
-    [SerializeField] int sensitivity;
+    public float sensitivity;
 
     [SerializeField] int lockVerMin;
     [SerializeField] int lockVerMax;
