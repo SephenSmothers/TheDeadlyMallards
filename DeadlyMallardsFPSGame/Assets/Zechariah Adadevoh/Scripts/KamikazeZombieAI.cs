@@ -26,7 +26,7 @@ public class KamikazeZombieAI : MonoBehaviour, TakeDamage
     bool playerInRange;
     float angleToPlayer;
     float stoppingDistanceOrig;
-
+    Collider player;
   
 
 
@@ -84,15 +84,22 @@ public class KamikazeZombieAI : MonoBehaviour, TakeDamage
     {
         if (other.CompareTag("Player"))
         {
-            Instantiate(Boom,gameObject.transform.position, Quaternion.identity);
-            other.GetComponent<playerControl>().CanTakeDamage(explostiondmg);
-            playerInRange = true;
-            Destroy(gameObject);
+
+            anim.SetTrigger("jumpAttack");
+            player = other;
+            
 
         }
     }
 
-    
+    public void DestroyZombie()
+    {
+        Destroy(gameObject);
+        Instantiate(Boom, gameObject.transform.position, Quaternion.identity);
+        player.GetComponent<playerControl>().CanTakeDamage(explostiondmg);
+        playerInRange = true;
+    }
+
     void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
