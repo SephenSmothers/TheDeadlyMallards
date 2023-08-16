@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuUI : MonoBehaviour
 {
-   // [SerializeField] GameObject _activeMenu;
+    // [SerializeField] GameObject _activeMenu;
     [SerializeField] GameObject _mainMenu;
     [SerializeField] GameObject _levelSelectMenu;
 
@@ -44,8 +44,13 @@ public class MainMenuUI : MonoBehaviour
 
     public void PlayMap1()
     {
+        if (Time.timeScale == 0)
+        {
+            Time.timeScale = 1;
+        }
+
         SceneManager.LoadScene(1);
-        GameManager.instance.UnPause();
+
     }
 
     public void PlayMap2()
