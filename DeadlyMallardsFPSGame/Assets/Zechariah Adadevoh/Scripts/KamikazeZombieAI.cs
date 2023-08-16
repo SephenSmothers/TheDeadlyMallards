@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,10 +13,22 @@ public class KamikazeZombieAI : MonoBehaviour, TakeDamage
     [SerializeField] Animator anim;
     [SerializeField] int viewAngle;
     [SerializeField] int playerFaceSpeed;
+    [SerializeField] int explostiondmg;
+    [SerializeField] GameObject Boom;
+    [SerializeField] AudioSource aud;
+
+    [Header("---Audio---")]
+    [SerializeField] AudioClip zombieCry;
+    [SerializeField] float cryVolume;
+    [SerializeField] AudioClip ZombieDeath;
+    [SerializeField] float DeathVol;
     public int hp;
     bool playerInRange;
     float angleToPlayer;
     float stoppingDistanceOrig;
+    Collider player;
+  
+
 
 
     Vector3 playerDir;
@@ -26,8 +39,9 @@ public class KamikazeZombieAI : MonoBehaviour, TakeDamage
     // Start is called before the first frame update
     void Start()
     {
+      
         GameManager.instance.ReturnEnemyCount(1);
-
+        aud.PlayOneShot(zombieCry, cryVolume);
     }
 
     // Update is called once per frame
@@ -37,7 +51,7 @@ public class KamikazeZombieAI : MonoBehaviour, TakeDamage
         {
             ChasePlayer();
             anim.SetFloat("speedBoom", agent.velocity.normalized.magnitude);
-
+        
         }
 
     }
@@ -62,31 +76,49 @@ public class KamikazeZombieAI : MonoBehaviour, TakeDamage
         facePlayer();
         if (playerInRange && viewAngle > angleToPlayer)
         {
-
+           
         }
     }
+   
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            playerInRange = true;
+
+            anim.SetTrigger("jumpAttack");
+            player = other;
+            
+
         }
     }
 
+    public void DestroyZombie()
+    {
+        Destroy(gameObject);
+        Instantiate(Boom, gameObject.transform.position, Quaternion.identity);
+        player.GetComponent<playerControl>().CanTakeDamage(explostiondmg);
+        playerInRange = true;
+    }
 
     void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             playerInRange = false;
+            
         }
     }
+
+    
+    
+ 
     public void CanTakeDamage(int amount)
     {
         hp -= amount;
         StartCoroutine(flashDamage());
         GameManager.instance.AddScore(10);
         GameManager.instance.AddCash(10);
+        aud.PlayOneShot(ZombieDeath, DeathVol);
         if (hp <= 0)
         {
             GameManager.instance.ReturnEnemyCount(-1);

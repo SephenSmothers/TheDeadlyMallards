@@ -240,6 +240,7 @@ GameObject:
   - component: {fileID: 7062833521611038124}
   - component: {fileID: 4301378476205099065}
   - component: {fileID: 1136593651509378172}
+  - component: {fileID: 539617009090563648}
   m_Layer: 7
   m_Name: TankyZombie
   m_TagString: Enemy
@@ -263,7 +264,7 @@ Transform:
   - {fileID: 561028320187258805}
   - {fileID: 8826250300492266776}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3862666026294156513
 MonoBehaviour:
@@ -279,7 +280,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modle: {fileID: 6292379029496106636}
   agent: {fileID: 6161223996371657999}
-  hp: 10
+  hp: 8
   shootspeed: 1
   shootingpos: {fileID: 0}
   attackpos: {fileID: 8826250300492266776}
@@ -289,7 +290,14 @@ MonoBehaviour:
   anim: {fileID: 7062833521611038124}
   viewAngle: 45
   playerFaceSpeed: 500
-  DamagePopUp: {fileID: 3830295708246891327, guid: 313942a27a6572843ac4895e5f4170e9, type: 3}
+  aud: {fileID: 539617009090563648}
+  zombieCry: {fileID: 8300000, guid: 7f83d577f0bf80a49a5b118fc2f9013f, type: 3}
+  cryVolume: 0.5
+  zombieAttack: {fileID: 0}
+  attackVolume: 0
+  zombieDeath: {fileID: 8300000, guid: f3b2285de27e0944ca86c474f894e9fc, type: 3}
+  DeathVol: 0.5
+  DamagePopUp: {fileID: 0}
   shooter: 0
 --- !u!195 &6161223996371657999
 NavMeshAgent:
@@ -379,6 +387,102 @@ CapsuleCollider:
   m_Height: 1.5
   m_Direction: 1
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!82 &539617009090563648
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2420944998124642665}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2811885698532591754
 GameObject:
   m_ObjectHideFlags: 0
