@@ -741,7 +741,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8208202771309608275
 Transform:
   m_ObjectHideFlags: 0
@@ -758,7 +758,7 @@ Transform:
   - {fileID: 5462050339386093964}
   - {fileID: 3491147212045970718}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3034641422232311442
 MonoBehaviour:
@@ -774,7 +774,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modle: {fileID: 6119587042125164896}
   agent: {fileID: 8986857974363761390}
-  hp: 10
+  hp: 4
   shootspeed: 1
   shootingpos: {fileID: 0}
   attackpos: {fileID: 3491147212045970718}
@@ -784,6 +784,13 @@ MonoBehaviour:
   anim: {fileID: 6609728244277007986}
   viewAngle: 45
   playerFaceSpeed: 500
+  aud: {fileID: 0}
+  zombieCry: {fileID: 0}
+  cryVolume: 0
+  zombieAttack: {fileID: 0}
+  attackVolume: 0
+  zombieDeath: {fileID: 0}
+  DeathVol: 0
   DamagePopUp: {fileID: 3830295708246891327, guid: 313942a27a6572843ac4895e5f4170e9, type: 3}
   shooter: 0
 --- !u!195 &8986857974363761390
