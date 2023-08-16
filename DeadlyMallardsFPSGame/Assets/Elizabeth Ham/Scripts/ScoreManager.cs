@@ -13,13 +13,13 @@ public class ScoreManager : MonoBehaviour
     public TextMeshProUGUI zomsKilledText;
     //public TextMeshProUGUI CompleteTimeText;
     //public TextMeshProUGUI damageTakenText;
-    //public TextMeshProUGUI damageDealtText;
+    public TextMeshProUGUI damageDealtText;
    
   
     
 
     int _Score = 0;
-    //int damageDealt = 0;
+    int damageDealt = 0;
     //int damageTaken = 0;
     int zombiesKilled = 0;
     //float completionTime = 0;
@@ -33,21 +33,29 @@ public class ScoreManager : MonoBehaviour
         instance = this;
         ScoreBoard.SetActive(false);
         highScore = PlayerPrefs.GetInt("HighScore", 0);
+        UpdateScores();
         highScoreText.text = "HighScore: " + highScore.ToString();
 
     }
-
-    public void ShowScoreBoard(int highscore )
-    { 
-        highScoreText.text = "HighScore: " + highscore.ToString();
+    public void UpdateScores()
+    {
+        scoreText.text = "Score: " + _Score.ToString("F0");
+        highScoreText.text = "HighScore: " + highScore.ToString();
+        zomsKilledText.text = "Zombies Killed: " + zombiesKilled.ToString();
+        damageDealtText.text = "Total Damage Dealt: " + damageDealt.ToString();
     }
+
+    //public void ShowScoreBoard(int highscore )
+    //{ 
+    //    highScoreText.text = "HighScore: " + highscore.ToString();
+    //}
 
     public int AddScore(int _score)
     {
         _Score += _score;
         scoreText.text = "Score: " + _Score.ToString("F0");
         UpdateHighScore(_Score);
-
+        UpdateScores();
         return _Score;
 
     }
@@ -72,6 +80,7 @@ public class ScoreManager : MonoBehaviour
     {
         zombiesKilled += zombiesKilledIncrement;
         zomsKilledText.text = "Zombies Killed: " + zombiesKilled.ToString();
+        UpdateScores();
        // return zombiesKilled;
     }
 
@@ -89,12 +98,13 @@ public class ScoreManager : MonoBehaviour
     //    return damageTaken;
     //}
 
-    //public int UpdateTotalDamageDealt(int totalDamageDealt)
-    //{
-    //    damageDealt += totalDamageDealt;
-    //    damageDealtText.text = "Total Damage Dealt: " + damageDealt.ToString();
-    //    return damageDealt;
-    //}
+    public int UpdateTotalDamageDealt(int totalDamageDealt)
+    {
+        damageDealt += totalDamageDealt;
+        damageDealtText.text = "Total Damage Dealt: " + damageDealt.ToString();
+        UpdateScores();
+        return damageDealt;
+    }
 
     private void LoadHighScore()
     {

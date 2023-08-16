@@ -114,11 +114,14 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
         StartCoroutine(flashDamage());
         GameManager.instance.AddScore(50);
         GameManager.instance.AddCash(50);
-        //ScoreManager.instance.UpdateTotalDamageDealt(amount);
+        ScoreManager.instance.UpdateTotalDamageDealt(amount);
+        ScoreManager.instance.AddScore(50);
+        ScoreManager.instance.UpdateScores();
         if (hp <= 0)
         {
             GameManager.instance.ReturnEnemyCount(-1);
             ScoreManager.instance.UpdateZombiesKilled(1);
+            ScoreManager.instance.UpdateScores();
             anim.SetBool("Dead", true);
             anim.SetBool("deadSpeed", true);
             anim.SetBool("deadTank", true);
