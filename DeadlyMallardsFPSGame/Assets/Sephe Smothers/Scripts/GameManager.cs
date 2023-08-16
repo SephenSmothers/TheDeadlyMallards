@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,8 +23,10 @@ public class GameManager : MonoBehaviour
     public GameObject _flashScreen;
     public TextMeshProUGUI enemiesRemainText;
     public TextMeshProUGUI ammoCountRemaning;
+    public TextMeshProUGUI reloadPopUp;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI playerCash;
+    public Image playerStaminaBar;
     public Image playerHpBar;
     bool isPaused;
     float origTimeScale;
@@ -32,6 +36,7 @@ public class GameManager : MonoBehaviour
     public int cash;
     public int zombiesKilled;
     public GameObject damageIndicator;
+    public ScoreManager scoreManager;
 
 
     void Awake()
@@ -44,8 +49,7 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        //SaveAllStats();
-        //LoadAllStats();
+        LoadAllStats();
     }
 
     // Update is called once per frame
@@ -56,6 +60,11 @@ public class GameManager : MonoBehaviour
             Pause();
             _activeMenu = _pauseMenu;
             _activeMenu.SetActive(isPaused);
+            if (scoreManager != null)
+            {
+                scoreManager.ScoreBoard.SetActive(true);
+            }
+
         }
     }
 
@@ -70,6 +79,12 @@ public class GameManager : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
         isPaused = !isPaused;
+        if (scoreManager != null)
+        {
+            scoreManager.ScoreBoard.SetActive(true);
+        }
+
+
     }
 
     public void UnPause()
@@ -80,6 +95,11 @@ public class GameManager : MonoBehaviour
         isPaused = !isPaused;
         _activeMenu.SetActive(false);
         _activeMenu = null;
+        if (scoreManager != null)
+        {
+            scoreManager.ScoreBoard.SetActive(false);
+        }
+
     }
 
     public void YoLose()
@@ -140,9 +160,11 @@ public class GameManager : MonoBehaviour
     public void UpdatePlayerUI()
     {
         playerHpBar.fillAmount = (float)playerScript.hp / playerScript.maxHP;
+        playerStaminaBar.fillAmount = playerScript.stamina / playerScript.maxStamina;
         if (shootingScript.gunList.Count > 0)
         {
             ammoCountRemaning.SetText($"{shootingScript.gunList[shootingScript.selectedGun].bulletsLeft} / {shootingScript.gunList[shootingScript.selectedGun].totalAmmo}");
+            LowAmmoColorChange();
         }
     }
     public int GetZombiesKilled()
@@ -158,21 +180,38 @@ public class GameManager : MonoBehaviour
     {
         GameManager.instance.cash = GameManager.instance.SaveDataStats._cash;
         GameManager.instance.shootingScript.gunList = GameManager.instance.SaveDataStats._guns;
-        //EnemySpawner.instance = GameManager.instance.SaveDataStats._spawnerRef;
     }
     public void SaveAllStats()
     {
         GameManager.instance.SaveDataStats._cash = GameManager.instance.cash;
         GameManager.instance.SaveDataStats._guns = GameManager.instance.shootingScript.gunList;
-        //EnemySpawner.instance = GameManager.instance.SaveDataStats._spawnerRef;
     }
 
     public void ResetAllStats()
     {
         GameManager.instance.SaveDataStats._cash = 0;
         GameManager.instance.SaveDataStats._guns = GameManager.instance.shootingScript.usedGuns;
-       // GameManager.instance.SaveDataStats._guns = new List<GunsManager>();
 
     }
 
+    private void LowAmmoColorChange()
+    {
+        if (shootingScript.gunList[shootingScript.selectedGun].bulletsLeft > (int)(shootingScript.gunList[shootingScript.selectedGun].magSize / 3) * 2)
+        {
+            ammoCountRemaning.SetText($"{shootingScript.gunList[shootingScript.selectedGun].bulletsLeft} / {shootingScript.gunList[shootingScript.selectedGun].totalAmmo}");
+            ammoCountRemaning.color = Color.white;
+            reloadPopUp.enabled = false;
+        }
+        else if (shootingScript.gunList[shootingScript.selectedGun].bulletsLeft < (int)(shootingScript.gunList[shootingScript.selectedGun].magSize / 3))
+        {
+            ammoCountRemaning.color = Color.red;
+            reloadPopUp.enabled = true;
+        }
+        else
+        {
+            ammoCountRemaning.color = Color.yellow;
+        }
+
+        
+    }
 }

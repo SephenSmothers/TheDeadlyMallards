@@ -31,6 +31,7 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
     Vector3 playerDir;
     Vector3 startingPos;
     bool destinationChosen;
+    public GameObject DamagePopUp;
 
     public bool shooter;
     bool isshooting;
@@ -54,9 +55,6 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
             anim.SetFloat("speedGun", agent.velocity.normalized.magnitude);
 
         }
-
-
-
     }
 
 
@@ -111,20 +109,35 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
     public void CanTakeDamage(int amount)
     {
         hp -= amount;
+        
+        
         StartCoroutine(flashDamage());
-        GameManager.instance.AddScore(10);
-        GameManager.instance.AddCash(1000);
+        GameManager.instance.AddScore(50);
+        GameManager.instance.AddCash(50);
+        //ScoreManager.instance.UpdateTotalDamageDealt(amount);
         if (hp <= 0)
         {
             GameManager.instance.ReturnEnemyCount(-1);
+            ScoreManager.instance.UpdateZombiesKilled(1);
             anim.SetBool("Dead", true);
             anim.SetBool("deadSpeed", true);
             anim.SetBool("deadTank", true);
             anim.SetBool("DeadGun", true);
             agent.enabled = false;
             GetComponent<CapsuleCollider>().enabled = false;
+            if(gameObject.GetComponent("splitZombie") as splitZombie)
+            {
+                GetComponent<splitZombie>().OnDeath();
+            }
             Destroy(gameObject,5);
             GameManager.instance.OnZombieKilled();
+        }
+        else
+        {
+            GameObject DamagetextObject = Instantiate(DamagePopUp, transform.position + Vector3.up, Quaternion.identity);
+            DamageText damageText = DamagetextObject.GetComponent<DamageText>();
+            damageText.enabled = true;
+            damageText.DisplayDamage(amount);
         }
 
     }

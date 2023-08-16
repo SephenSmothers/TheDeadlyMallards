@@ -20,7 +20,7 @@ public class GunsManager : ScriptableObject
 
     public GameObject model;
     [SerializeField] public ParticleSystem hitEffect;
-    public bool upgradedGun;
+    public bool upgradedGun1, upgradedGun2;
     public int gunPrice;
 
     int origDamage;
@@ -55,6 +55,7 @@ public class GunsManager : ScriptableObject
         model.GetComponent<MeshRenderer>().sharedMaterial.color = Color.white;
         bulletsLeft = magSize;
         totalAmmo = maxAmmo;
-        upgradedGun = false;
+        upgradedGun1 = false;
+        upgradedGun2 = false;
     }
 }

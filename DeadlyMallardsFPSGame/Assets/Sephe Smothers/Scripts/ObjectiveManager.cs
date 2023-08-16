@@ -7,9 +7,9 @@ using UnityEngine.SceneManagement;
 public class ObjectiveManager : MonoBehaviour, Interactables
 {
     int nextScene;
-    [SerializeField] List<Collectible> Objectives;
-    [SerializeField] int roundToReach;
-    public int zombiesToKill;
+    public List<Collectible> Objectives;
+    //[SerializeField] int roundToReach;
+   // public int zombiesToKill;
     public bool AllObjectivesCompleted;
     [SerializeField] bool LastObjective;
 
@@ -19,6 +19,7 @@ public class ObjectiveManager : MonoBehaviour, Interactables
     {
         AllObjectivesCompleted = false;
         nextScene = SceneManager.GetActiveScene().buildIndex + 1;
+
     }
 
     // Update is called once per frame
@@ -27,12 +28,12 @@ public class ObjectiveManager : MonoBehaviour, Interactables
     //    GameManager.instance.LoadAllStats();
     //}
 
-    void CheckObjectivesComplete()
-    {
+    public void CheckObjectivesComplete()
+    { 
         for (int i = 0; i < Objectives.Count; i++)
         {
 
-            if (CheckObjectives() && CheckZombies() && CheckWaves())
+            if (CheckObjectives())
             {
                 //if (LastObjective)
                 //{
@@ -42,10 +43,10 @@ public class ObjectiveManager : MonoBehaviour, Interactables
                 //}
                 //else
                 //{
-                    AllObjectivesCompleted = true;
-                    GameManager.instance.SaveAllStats();
-                    SceneManager.LoadScene(nextScene);
-               // } 
+                AllObjectivesCompleted = true;
+                GameManager.instance.SaveAllStats();
+                SceneManager.LoadScene(nextScene);
+                // } 
             }
             else
             {
@@ -81,28 +82,28 @@ public class ObjectiveManager : MonoBehaviour, Interactables
 
         return complete;
     }
-    private bool CheckZombies()
-    {
-        bool complete = false;
+    //private bool CheckZombies()
+    //{
+    //    bool complete = false;
 
-        if (zombiesToKill <= GameManager.instance.GetZombiesKilled())
-        {
-            complete = true;
-        }
+    //    if (zombiesToKill <= GameManager.instance.GetZombiesKilled())
+    //    {
+    //        complete = true;
+    //    }
 
-        return complete;
-    }
-    private bool CheckWaves()
-    {
-        bool complete = false;
+    //    return complete;
+    //}
+    //private bool CheckWaves()
+    //{
+    //    bool complete = false;
 
-        if (roundToReach <= EnemySpawner.instance.GetCurrentWave())
-        {
-            complete = true;
-        }
+    //    if (roundToReach <= EnemySpawner.instance.GetCurrentWave())
+    //    {
+    //        complete = true;
+    //    }
 
-        return complete;
-    }
+    //    return complete;
+    //}
 
     public void Interact()
     {

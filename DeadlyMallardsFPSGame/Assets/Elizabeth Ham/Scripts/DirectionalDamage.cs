@@ -1,4 +1,3 @@
-using Microsoft.Unity.VisualStudio.Editor;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +11,7 @@ public class DirectionalDamage : MonoBehaviour
 
 
     // Update is called once per frame
-    void Update()
-    {
-    }
+    //void Update()
+    //{
+    //}
 }

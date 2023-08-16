@@ -11,31 +11,38 @@ public class playerControl : MonoBehaviour, TakeDamage
 {
     [Header("----- Compents -----")]
     [SerializeField] CharacterController controller;
-    
+    [SerializeField] Camera playerCam;
+    [SerializeField] headBobbing bobbing;
 
     [Header("----- Player Stats -----")]
     public int hp;
     [SerializeField] float playerWalkSpeed;
     [SerializeField] float playerSprintSpeed;
+    public float stamina;
     [SerializeField] float jumpHeight;
+
+    public float maxStamina;
     Vector3 move;
     private float playerSpeed;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
+    private float origFOV;
+    private bool tired;
     public int maxHP;
     public GameObject pointer;
-  
-
     public MovementState state;
 
     public enum MovementState
     {
+        exhausted,
         walking,
         sprinting,
         air
     }
     private void Start()
     {
+        origFOV = playerCam.fieldOfView;
+        maxStamina = stamina;
         maxHP = hp;
         spawnPlayer();
     }
@@ -61,7 +68,6 @@ public class playerControl : MonoBehaviour, TakeDamage
 
         controller.Move(move * Time.deltaTime * playerSpeed);
 
-
         // Changes the height position of the player..
         if (Input.GetButton("Jump") && groundedPlayer)
         {
@@ -72,40 +78,79 @@ public class playerControl : MonoBehaviour, TakeDamage
     }
     void stateCheck()
     {
-        if (Input.GetKey(KeyCode.LeftShift) && groundedPlayer)
+        if (tired)
+        {
+            state = MovementState.exhausted;
+            staminaRegen();
+            playerSpeed = playerWalkSpeed / 2;
+            bobbing.speed = 2;
+            playerCam.fieldOfView = Mathf.Lerp(playerCam.fieldOfView,55,10f * Time.deltaTime);
+        }
+        else if (Input.GetKey(KeyCode.LeftShift) && !tired)
         {
             state = MovementState.sprinting;
+            staminaRunning();
             playerSpeed = playerSprintSpeed;
+            bobbing.speed = 8;
+            playerCam.fieldOfView = Mathf.Lerp(playerCam.fieldOfView, 70, 10f * Time.deltaTime);
         }
         else if (groundedPlayer)
         {
             state = MovementState.walking;
+            staminaRegen();
             playerSpeed = playerWalkSpeed;
+            bobbing.speed = 4;
+            playerCam.fieldOfView = Mathf.Lerp(playerCam.fieldOfView, origFOV, 10f * Time.deltaTime);
         }
         else
         {
+            staminaRegen();
             state = MovementState.air;
         }
+    }
+    void staminaRunning()
+    {
+        if (stamina >= 0)
+        {
+            stamina -= 1 * Time.deltaTime;
+        }
+        else
+        {
+            tired = true;
+        }
+    }
+    void staminaRegen()
+    {
+        if (stamina <= maxStamina)
+        {
+            stamina += 1 * Time.deltaTime;
+        }
+        else
+        {
+            tired = false;
+        }
+
     }
     public void CanTakeDamage(int amount)
     {
         hp -= amount;
-      
-        
+
+
         GameObject HitMarker = Instantiate(pointer, transform.position, Quaternion.identity);
-        Vector3 directional = transform.position - HitMarker.transform.position; 
+        Vector3 directional = transform.position - HitMarker.transform.position;
 
         Quaternion rotation = Quaternion.LookRotation(directional);
         rotation.z = -rotation.y;
         rotation.y = 0;
         rotation.x = 0;
         Vector3 Northdirection = new Vector3(0, 0, transform.eulerAngles.y);
-        GameManager.instance.damageIndicator.transform.localRotation = rotation * Quaternion.Euler(Northdirection);    
+        GameManager.instance.damageIndicator.transform.localRotation = rotation * Quaternion.Euler(Northdirection);
         StartCoroutine(GameManager.instance.DamageDirection());
 
         Destroy(HitMarker, .5f);
         GameManager.instance.UpdatePlayerUI();
-        if(hp < 10)
+        //ScoreManager.instance.UpdateTotalDamageTaken(amount);
+        if (hp < 10) 
         {
             StartCoroutine(GameManager.instance.FlashScreen());
         }
@@ -113,7 +158,7 @@ public class playerControl : MonoBehaviour, TakeDamage
         {
             GameManager.instance.YoLose();
         }
-        
+
     }
 
     public void GetMaxHealth()
@@ -130,5 +175,8 @@ public class playerControl : MonoBehaviour, TakeDamage
         GameManager.instance.UpdatePlayerUI();
     }
 
-   
+    public bool isTiredChecker()
+    {
+        return tired;
+    }
 }
