@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 public class EnemeyAI : MonoBehaviour, TakeDamage
 {
     [SerializeField] Renderer modle;
-    [SerializeField] NavMeshAgent agent;
+    public NavMeshAgent agent;
     public int hp;
 
     [SerializeField] float shootspeed;
@@ -18,11 +18,20 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
 
     [SerializeField] GameObject hitbox;
     [SerializeField] Transform headPos;
-    [SerializeField] Animator anim;
+    public Animator anim;
     [SerializeField] int viewAngle;
     [SerializeField] int playerFaceSpeed;
+    public AudioSource aud;
 
-    bool playerInRange;
+    [Header("---Audio---")]
+    public AudioClip zombieCry;
+    public float cryVolume;
+    [SerializeField] AudioClip zombieAttack;
+    [SerializeField] float attackVolume;
+    public AudioClip zombieDeath;
+    public float DeathVol;
+
+    public bool playerInRange;
     float angleToPlayer;
     bool isShooting;
     float stoppingDistanceOrig;
@@ -41,6 +50,7 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
     void Start()
     {
         GameManager.instance.ReturnEnemyCount(1);
+
     }
 
     // Update is called once per frame
@@ -51,6 +61,7 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
             ChasePlayer();
             anim.SetFloat("speed", agent.velocity.normalized.magnitude);
             anim.SetFloat("speedZombie", agent.velocity.normalized.magnitude);
+            anim.SetFloat("speedZombie2", agent.velocity.normalized.magnitude);
             anim.SetFloat("speedTank", agent.velocity.normalized.magnitude);
             anim.SetFloat("speedGun", agent.velocity.normalized.magnitude);
 
@@ -66,7 +77,7 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
     }
 
 
-    void ChasePlayer()
+    public void ChasePlayer()
     {
 
         playerDir = GameManager.instance._player.transform.position - headPos.position;
@@ -94,6 +105,7 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
         if (other.CompareTag("Player"))
         {
             playerInRange = true;
+            aud.PlayOneShot(zombieCry, cryVolume);
         }
     }
 
@@ -103,33 +115,42 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
         if (other.CompareTag("Player"))
         {
             playerInRange = false;
+
         }
     }
 
     public void CanTakeDamage(int amount)
     {
         hp -= amount;
-        
-        
+
+
         StartCoroutine(flashDamage());
         GameManager.instance.AddScore(50);
         GameManager.instance.AddCash(50);
-        //ScoreManager.instance.UpdateTotalDamageDealt(amount);
+        ScoreManager.instance.AddScore(50);
+        ScoreManager.instance.UpdateScores();
+        ScoreManager.instance.UpdateTotalDamageDealt(amount);
         if (hp <= 0)
         {
             GameManager.instance.ReturnEnemyCount(-1);
             ScoreManager.instance.UpdateZombiesKilled(1);
+            ScoreManager.instance.UpdateScores();
             anim.SetBool("Dead", true);
             anim.SetBool("deadSpeed", true);
             anim.SetBool("deadTank", true);
             anim.SetBool("DeadGun", true);
+            aud.PlayOneShot(zombieDeath, DeathVol);
             agent.enabled = false;
             GetComponent<CapsuleCollider>().enabled = false;
-            if(gameObject.GetComponent("splitZombie") as splitZombie)
+            if (gameObject.GetComponent("splitZombie") as splitZombie)
             {
                 GetComponent<splitZombie>().OnDeath();
             }
-            Destroy(gameObject,5);
+            else if (gameObject.GetComponent("KamikazeZombieAI"))
+            {
+                anim.SetBool("deadBoom", true);
+            }
+            Destroy(gameObject, 5);
             GameManager.instance.OnZombieKilled();
         }
         else
@@ -152,6 +173,7 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
     {
 
         isattacking = true;
+        aud.PlayOneShot(zombieAttack, attackVolume);
         anim.SetTrigger("Attack");
         anim.SetTrigger("speedAttack");
         anim.SetTrigger("tankAttack");

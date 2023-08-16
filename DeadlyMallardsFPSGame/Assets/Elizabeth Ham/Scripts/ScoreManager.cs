@@ -12,42 +12,51 @@ public class ScoreManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI zomsKilledText;
     //public TextMeshProUGUI CompleteTimeText;
-    //public TextMeshProUGUI damageTakenText;
-    //public TextMeshProUGUI damageDealtText;
+    public TextMeshProUGUI damageTakenText;
+    public TextMeshProUGUI damageDealtText;
    
   
     
 
     int _Score = 0;
-    //int damageDealt = 0;
-    //int damageTaken = 0;
+    int damageDealt = 0;
+    int damageTaken = 0;
     int zombiesKilled = 0;
     //float completionTime = 0;
     int highScore = 0;
 
 
     // Start is called before the first frame update
-    private void Awake()
+    private void Start()
     {
      
         instance = this;
         ScoreBoard.SetActive(false);
         highScore = PlayerPrefs.GetInt("HighScore", 0);
+        UpdateScores();
         highScoreText.text = "HighScore: " + highScore.ToString();
 
     }
-
-    public void ShowScoreBoard(int highscore )
-    { 
-        highScoreText.text = "HighScore: " + highscore.ToString();
+    public void UpdateScores()
+    {
+        scoreText.text = "Score: " + _Score.ToString("F0");
+        highScoreText.text = "HighScore: " + highScore.ToString();
+        zomsKilledText.text = "Zombies Killed: " + zombiesKilled.ToString();
+        damageDealtText.text = "Total Damage Dealt: " + damageDealt.ToString();
+        damageTakenText.text = "Total Damage Taken: " + damageTaken.ToString();
     }
+
+    //public void ShowScoreBoard(int highscore )
+    //{ 
+    //    highScoreText.text = "HighScore: " + highscore.ToString();
+    //}
 
     public int AddScore(int _score)
     {
         _Score += _score;
         scoreText.text = "Score: " + _Score.ToString("F0");
         UpdateHighScore(_Score);
-
+        UpdateScores();
         return _Score;
 
     }
@@ -71,7 +80,7 @@ public class ScoreManager : MonoBehaviour
     public void UpdateZombiesKilled(int zombiesKilledIncrement)
     {
         zombiesKilled += zombiesKilledIncrement;
-        zomsKilledText.text = "Zombies Killed: " + zombiesKilled.ToString();
+        UpdateScores();
        // return zombiesKilled;
     }
 
@@ -82,19 +91,19 @@ public class ScoreManager : MonoBehaviour
     //    return completionTime;
     //}
 
-    //public int UpdateTotalDamageTaken(int totalDamageTaken)
-    //{
-    //    damageTaken += totalDamageTaken;
-    //    damageTakenText.text = "Total Damage Taken: " + damageTaken.ToString();
-    //    return damageTaken;
-    //}
+    public int UpdateTotalDamageTaken(int totalDamageTaken)
+    {
+        damageTaken += totalDamageTaken;
+        damageTakenText.text = "Total Damage Taken: " + damageTaken.ToString();
+        return damageTaken;
+    }
 
-    //public int UpdateTotalDamageDealt(int totalDamageDealt)
-    //{
-    //    damageDealt += totalDamageDealt;
-    //    damageDealtText.text = "Total Damage Dealt: " + damageDealt.ToString();
-    //    return damageDealt;
-    //}
+    public void UpdateTotalDamageDealt(int totalDamageDealt)
+    {
+        damageDealt += totalDamageDealt;
+        UpdateScores();
+      
+    }
 
     private void LoadHighScore()
     {
