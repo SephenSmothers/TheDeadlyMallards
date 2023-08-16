@@ -45,13 +45,13 @@ public class MainMenuUI : MonoBehaviour
     public void PlayMap1()
     {
         SceneManager.LoadScene(1);
-        GameManager.instance.UnPause();
+        //GameManager.instance.UnPause();
     }
 
     public void PlayMap2()
     {
         SceneManager.LoadScene(2);
-        GameManager.instance.UnPause();
+        //GameManager.instance.UnPause();
     }
 
 
