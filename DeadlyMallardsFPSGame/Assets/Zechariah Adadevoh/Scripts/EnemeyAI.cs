@@ -21,6 +21,15 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
     [SerializeField] Animator anim;
     [SerializeField] int viewAngle;
     [SerializeField] int playerFaceSpeed;
+    [SerializeField] AudioSource aud;
+
+    [Header("---Audio---")]
+    [SerializeField] AudioClip zombieCry;
+    [SerializeField] float cryVolume;
+    [SerializeField] AudioClip zombieAttack;
+    [SerializeField] float attackVolume;
+    [SerializeField] AudioClip zombieDeath;
+    [SerializeField] float DeathVol;
 
     bool playerInRange;
     float angleToPlayer;
@@ -41,6 +50,7 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
     void Start()
     {
         GameManager.instance.ReturnEnemyCount(1);
+
     }
 
     // Update is called once per frame
@@ -51,6 +61,7 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
             ChasePlayer();
             anim.SetFloat("speed", agent.velocity.normalized.magnitude);
             anim.SetFloat("speedZombie", agent.velocity.normalized.magnitude);
+            anim.SetFloat("speedZombie2", agent.velocity.normalized.magnitude);
             anim.SetFloat("speedTank", agent.velocity.normalized.magnitude);
             anim.SetFloat("speedGun", agent.velocity.normalized.magnitude);
 
@@ -71,7 +82,7 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
 
         playerDir = GameManager.instance._player.transform.position - headPos.position;
         angleToPlayer = Vector3.Angle(new Vector3(playerDir.x, 0, playerDir.z), transform.forward);
-
+  
         //Debug.DrawRay(headPos.position, playerDir);
         //Debug.Log(angleToPlayer);
 
@@ -94,6 +105,7 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
         if (other.CompareTag("Player"))
         {
             playerInRange = true;
+            aud.PlayOneShot(zombieCry, cryVolume);
         }
     }
 
@@ -103,6 +115,7 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
         if (other.CompareTag("Player"))
         {
             playerInRange = false;
+        
         }
     }
 
@@ -121,6 +134,7 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
             anim.SetBool("deadSpeed", true);
             anim.SetBool("deadTank", true);
             anim.SetBool("DeadGun", true);
+            aud.PlayOneShot(zombieDeath, DeathVol);
             agent.enabled = false;
             GetComponent<CapsuleCollider>().enabled = false;
             if(gameObject.GetComponent("splitZombie") as splitZombie)
@@ -151,6 +165,7 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
     {
 
         isattacking = true;
+        aud.PlayOneShot(zombieAttack, attackVolume);
         anim.SetTrigger("Attack");
         anim.SetTrigger("speedAttack");
         anim.SetTrigger("tankAttack");
