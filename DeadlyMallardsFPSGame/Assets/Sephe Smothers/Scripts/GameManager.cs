@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,8 +23,10 @@ public class GameManager : MonoBehaviour
     public GameObject _flashScreen;
     public TextMeshProUGUI enemiesRemainText;
     public TextMeshProUGUI ammoCountRemaning;
+    public TextMeshProUGUI reloadPopUp;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI playerCash;
+    public Image playerStaminaBar;
     public Image playerHpBar;
     bool isPaused;
     float origTimeScale;
@@ -45,7 +49,6 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        //SaveAllStats();
         LoadAllStats();
     }
 
@@ -157,9 +160,11 @@ public class GameManager : MonoBehaviour
     public void UpdatePlayerUI()
     {
         playerHpBar.fillAmount = (float)playerScript.hp / playerScript.maxHP;
+        playerStaminaBar.fillAmount = playerScript.stamina / playerScript.maxStamina;
         if (shootingScript.gunList.Count > 0)
         {
             ammoCountRemaning.SetText($"{shootingScript.gunList[shootingScript.selectedGun].bulletsLeft} / {shootingScript.gunList[shootingScript.selectedGun].totalAmmo}");
+            LowAmmoColorChange();
         }
     }
     public int GetZombiesKilled()
@@ -189,4 +194,24 @@ public class GameManager : MonoBehaviour
 
     }
 
+    private void LowAmmoColorChange()
+    {
+        if (shootingScript.gunList[shootingScript.selectedGun].bulletsLeft > (int)(shootingScript.gunList[shootingScript.selectedGun].magSize / 3) * 2)
+        {
+            ammoCountRemaning.SetText($"{shootingScript.gunList[shootingScript.selectedGun].bulletsLeft} / {shootingScript.gunList[shootingScript.selectedGun].totalAmmo}");
+            ammoCountRemaning.color = Color.white;
+            reloadPopUp.enabled = false;
+        }
+        else if (shootingScript.gunList[shootingScript.selectedGun].bulletsLeft < (int)(shootingScript.gunList[shootingScript.selectedGun].magSize / 3))
+        {
+            ammoCountRemaning.color = Color.red;
+            reloadPopUp.enabled = true;
+        }
+        else
+        {
+            ammoCountRemaning.color = Color.yellow;
+        }
+
+        
+    }
 }
