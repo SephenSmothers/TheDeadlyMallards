@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MaxAmmoCrate : MonoBehaviour
+public class dynamitePickup : MonoBehaviour
 {
     private void Start()
     {
@@ -12,7 +12,7 @@ public class MaxAmmoCrate : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            GameManager.instance.shootingScript.GetMaxAmmo();
+            GameManager.instance.dynamiteScript.moreDynamite();
             Destroy(gameObject);
         }
     }

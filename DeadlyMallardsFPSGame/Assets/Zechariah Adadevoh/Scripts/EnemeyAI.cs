@@ -22,6 +22,7 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
     [SerializeField] int viewAngle;
     [SerializeField] int playerFaceSpeed;
     public AudioSource aud;
+    public dropChance drops;
 
     [Header("---Audio---")]
     public AudioClip zombieCry;
@@ -135,6 +136,7 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
             GameManager.instance.ReturnEnemyCount(-1);
             ScoreManager.instance.UpdateZombiesKilled(1);
             ScoreManager.instance.UpdateScores();
+            drops.randomChance();
             anim.SetBool("Dead", true);
             anim.SetBool("deadSpeed", true);
             anim.SetBool("deadTank", true);

@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public playerControl playerScript;
     public shootingControl shootingScript;
+    public dynamiteThrowable dynamiteScript;
     [SerializeField] public SaveStats SaveDataStats;
     [Header("-----Player-----")]
     public GameObject _player;
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
     public GameObject _loseMenu;
     public GameObject _flashScreen;
     public GameObject _settings;
+    public TextMeshProUGUI dynamiteRemaining;
     public TextMeshProUGUI enemiesRemainText;
     public TextMeshProUGUI ammoCountRemaning;
     public TextMeshProUGUI reloadPopUp;
@@ -164,6 +166,7 @@ public class GameManager : MonoBehaviour
     {
         playerHpBar.fillAmount = (float)playerScript.hp / playerScript.maxHP;
         playerStaminaBar.fillAmount = playerScript.stamina / playerScript.maxStamina;
+        dynamiteRemaining.SetText($"{dynamiteScript.dynamiteAmount}");
         if (shootingScript.gunList.Count > 0)
         {
             ammoCountRemaning.SetText($"{shootingScript.gunList[shootingScript.selectedGun].bulletsLeft} / {shootingScript.gunList[shootingScript.selectedGun].totalAmmo}");

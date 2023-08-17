@@ -2,25 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MaxHealthCrate : MonoBehaviour, Interactables
+public class MaxHealthCrate : MonoBehaviour
 {
-    public void Interact()
+    private void Start()
     {
-        if (GameManager.instance.playerScript.hp != GameManager.instance.playerScript.maxHP && GameManager.instance.cash >= 250)
+        StartCoroutine(floatingObjects());
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
         {
             GameManager.instance.playerScript.GetMaxHealth();
-            GameManager.instance.RemoveCash(250);
+            Destroy(gameObject);
         }
     }
-    public string promptUi()
+    private IEnumerator floatingObjects()
     {
-        if (GameManager.instance.playerScript.hp != GameManager.instance.playerScript.maxHP)
+        while (true)
         {
-            return "Press E to get max health for 250 Cash";
-        }
-        else
-        {
-            return "You are already at full health";
+            transform.Rotate(Vector3.up, 60 * Time.deltaTime, Space.World);
+            yield return null;
         }
     }
 }
