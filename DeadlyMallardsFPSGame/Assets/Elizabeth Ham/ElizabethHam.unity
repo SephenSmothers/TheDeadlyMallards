@@ -451,6 +451,10 @@ PrefabInstance:
       value: ZombieEnemey
       objectReference: {fileID: 0}
     - target: {fileID: 4863869306357811220, guid: ee9376bc1e85aba47a7888754c5b8e99, type: 3}
+      propertyPath: shootspeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4863869306357811220, guid: ee9376bc1e85aba47a7888754c5b8e99, type: 3}
       propertyPath: DamagePopUp
       value: 
       objectReference: {fileID: 1395230549}
