@@ -9,6 +9,7 @@ TagManager:
   - Concrete
   - CaveGround
   - Wood
+  - Explosion
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - Enemy
   - Enemy Projectile
   - DamageText
-  - 
+  - Gun
   - 
   - 
   - 

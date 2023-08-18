@@ -8,8 +8,8 @@ public class headBobbing : MonoBehaviour
 {
     [Header("-----Head Bobbing Settings-----")]
     public float speed;
-    [SerializeField] float intensity;
-    [SerializeField] float intensityx;
+    public float intensity;
+    public float intensityx;
 
 
     private objectPosition objectPosition;
@@ -35,7 +35,7 @@ public class headBobbing : MonoBehaviour
         float amountY = -Mathf.Abs(intensity * Mathf.Sin(time));
         Vector3 amountX = objectPosition.transform.right * intensity * Mathf.Cos(time) * intensityx;
 
-        objectPosition.offset = new Vector3(origOffset.x,origOffset.y + amountY, origOffset.z);
+        objectPosition.offset = new Vector3(origOffset.x, origOffset.y + amountY, origOffset.z);
 
         objectPosition.offset += amountX;
     }
