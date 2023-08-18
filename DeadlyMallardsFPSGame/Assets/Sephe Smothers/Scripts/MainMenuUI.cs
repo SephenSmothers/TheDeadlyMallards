@@ -8,6 +8,8 @@ public class MainMenuUI : MonoBehaviour
     // [SerializeField] GameObject _activeMenu;
     [SerializeField] GameObject _mainMenu;
     [SerializeField] GameObject _levelSelectMenu;
+    [SerializeField] GameObject _credits;
+    [SerializeField] GameObject title;
 
     public void Resume()
     {
@@ -36,10 +38,19 @@ public class MainMenuUI : MonoBehaviour
         _levelSelectMenu.SetActive(true);
     }
 
+    public void Credits()
+    {
+        _mainMenu.SetActive(false);
+        _credits.SetActive(true);
+        title.SetActive(false);
+    }
+
     public void GoBack()
     {
         _mainMenu.SetActive(true);
         _levelSelectMenu.SetActive(false);
+        _credits.SetActive(false);
+        title.SetActive(true);
     }
 
     public void PlayMap1()
