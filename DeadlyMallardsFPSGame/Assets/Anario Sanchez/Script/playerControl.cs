@@ -29,6 +29,9 @@ public class playerControl : MonoBehaviour, TakeDamage
     private float origFOV;
     private bool tired;
     public int maxHP;
+    public Transform gun;
+    public Transform ads;
+    public Transform origGun;
     public GameObject pointer;
     public MovementState state;
 
@@ -38,6 +41,7 @@ public class playerControl : MonoBehaviour, TakeDamage
 
     public enum MovementState
     {
+        ads,
         exhausted,
         walking,
         sprinting,
@@ -65,6 +69,14 @@ public class playerControl : MonoBehaviour, TakeDamage
             {
                 isInvulnerable = false;
             }
+        }
+        if (GameManager.instance.shootingScript.gunList[GameManager.instance.shootingScript.selectedGun].gunName == "Revolver")
+        {
+            gun.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        }
+        else
+        {
+            gun.localScale = new Vector3(0.35f, 0.35f, 0.35f);
         }
     }
 
@@ -96,14 +108,26 @@ public class playerControl : MonoBehaviour, TakeDamage
             staminaRegen();
             playerSpeed = playerWalkSpeed / 2;
             bobbing.speed = 2;
+            gun.position = Vector3.Lerp(gun.position, origGun.position, 10f * Time.deltaTime);
             playerCam.fieldOfView = Mathf.Lerp(playerCam.fieldOfView,55,10f * Time.deltaTime);
         }
-        else if (Input.GetKey(KeyCode.LeftShift) && !tired)
+        else if (Input.GetKey(KeyCode.Mouse1) && !GameManager.instance.shootingScript.reloading)
+        {
+            state = MovementState.ads;
+            staminaRegen();
+            playerSpeed = playerWalkSpeed / 2;
+            bobbing.intensity = 0f;
+            gun.position = Vector3.Lerp(gun.position,ads.position, 10f * Time.deltaTime);
+            playerCam.fieldOfView = Mathf.Lerp(playerCam.fieldOfView,35, 10f * Time.deltaTime);
+        }
+        else if (Input.GetKey(KeyCode.LeftShift) && !tired && state != MovementState.ads)
         {
             state = MovementState.sprinting;
             staminaRunning();
             playerSpeed = playerSprintSpeed;
             bobbing.speed = 8;
+            bobbing.intensity = 0.02f;
+            gun.position = Vector3.Lerp(gun.position, origGun.position, 10f * Time.deltaTime);
             playerCam.fieldOfView = Mathf.Lerp(playerCam.fieldOfView, 70, 10f * Time.deltaTime);
         }
         else if (groundedPlayer)
@@ -112,6 +136,8 @@ public class playerControl : MonoBehaviour, TakeDamage
             staminaRegen();
             playerSpeed = playerWalkSpeed;
             bobbing.speed = 4;
+            bobbing.intensity = 0.02f;
+            gun.position = Vector3.Lerp(gun.position, origGun.position, 10f * Time.deltaTime);
             playerCam.fieldOfView = Mathf.Lerp(playerCam.fieldOfView, origFOV, 10f * Time.deltaTime);
         }
         else
@@ -141,7 +167,6 @@ public class playerControl : MonoBehaviour, TakeDamage
         {
             tired = false;
         }
-
     }
     public void CanTakeDamage(int amount)
     {
