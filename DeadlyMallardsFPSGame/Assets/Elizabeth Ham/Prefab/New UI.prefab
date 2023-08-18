@@ -2019,7 +2019,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerScript: {fileID: 0}
   shootingScript: {fileID: 0}
-  SaveDataStats: {fileID: 0}
+  dynamiteScript: {fileID: 0}
+  SaveDataStats: {fileID: 11400000, guid: bb94579d71deb2740b818ca9c4e0aeac, type: 2}
   _player: {fileID: 0}
   _playerSpawn: {fileID: 0}
   _activeMenu: {fileID: 0}
@@ -2027,6 +2028,8 @@ MonoBehaviour:
   _winMenu: {fileID: 1437817511260674900}
   _loseMenu: {fileID: 5963673439559585754}
   _flashScreen: {fileID: 6314900831783534813}
+  _settings: {fileID: 0}
+  dynamiteRemaining: {fileID: 0}
   enemiesRemainText: {fileID: 339172235435332698}
   ammoCountRemaning: {fileID: 3011997991479451601}
   reloadPopUp: {fileID: 1355410976445829142, guid: bcb84132a96540944945b01983790844, type: 3}
@@ -3558,18 +3561,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9811321, g: 0.31968507, b: 0.24528302, a: 0.392}
+  m_Color: {r: 0.9811321, g: 0.31968507, b: 0.24528302, a: 0.78431374}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 983747958c90c2c4298187fea3112ba3, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 2
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
