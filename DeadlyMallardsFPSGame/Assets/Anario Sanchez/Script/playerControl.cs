@@ -32,6 +32,10 @@ public class playerControl : MonoBehaviour, TakeDamage
     public GameObject pointer;
     public MovementState state;
 
+    public float invulnerabilityDuration = .5f;
+    private float invulnerabilityTimer = 0.0f;
+    private bool isInvulnerable = false;
+
     public enum MovementState
     {
         exhausted,
@@ -53,6 +57,14 @@ public class playerControl : MonoBehaviour, TakeDamage
         {
             stateCheck();
             movement();
+        }
+        if (isInvulnerable)
+        {
+            invulnerabilityTimer -= Time.deltaTime;
+            if (invulnerabilityTimer <= 0.0f)
+            {
+                isInvulnerable = false;
+            }
         }
     }
 
@@ -133,31 +145,37 @@ public class playerControl : MonoBehaviour, TakeDamage
     }
     public void CanTakeDamage(int amount)
     {
-        hp -= amount;
+        if (!isInvulnerable)
+        { 
+            hp -= amount;
+            isInvulnerable = true;
+            invulnerabilityTimer = invulnerabilityDuration;
 
 
-        GameObject HitMarker = Instantiate(pointer, transform.position, Quaternion.identity);
-        Vector3 directional = transform.position - HitMarker.transform.position;
+            GameObject HitMarker = Instantiate(pointer, transform.position, Quaternion.identity);
+            Vector3 directional = transform.position - HitMarker.transform.position;
 
-        Quaternion rotation = Quaternion.LookRotation(directional);
-        rotation.z = -rotation.y;
-        rotation.y = 0;
-        rotation.x = 0;
-        Vector3 Northdirection = new Vector3(0, 0, transform.eulerAngles.y);
-        GameManager.instance.damageIndicator.transform.localRotation = rotation * Quaternion.Euler(Northdirection);
-        StartCoroutine(GameManager.instance.DamageDirection());
+            Quaternion rotation = Quaternion.LookRotation(directional);
+            rotation.z = -rotation.y;
+            rotation.y = 0;
+            rotation.x = 0;
+            Vector3 Northdirection = new Vector3(0, 0, transform.eulerAngles.y);
+            GameManager.instance.damageIndicator.transform.localRotation = rotation * Quaternion.Euler(Northdirection);
+            StartCoroutine(GameManager.instance.DamageDirection());
 
-        Destroy(HitMarker, .5f);
-        GameManager.instance.UpdatePlayerUI();
-        ScoreManager.instance.UpdateTotalDamageTaken(amount);
-        ScoreManager.instance.UpdateScores();
-        if (hp < 10) 
-        {
-            StartCoroutine(GameManager.instance.FlashScreen());
-        }
-        if (hp <= 0)
-        {
-            GameManager.instance.YoLose();
+            Destroy(HitMarker, .5f);
+            GameManager.instance.UpdatePlayerUI();
+            ScoreManager.instance.UpdateTotalDamageTaken(amount);
+            ScoreManager.instance.UpdateScores();
+            if (hp < 10) 
+            {
+                StartCoroutine(GameManager.instance.FlashScreen());
+            }
+            if (hp <= 0)
+            {
+                GameManager.instance.YoLose();
+            }
+        
         }
 
     }
