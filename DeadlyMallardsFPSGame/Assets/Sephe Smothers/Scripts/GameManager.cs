@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI playerCash;
     public Image playerStaminaBar;
     public Image playerHpBar;
+    public Image playerHpLostBar;
     bool isPaused;
     float origTimeScale;
     int enemiesRemain;
@@ -191,6 +192,7 @@ public class GameManager : MonoBehaviour
     public void UpdatePlayerUI()
     {
         playerHpBar.fillAmount = (float)playerScript.hp / playerScript.maxHP;
+        playerHpLostBar.fillAmount = Mathf.Lerp(playerHpLostBar.fillAmount, playerHpBar.fillAmount, 2 * Time.deltaTime);
         playerStaminaBar.fillAmount = playerScript.stamina / playerScript.maxStamina;
         dynamiteRemaining.SetText($"{dynamiteScript.dynamiteAmount}");
         if (shootingScript.gunList.Count > 0)
