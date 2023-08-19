@@ -8,9 +8,13 @@ public class MainMenuUI : MonoBehaviour
     // [SerializeField] GameObject _activeMenu;
     [SerializeField] GameObject _mainMenu;
     [SerializeField] GameObject _levelSelectMenu;
+    [SerializeField] GameObject _settings;
     [SerializeField] GameObject _credits;
     [SerializeField] GameObject title;
-
+    private void Awake()
+    {
+        _settings.SetActive(false);
+    }
     public void Resume()
     {
         GameManager.instance.UnPause();
@@ -38,6 +42,13 @@ public class MainMenuUI : MonoBehaviour
         _levelSelectMenu.SetActive(true);
     }
 
+    public void Settings()
+    {
+        _settings.SetActive(true);
+        _mainMenu.SetActive(false);
+        title.SetActive(false);
+    }
+
     public void Credits()
     {
         _mainMenu.SetActive(false);
@@ -50,6 +61,13 @@ public class MainMenuUI : MonoBehaviour
         _mainMenu.SetActive(true);
         _levelSelectMenu.SetActive(false);
         _credits.SetActive(false);
+        title.SetActive(true);
+    }
+
+    public void GoBackFromSettings()
+    {
+        _mainMenu.SetActive(true);
+        _settings.SetActive(false);
         title.SetActive(true);
     }
 
