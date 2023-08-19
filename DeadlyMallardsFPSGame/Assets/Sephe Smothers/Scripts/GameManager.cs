@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI playerCash;
     public Image playerStaminaBar;
     public Image playerHpBar;
+    public Image playerHpLostBar;
     bool isPaused;
     float origTimeScale;
     int enemiesRemain;
@@ -116,8 +117,34 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator FlashScreen()
     {
+        //_flashScreen.SetActive(true);
+        //yield return new WaitForSeconds(0.1f);
+        //_flashScreen.SetActive(false);
+        Color startColor = _flashScreen.GetComponent<Image>().color;
+        Color targetColor = new Color(startColor.r, startColor.g, startColor.b, 1f);
+
         _flashScreen.SetActive(true);
-        yield return new WaitForSeconds(0.1f);
+
+        float startTime = Time.time;
+        float elapsedTime = 0f;
+        while (elapsedTime < 0.1f)
+        {
+            elapsedTime = Time.time - startTime;
+            float t = elapsedTime / 0.1f;
+            _flashScreen.GetComponent<Image>().color = Color.Lerp(startColor, targetColor, t);
+            yield return null;
+        }
+
+        startTime = Time.time;
+        elapsedTime = 0f;
+        while (elapsedTime < 0.1f)
+        {
+            elapsedTime = Time.time - startTime;
+            float t = elapsedTime / 0.1f;
+            _flashScreen.GetComponent<Image>().color = Color.Lerp(targetColor, startColor, t);
+            yield return null;
+        }
+
         _flashScreen.SetActive(false);
     }
 
@@ -165,6 +192,7 @@ public class GameManager : MonoBehaviour
     public void UpdatePlayerUI()
     {
         playerHpBar.fillAmount = (float)playerScript.hp / playerScript.maxHP;
+        playerHpLostBar.fillAmount = Mathf.Lerp(playerHpLostBar.fillAmount, playerHpBar.fillAmount, 2 * Time.deltaTime);
         playerStaminaBar.fillAmount = playerScript.stamina / playerScript.maxStamina;
         dynamiteRemaining.SetText($"{dynamiteScript.dynamiteAmount}");
         if (shootingScript.gunList.Count > 0)
