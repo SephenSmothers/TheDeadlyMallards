@@ -116,8 +116,34 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator FlashScreen()
     {
+        //_flashScreen.SetActive(true);
+        //yield return new WaitForSeconds(0.1f);
+        //_flashScreen.SetActive(false);
+        Color startColor = _flashScreen.GetComponent<Image>().color;
+        Color targetColor = new Color(startColor.r, startColor.g, startColor.b, 1f);
+
         _flashScreen.SetActive(true);
-        yield return new WaitForSeconds(0.1f);
+
+        float startTime = Time.time;
+        float elapsedTime = 0f;
+        while (elapsedTime < 0.1f)
+        {
+            elapsedTime = Time.time - startTime;
+            float t = elapsedTime / 0.1f;
+            _flashScreen.GetComponent<Image>().color = Color.Lerp(startColor, targetColor, t);
+            yield return null;
+        }
+
+        startTime = Time.time;
+        elapsedTime = 0f;
+        while (elapsedTime < 0.1f)
+        {
+            elapsedTime = Time.time - startTime;
+            float t = elapsedTime / 0.1f;
+            _flashScreen.GetComponent<Image>().color = Color.Lerp(targetColor, startColor, t);
+            yield return null;
+        }
+
         _flashScreen.SetActive(false);
     }
 

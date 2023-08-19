@@ -12,6 +12,8 @@ public class ObjectiveManager : MonoBehaviour, Interactables
    // public int zombiesToKill;
     public bool AllObjectivesCompleted;
     [SerializeField] bool LastObjective;
+    public GameObject LevelWinUi;
+    public ScoreManager _scoreManager;
 
 
     // Start is called before the first frame update
@@ -45,7 +47,11 @@ public class ObjectiveManager : MonoBehaviour, Interactables
                 //{
                 AllObjectivesCompleted = true;
                 GameManager.instance.SaveAllStats();
-                SceneManager.LoadScene(nextScene);
+
+                LevelWinUi.SetActive(true);
+                _scoreManager.ScoreBoard.SetActive(true);
+                StartCoroutine(HideLevelCompleteUI());
+                //SceneManager.LoadScene(nextScene);
                 // } 
             }
             else
@@ -104,6 +110,17 @@ public class ObjectiveManager : MonoBehaviour, Interactables
 
     //    return complete;
     //}
+
+    private IEnumerator HideLevelCompleteUI()
+    {
+        yield return new WaitForSeconds(3.0f);
+
+        _scoreManager.ScoreBoard.SetActive(false);
+        LevelWinUi.SetActive(false);
+
+       
+        SceneManager.LoadScene(nextScene);
+    }
 
     public void Interact()
     {
