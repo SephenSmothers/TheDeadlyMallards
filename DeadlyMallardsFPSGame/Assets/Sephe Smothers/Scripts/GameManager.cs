@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     public GameObject _winMenu;
     public GameObject _loseMenu;
     public GameObject _flashScreen;
+    public GameObject _finalwinMenu;
     public GameObject _settings;
     public TextMeshProUGUI dynamiteRemaining;
     public TextMeshProUGUI enemiesRemainText;
@@ -55,12 +56,14 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         _settings.SetActive(false);
+
         LoadAllStats();
     }
 
     // Update is called once per frame
     void Update()
     {
+        UpdatePlayerUI();
         if (Input.GetButtonDown("Cancel") && _activeMenu == null)
         {
             Pause();
@@ -104,6 +107,13 @@ public class GameManager : MonoBehaviour
     {
         Pause();
         _activeMenu = _loseMenu;
+        _activeMenu.SetActive(true);
+    }
+
+    public void FinalWin()
+    {
+        Pause();
+        _activeMenu = _finalwinMenu;
         _activeMenu.SetActive(true);
     }
 
@@ -204,8 +214,13 @@ public class GameManager : MonoBehaviour
 
     public void LoadAllStats()
     {
+        if (GameManager.instance.SaveDataStats._guns.Count == 0)
+        {
+            GameManager.instance.SaveDataStats._guns = GameManager.instance.shootingScript.usedGuns;
+        }
         GameManager.instance.cash = GameManager.instance.SaveDataStats._cash;
         GameManager.instance.shootingScript.gunList = GameManager.instance.SaveDataStats._guns;
+        SaveAllStats();
     }
     public void SaveAllStats()
     {
@@ -216,8 +231,7 @@ public class GameManager : MonoBehaviour
     public void ResetAllStats()
     {
         GameManager.instance.SaveDataStats._cash = 0;
-        GameManager.instance.SaveDataStats._guns = GameManager.instance.shootingScript.usedGuns;
-
+        GameManager.instance.SaveDataStats._guns.Clear();
     }
 
     private void LowAmmoColorChange()

@@ -13,6 +13,7 @@ public class ObjectiveManager : MonoBehaviour, Interactables
     public bool AllObjectivesCompleted;
     [SerializeField] bool LastObjective;
     public GameObject LevelWinUi;
+    public GameObject ObjectiveUi;
     public ScoreManager _scoreManager;
 
 
@@ -37,22 +38,13 @@ public class ObjectiveManager : MonoBehaviour, Interactables
 
             if (CheckObjectives())
             {
-                //if (LastObjective)
-                //{
-                //    AllObjectivesCompleted = true;
-                //    GameManager.instance.ResetAllStats();
-                //    SceneManager.LoadScene(nextScene);
-                //}
-                //else
-                //{
                 AllObjectivesCompleted = true;
                 GameManager.instance.SaveAllStats();
 
                 LevelWinUi.SetActive(true);
+                ObjectiveUi.SetActive(false);
                 _scoreManager.ScoreBoard.SetActive(true);
                 StartCoroutine(HideLevelCompleteUI());
-                //SceneManager.LoadScene(nextScene);
-                // } 
             }
             else
             {
@@ -113,10 +105,13 @@ public class ObjectiveManager : MonoBehaviour, Interactables
 
     private IEnumerator HideLevelCompleteUI()
     {
+        
         yield return new WaitForSeconds(3.0f);
+      
 
         _scoreManager.ScoreBoard.SetActive(false);
         LevelWinUi.SetActive(false);
+        ObjectiveUi.SetActive(true);
 
        
         SceneManager.LoadScene(nextScene);

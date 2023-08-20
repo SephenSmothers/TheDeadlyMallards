@@ -5,8 +5,8 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Finished Prefabs/Main Menu.unity
+  - enabled: 0
+    path: Assets/Finished Prefabs/MainScenes/Main Menu.unity
     guid: f0413987a07552a43a24605740b31ef0
   - enabled: 1
     path: Assets/Finished Prefabs/Mission1_Scenes/M1Level1 CS.unity
@@ -15,11 +15,14 @@ EditorBuildSettings:
     path: Assets/Finished Prefabs/Mission1_Scenes/M1Level1.unity
     guid: d036f1173659f4641bb7324b94586d72
   - enabled: 1
-    path: Assets/Finished Prefabs/Mission1_Scenes/M1Level2.unity
-    guid: 7363d5a2f7d592b408a0eb196f16026c
+    path: Assets/Finished Prefabs/Mission1_Scenes/M1Level3 CS.unity
+    guid: ef20cee9ef10eac4fa1f9ea6178b457f
   - enabled: 1
     path: Assets/Finished Prefabs/Mission1_Scenes/M1Level3.unity
-    guid: 54d46c09ada56504e9ce3af107c8d984
+    guid: 24939702d53ce8f46979919c713948e8
+  - enabled: 1
+    path: Assets/Finished Prefabs/Mission1_Scenes/M1Level4 CS.unity
+    guid: b6d4ce81a3531024db4a6999fee7d37e
   - enabled: 1
     path: Assets/Finished Prefabs/Mission1_Scenes/M1Level4.unity
     guid: 956bea777fe0bf047ad6e843cdc9638d
