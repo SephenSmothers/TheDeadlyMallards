@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4973518488486318184}
   - component: {fileID: 4554247153954495670}
   - component: {fileID: 2578703220453796147}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Boss Vomit 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}

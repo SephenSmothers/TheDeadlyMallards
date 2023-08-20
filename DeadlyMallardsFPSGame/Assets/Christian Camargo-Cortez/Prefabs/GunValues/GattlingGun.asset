@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunName: GattlingGun
   damage: 10
-  fireRate: 0.3
+  fireRate: 0.1
   range: 1000
   spread: 0
   reloadTime: 4
-  timeBetweenShots: 0.2
+  timeBetweenShots: 0.1
   magSize: 100
   bulletsPerShot: 1
   totalAmmo: 9999

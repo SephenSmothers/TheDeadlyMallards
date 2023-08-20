@@ -101,10 +101,6 @@ public class GameManager : MonoBehaviour
         _activeMenu.SetActive(false);
         _activeMenu = null;
         scoreManager.ScoreBoard.SetActive(false);
-       
-        
-        
-
     }
 
     public void YoLose()

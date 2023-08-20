@@ -175,9 +175,19 @@ MonoBehaviour:
   vomit: {fileID: 0}
   hitbox: {fileID: 7165650408978483057, guid: 949ca1a187eca464b9eaa63b92d7867d, type: 3}
   headPos: {fileID: 5719475534194368146}
+  body: {fileID: 0}
   anim: {fileID: 5719475534202122608}
   viewAngle: 180
   playerFaceSpeed: 10
+  aud: {fileID: 0}
+  drops: {fileID: 0}
+  zombieCry: {fileID: 0}
+  cryVolume: 0
+  zombieAttack: {fileID: 0}
+  attackVolume: 0
+  zombieDeath: {fileID: 0}
+  DeathVol: 0
+  playerInRange: 0
   DamagePopUp: {fileID: 3830295708246891327, guid: 313942a27a6572843ac4895e5f4170e9, type: 3}
   shooter: 0
 --- !u!135 &1422823510059836802
@@ -235,7 +245,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 50
-  m_Acceleration: 12.5
+  m_Acceleration: 50
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 4
