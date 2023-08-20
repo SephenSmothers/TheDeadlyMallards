@@ -108,6 +108,7 @@ public class BossEnemy : MonoBehaviour, TakeDamage
             anim.SetBool("deadBoss", true);
             agent.enabled = false;
             GetComponent<CapsuleCollider>().enabled = false;
+            GameManager.instance.FinalWin();
             Destroy(gameObject, 5);
             GameManager.instance.OnZombieKilled();
         }

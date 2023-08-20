@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     public GameObject _winMenu;
     public GameObject _loseMenu;
     public GameObject _flashScreen;
+    public GameObject _finalwinMenu;
     public GameObject _settings;
     public TextMeshProUGUI dynamiteRemaining;
     public TextMeshProUGUI enemiesRemainText;
@@ -112,6 +113,13 @@ public class GameManager : MonoBehaviour
     {
         Pause();
         _activeMenu = _loseMenu;
+        _activeMenu.SetActive(true);
+    }
+
+    public void FinalWin()
+    {
+        Pause();
+        _activeMenu = _finalwinMenu;
         _activeMenu.SetActive(true);
     }
 
