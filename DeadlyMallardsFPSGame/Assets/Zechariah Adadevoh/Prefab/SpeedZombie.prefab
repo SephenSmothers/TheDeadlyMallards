@@ -178,17 +178,20 @@ MonoBehaviour:
   vomit: {fileID: 0}
   hitbox: {fileID: 7165650408978483057, guid: 949ca1a187eca464b9eaa63b92d7867d, type: 3}
   headPos: {fileID: 5719475534194368146}
+  body: {fileID: 0}
   anim: {fileID: 5719475534202122608}
   viewAngle: 45
   playerFaceSpeed: 10
   aud: {fileID: 2087471024819014396}
+  drops: {fileID: 0}
   zombieCry: {fileID: 8300000, guid: 84851fd7e538ef2488b2b936b9f1dab0, type: 3}
   cryVolume: 0.5
   zombieAttack: {fileID: 8300000, guid: a7ab5a9a664e80644aff0e92fbd437c3, type: 3}
   attackVolume: 0.5
   zombieDeath: {fileID: 8300000, guid: fe3507130fe45a9458c96235c2af1bd7, type: 3}
   DeathVol: 0.5
-  DamagePopUp: {fileID: 0}
+  playerInRange: 0
+  DamagePopUp: {fileID: 3830295708246891327, guid: 313942a27a6572843ac4895e5f4170e9, type: 3}
   shooter: 0
 --- !u!135 &1422823510059836802
 SphereCollider:

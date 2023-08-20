@@ -605,6 +605,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1216738646}
     - target: {fileID: 1363064023421474948, guid: 6be3ae223c29b0f4d869f62f6e86a04b, type: 3}
+      propertyPath: ObjectiveUi
+      value: 
+      objectReference: {fileID: 1467655737}
+    - target: {fileID: 1363064023421474948, guid: 6be3ae223c29b0f4d869f62f6e86a04b, type: 3}
       propertyPath: roundToReach
       value: 2
       objectReference: {fileID: 0}
@@ -992,6 +996,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f55a989ee877f2468ed333bdd187203, type: 3}
+--- !u!1 &1467655737 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7040207526670876810, guid: 4c32bda449c359e44b88c52266c00e96, type: 3}
+  m_PrefabInstance: {fileID: 791021725}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1470225813
 PrefabInstance:
   m_ObjectHideFlags: 0
