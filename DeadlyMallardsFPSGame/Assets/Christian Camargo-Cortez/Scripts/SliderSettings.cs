@@ -18,6 +18,7 @@ public class SliderSettings : MonoBehaviour
     //extraSounds;
     void Awake()
     {
+        cam = GetComponent<cameraControl>();
         if(!PlayerPrefs.HasKey("Master") || !PlayerPrefs.HasKey("SFX") || !PlayerPrefs.HasKey("Music") || !PlayerPrefs.HasKey("Sensitivity"))
         {
             PlayerPrefs.SetFloat("Master", 1);

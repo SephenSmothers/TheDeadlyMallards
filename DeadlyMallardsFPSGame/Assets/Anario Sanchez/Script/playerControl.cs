@@ -38,7 +38,7 @@ public class playerControl : MonoBehaviour, TakeDamage
     public float invulnerabilityDuration = .5f;
     private float invulnerabilityTimer = 0.0f;
     private bool isInvulnerable = false;
-
+    private bool safety;
     public enum MovementState
     {
         ads,
@@ -52,6 +52,7 @@ public class playerControl : MonoBehaviour, TakeDamage
         origFOV = playerCam.fieldOfView;
         maxStamina = stamina;
         maxHP = hp;
+        safety = true;
         spawnPlayer();
     }
     void Update()
@@ -196,6 +197,11 @@ public class playerControl : MonoBehaviour, TakeDamage
             {
                 StartCoroutine(GameManager.instance.FlashScreen());
             }
+            if(hp <= 0 && safety)
+            {
+                hp = 1;
+                safety = false;
+            }
             if (hp <= 0)
             {
                 GameManager.instance.YoLose();
@@ -208,6 +214,7 @@ public class playerControl : MonoBehaviour, TakeDamage
     public void GetMaxHealth()
     {
         hp = maxHP;
+        safety = true;
         GameManager.instance.UpdatePlayerUI();
     }
     void spawnPlayer()

@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     public GameObject _winMenu;
     public GameObject _loseMenu;
     public GameObject _flashScreen;
+    public GameObject _finalwinMenu;
     public GameObject _settings;
     public TextMeshProUGUI dynamiteRemaining;
     public TextMeshProUGUI enemiesRemainText;
@@ -31,6 +32,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI playerCash;
     public Image playerStaminaBar;
     public Image playerHpBar;
+    public Image playerHpLostBar;
     bool isPaused;
     float origTimeScale;
     int enemiesRemain;
@@ -54,22 +56,20 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         _settings.SetActive(false);
+
         LoadAllStats();
     }
 
     // Update is called once per frame
     void Update()
     {
+        UpdatePlayerUI();
         if (Input.GetButtonDown("Cancel") && _activeMenu == null)
         {
             Pause();
             _activeMenu = _pauseMenu;
             _activeMenu.SetActive(isPaused);
             scoreManager.ScoreBoard.SetActive(true);
-           
-            
-            
-
         }
     }
 
@@ -114,10 +114,43 @@ public class GameManager : MonoBehaviour
         _activeMenu.SetActive(true);
     }
 
+    public void FinalWin()
+    {
+        Pause();
+        _activeMenu = _finalwinMenu;
+        _activeMenu.SetActive(true);
+    }
+
     public IEnumerator FlashScreen()
     {
+        //_flashScreen.SetActive(true);
+        //yield return new WaitForSeconds(0.1f);
+        //_flashScreen.SetActive(false);
+        Color startColor = _flashScreen.GetComponent<Image>().color;
+        Color targetColor = new Color(startColor.r, startColor.g, startColor.b, 1f);
+
         _flashScreen.SetActive(true);
-        yield return new WaitForSeconds(0.1f);
+
+        float startTime = Time.time;
+        float elapsedTime = 0f;
+        while (elapsedTime < 0.1f)
+        {
+            elapsedTime = Time.time - startTime;
+            float t = elapsedTime / 0.1f;
+            _flashScreen.GetComponent<Image>().color = Color.Lerp(startColor, targetColor, t);
+            yield return null;
+        }
+
+        startTime = Time.time;
+        elapsedTime = 0f;
+        while (elapsedTime < 0.1f)
+        {
+            elapsedTime = Time.time - startTime;
+            float t = elapsedTime / 0.1f;
+            _flashScreen.GetComponent<Image>().color = Color.Lerp(targetColor, startColor, t);
+            yield return null;
+        }
+
         _flashScreen.SetActive(false);
     }
 
@@ -165,6 +198,7 @@ public class GameManager : MonoBehaviour
     public void UpdatePlayerUI()
     {
         playerHpBar.fillAmount = (float)playerScript.hp / playerScript.maxHP;
+        playerHpLostBar.fillAmount = Mathf.Lerp(playerHpLostBar.fillAmount, playerHpBar.fillAmount, 2 * Time.deltaTime);
         playerStaminaBar.fillAmount = playerScript.stamina / playerScript.maxStamina;
         dynamiteRemaining.SetText($"{dynamiteScript.dynamiteAmount}");
         if (shootingScript.gunList.Count > 0)
@@ -184,8 +218,13 @@ public class GameManager : MonoBehaviour
 
     public void LoadAllStats()
     {
+        if (GameManager.instance.SaveDataStats._guns.Count == 0)
+        {
+            GameManager.instance.SaveDataStats._guns = GameManager.instance.shootingScript.usedGuns;
+        }
         GameManager.instance.cash = GameManager.instance.SaveDataStats._cash;
         GameManager.instance.shootingScript.gunList = GameManager.instance.SaveDataStats._guns;
+        SaveAllStats();
     }
     public void SaveAllStats()
     {
@@ -196,8 +235,7 @@ public class GameManager : MonoBehaviour
     public void ResetAllStats()
     {
         GameManager.instance.SaveDataStats._cash = 0;
-        GameManager.instance.SaveDataStats._guns = GameManager.instance.shootingScript.usedGuns;
-
+        GameManager.instance.SaveDataStats._guns.Clear();
     }
 
     private void LowAmmoColorChange()

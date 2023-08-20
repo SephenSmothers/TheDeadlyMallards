@@ -133,6 +133,16 @@ public class shootingControl : MonoBehaviour
                         Destroy(particleEffect.gameObject, 5f);
                     }
                 }
+                else if(hit.collider.CompareTag("Head"))
+                {
+                    hit.collider.GetComponent<TakeDamage>().CanTakeDamage(damage *2);
+                    if (gunList[selectedGun].hitEffect != null)
+                    {
+                        ParticleSystem particleEffect = Instantiate(gunList[selectedGun].hitEffect, hit.point, Quaternion.identity);
+                        particleEffect.transform.LookAt(hit.point + hit.normal);
+                        Destroy(particleEffect.gameObject, 5f);
+                    }
+                }
 
 
             }
