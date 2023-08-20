@@ -38,7 +38,6 @@ public class Bullet : MonoBehaviour, TakeDamage
         if (TakeDamage)
         {
             hp -= amount;
-            Debug.Log("Made Contact");
             if (hp <= 0)
             {
                 Instantiate(onDestroy,transform.position, transform.rotation);

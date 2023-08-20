@@ -34,10 +34,11 @@ public class playerControl : MonoBehaviour, TakeDamage
     public Transform origGun;
     public GameObject pointer;
     public MovementState state;
+    public bool isBossPlayer;
 
     public float invulnerabilityDuration = .5f;
     private float invulnerabilityTimer = 0.0f;
-    private bool isInvulnerable = false;
+    public bool isInvulnerable = false;
     private bool safety;
     public enum MovementState
     {

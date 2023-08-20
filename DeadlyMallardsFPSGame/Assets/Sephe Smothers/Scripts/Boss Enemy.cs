@@ -48,6 +48,16 @@ public class BossEnemy : MonoBehaviour, TakeDamage
             ChasePlayer();
             anim.SetFloat("BossZombie", agent.velocity.normalized.magnitude);
         }
+
+        if(GameManager.instance.playerScript.isBossPlayer == true)
+        {
+            GameManager.instance.playerScript.isInvulnerable = false;
+        }
+
+        if (hp <= 0)
+        {
+
+        }
     }
 
 
