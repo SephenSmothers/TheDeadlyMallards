@@ -48,6 +48,10 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 100056, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100056, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
@@ -181,20 +185,19 @@ MonoBehaviour:
   vomit: {fileID: 0}
   hitbox: {fileID: 0}
   headPos: {fileID: 1182583207409696955}
-  body: {fileID: 0}
   anim: {fileID: 465649373616680013}
   viewAngle: 45
   playerFaceSpeed: 10
   aud: {fileID: 4870417316641150952}
-  drops: {fileID: 0}
-  zombieCry: {fileID: 8300000, guid: 1682737af0dd70948a48acdbb45faced, type: 3}
+  drops: {fileID: 2661705507936560159, guid: 6e8690b8eaca8934a91a259d7e2ca962, type: 3}
+  zombieCry: {fileID: 0}
   cryVolume: 0.5
   zombieAttack: {fileID: 0}
   attackVolume: 0
-  zombieDeath: {fileID: 0}
+  zombieDeath: {fileID: 8300000, guid: 1682737af0dd70948a48acdbb45faced, type: 3}
   DeathVol: 0.5
   playerInRange: 0
-  DamagePopUp: {fileID: 0}
+  DamagePopUp: {fileID: 3830295708246891327, guid: 313942a27a6572843ac4895e5f4170e9, type: 3}
   shooter: 0
   explostiondmg: 4
   Boom: {fileID: 8194992990867289339, guid: 99bc28c0d45f51c4fbac01080b73edc7, type: 3}
@@ -217,7 +220,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 3
+  m_Radius: 100
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &2473466575923592373
 CapsuleCollider:
@@ -241,7 +244,7 @@ CapsuleCollider:
   m_Radius: 0.5
   m_Height: 0.1
   m_Direction: 1
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &465649373616680013
 Animator:
   serializedVersion: 7
@@ -274,8 +277,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 50
-  m_Acceleration: 50
+  m_Speed: 100
+  m_Acceleration: 10
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 4
