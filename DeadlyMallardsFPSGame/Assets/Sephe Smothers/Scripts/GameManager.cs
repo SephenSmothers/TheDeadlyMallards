@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public shootingControl shootingScript;
     public dynamiteThrowable dynamiteScript;
     [SerializeField] public SaveStats SaveDataStats;
+    public bool BossLevel; 
     [Header("-----Player-----")]
     public GameObject _player;
     public GameObject _playerSpawn;
@@ -55,22 +56,20 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         _settings.SetActive(false);
+
         LoadAllStats();
     }
 
     // Update is called once per frame
     void Update()
     {
+        UpdatePlayerUI();
         if (Input.GetButtonDown("Cancel") && _activeMenu == null)
         {
             Pause();
             _activeMenu = _pauseMenu;
             _activeMenu.SetActive(isPaused);
             scoreManager.ScoreBoard.SetActive(true);
-           
-            
-            
-
         }
     }
 
@@ -224,8 +223,7 @@ public class GameManager : MonoBehaviour
     public void ResetAllStats()
     {
         GameManager.instance.SaveDataStats._cash = 0;
-        GameManager.instance.SaveDataStats._guns = GameManager.instance.shootingScript.usedGuns;
-
+        //GameManager.instance.SaveDataStats._guns = ;
     }
 
     private void LowAmmoColorChange()
