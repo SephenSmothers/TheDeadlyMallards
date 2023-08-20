@@ -67,10 +67,6 @@ public class GameManager : MonoBehaviour
             _activeMenu = _pauseMenu;
             _activeMenu.SetActive(isPaused);
             scoreManager.ScoreBoard.SetActive(true);
-           
-            
-            
-
         }
     }
 
@@ -86,10 +82,6 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
         isPaused = !isPaused;
         scoreManager.ScoreBoard.SetActive(true);
-       
-        
-        
-
 
     }
 

@@ -123,31 +123,29 @@ public class shootingControl : MonoBehaviour
             {
 
                 // wait for AI tag
-                if (hit.collider.CompareTag("Enemy"))
+                if (hit.collider.CompareTag("Body"))
+                {
+                    hit.collider.GetComponentInParent<TakeDamage>().CanTakeDamage(damage);
+                }
+                else if (hit.collider.CompareTag("Head"))
+                {
+                    int headShotDmg = damage * 2;
+                    hit.collider.GetComponentInParent<TakeDamage>().CanTakeDamage(headShotDmg);
+                }
+                else if (hit.collider.CompareTag("Enemy"))
                 {
                     hit.collider.GetComponent<TakeDamage>().CanTakeDamage(damage);
-                    if (gunList[selectedGun].hitEffect != null)
-                    {
-                        ParticleSystem particleEffect = Instantiate(gunList[selectedGun].hitEffect, hit.point, Quaternion.identity);
-                        particleEffect.transform.LookAt(hit.point + hit.normal);
-                        Destroy(particleEffect.gameObject, 5f);
-                    }
                 }
-                else if(hit.collider.CompareTag("Head"))
+
+                if (gunList[selectedGun].hitEffect != null)
                 {
-                    hit.collider.GetComponent<TakeDamage>().CanTakeDamage(damage *2);
-                    if (gunList[selectedGun].hitEffect != null)
-                    {
-                        ParticleSystem particleEffect = Instantiate(gunList[selectedGun].hitEffect, hit.point, Quaternion.identity);
-                        particleEffect.transform.LookAt(hit.point + hit.normal);
-                        Destroy(particleEffect.gameObject, 5f);
-                    }
+                    ParticleSystem particleEffect = Instantiate(gunList[selectedGun].hitEffect, hit.point, Quaternion.identity);
+                    particleEffect.transform.LookAt(hit.point + hit.normal);
+                    Destroy(particleEffect.gameObject, 5f);
                 }
-
-
             }
 
-            if (Physics.Raycast(bullet.position, direction, out hit, 1000f) && !hit.collider.CompareTag("Enemy") && !hit.collider.CompareTag("Player"))
+            if (Physics.Raycast(bullet.position, direction, out hit, 1000f) && !hit.collider.CompareTag("Head") && !hit.collider.CompareTag("Player") && !hit.collider.CompareTag("Body"))
             {
                 GameObject bulletHole = Instantiate(bulletHolePrefab, hit.point, Quaternion.Euler(0, 180, 0)) as GameObject;
                 bulletHole.transform.LookAt(hit.point + hit.normal);
