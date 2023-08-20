@@ -85,10 +85,6 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
         isPaused = !isPaused;
         scoreManager.ScoreBoard.SetActive(true);
-       
-        
-        
-
 
     }
 

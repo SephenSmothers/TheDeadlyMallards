@@ -18,7 +18,6 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
 
     [SerializeField] GameObject hitbox;
     [SerializeField] Transform headPos;
-    public Collider body;
     public Animator anim;
     [SerializeField] int viewAngle;
     [SerializeField] int playerFaceSpeed;
@@ -144,7 +143,7 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
             anim.SetBool("DeadGun", true);
             aud.PlayOneShot(zombieDeath, DeathVol);
             agent.enabled = false;
-            GetComponent<CapsuleCollider>().enabled = false;
+            //GetComponent<CapsuleCollider>().enabled = false;
             if (gameObject.GetComponent("splitZombie") as splitZombie)
             {
                 GetComponent<splitZombie>().OnDeath();

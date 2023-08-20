@@ -10,6 +10,8 @@ TagManager:
   - CaveGround
   - Wood
   - Explosion
+  - Head
+  - Body
   layers:
   - Default
   - TransparentFX
