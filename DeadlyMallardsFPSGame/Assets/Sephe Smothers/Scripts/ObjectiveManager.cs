@@ -105,14 +105,15 @@ public class ObjectiveManager : MonoBehaviour, Interactables
 
     private IEnumerator HideLevelCompleteUI()
     {
-        GameManager.instance.Pause();
+        Time.timeScale = 0;
         yield return new WaitForSeconds(3.0f);
+      
 
         _scoreManager.ScoreBoard.SetActive(false);
         LevelWinUi.SetActive(false);
         ObjectiveUi.SetActive(true);
 
-       
+        Time.timeScale = 1;
         SceneManager.LoadScene(nextScene);
     }
 
