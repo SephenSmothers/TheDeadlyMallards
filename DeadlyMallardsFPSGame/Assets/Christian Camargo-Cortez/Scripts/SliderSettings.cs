@@ -10,6 +10,7 @@ public class SliderSettings : MonoBehaviour
     [SerializeField] Slider sensitivity;
     [SerializeField] PlayerSoundsManager soundManager;
     [SerializeField] cameraControl cam;
+    [SerializeField] SoundManager musicSM;
 
     //shootingSounds;
     //reloadSounds;
@@ -51,7 +52,7 @@ public class SliderSettings : MonoBehaviour
 
     public void ChangeMusic()
     {
-
+        musicSM.source.volume = music.value;
         SaveSoundValues();
     }
 
