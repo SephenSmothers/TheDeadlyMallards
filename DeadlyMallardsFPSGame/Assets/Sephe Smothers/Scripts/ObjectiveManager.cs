@@ -105,7 +105,7 @@ public class ObjectiveManager : MonoBehaviour, Interactables
 
     private IEnumerator HideLevelCompleteUI()
     {
-        Time.timeScale = 0;
+        
         yield return new WaitForSeconds(3.0f);
       
 
@@ -113,7 +113,7 @@ public class ObjectiveManager : MonoBehaviour, Interactables
         LevelWinUi.SetActive(false);
         ObjectiveUi.SetActive(true);
 
-        Time.timeScale = 1;
+       
         SceneManager.LoadScene(nextScene);
     }
 
