@@ -795,7 +795,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 72, y: 178}
+  m_AnchoredPosition: {x: 442, y: 42}
   m_SizeDelta: {x: -880, y: -570}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &291944000
@@ -818,7 +818,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Game Assets:'
+  m_text: "           Game Assets:\n\nExplosives Package: by Rem Stone\r\nPBR Cowboy
+    Hats: by Ferocious Industries \r\nGuns Pack: Low Poly Guns Collection: Fun Assets\r\nPOLYGON
+    Western - Low Poly 3D Art by Synty: Synty Studios\r\nCharacter Pack: Zombie Sample:
+    Supercyan\r\nRailroad System: Christian Weile\r\nFree HDR skyboxes Pack - BG
+    Studio \r\nAA 3D Low Poly Nature Pack- Ahmet Alp\r\nFree Low Poly Forest Nature
+    Pack - Deadly Props\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -845,8 +850,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 35
-  m_fontSizeBase: 35
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -881,7 +886,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -113.45664, y: 0, z: 0, w: 0}
+  m_margin: {x: -468.0027, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1211,7 +1216,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -213}
+  m_AnchoredPosition: {x: 0, y: -227}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &390065893
@@ -1564,6 +1569,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainMenu: {fileID: 1029480002}
   _levelSelectMenu: {fileID: 158041939}
+  _settings: {fileID: 0}
   _credits: {fileID: 1840529040}
   title: {fileID: 336058879}
 --- !u!1 &514732885
