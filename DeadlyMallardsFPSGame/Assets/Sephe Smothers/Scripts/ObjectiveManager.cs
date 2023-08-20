@@ -38,14 +38,6 @@ public class ObjectiveManager : MonoBehaviour, Interactables
 
             if (CheckObjectives())
             {
-                //if (LastObjective)
-                //{
-                //    AllObjectivesCompleted = true;
-                //    GameManager.instance.ResetAllStats();
-                //    SceneManager.LoadScene(nextScene);
-                //}
-                //else
-                //{
                 AllObjectivesCompleted = true;
                 GameManager.instance.SaveAllStats();
 
@@ -53,8 +45,6 @@ public class ObjectiveManager : MonoBehaviour, Interactables
                 ObjectiveUi.SetActive(false);
                 _scoreManager.ScoreBoard.SetActive(true);
                 StartCoroutine(HideLevelCompleteUI());
-                //SceneManager.LoadScene(nextScene);
-                // } 
             }
             else
             {
