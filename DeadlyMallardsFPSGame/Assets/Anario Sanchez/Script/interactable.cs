@@ -21,8 +21,8 @@ public class interactable : MonoBehaviour
     }
     void Update()
     {
-        Ray ray = new Ray(interactableObject.position, interactableObject.forward);
-        Debug.DrawRay(interactableObject.position, interactableObject.forward);
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        
         if (Physics.Raycast(ray, out RaycastHit hitInfo, interactableRange))
         {
             if (hitInfo.collider.gameObject.TryGetComponent(out Interactables interacted))
