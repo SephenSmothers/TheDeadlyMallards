@@ -18,7 +18,7 @@ public class ColliderMovement : MonoBehaviour
     {
         if(enemy.hp <=0)
         {
-            colliderObj.SetActive(false);
+            Destroy(colliderObj);
         }
         colliderObj.transform.position = where.position;
         colliderObj.transform.rotation= where.rotation;
