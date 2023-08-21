@@ -105,7 +105,7 @@ public class ObjectiveManager : MonoBehaviour, Interactables
 
     private IEnumerator HideLevelCompleteUI()
     {
-        
+        GameManager.instance.playerScript.isInvulnerable = true;
         yield return new WaitForSeconds(3.0f);
       
 

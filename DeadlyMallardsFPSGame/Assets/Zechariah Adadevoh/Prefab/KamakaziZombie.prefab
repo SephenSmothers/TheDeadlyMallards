@@ -354,7 +354,7 @@ MonoBehaviour:
   zombieDeath: {fileID: 0}
   DeathVol: 0.5
   playerInRange: 0
-  DamagePopUp: {fileID: 0}
+  DamagePopUp: {fileID: 3830295708246891327, guid: 313942a27a6572843ac4895e5f4170e9, type: 3}
   shooter: 0
   explostiondmg: 4
   Boom: {fileID: 8194992990867289339, guid: 99bc28c0d45f51c4fbac01080b73edc7, type: 3}
