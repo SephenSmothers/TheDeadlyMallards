@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Finished Prefabs/MainScenes/Main Menu.unity
     guid: 9843bb5d10eae1b48a2050f3cee52087
   - enabled: 1
+    path: Assets/Finished Prefabs/MainScenes/Main Menu2.unity
+    guid: 26cede8c10ddc5f44994fc53cd37fd6a
+  - enabled: 1
     path: Assets/Finished Prefabs/Mission1_Scenes/M1Level1 CS.unity
     guid: c02179a18221663489e75f6e6697bed2
   - enabled: 1
