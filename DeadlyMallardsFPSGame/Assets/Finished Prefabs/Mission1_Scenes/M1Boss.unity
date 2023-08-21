@@ -19858,6 +19858,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5190146667155605899, guid: 0d269a0ee73b212429bf09346e7f9f77, type: 3}
   m_PrefabInstance: {fileID: 985503453}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &920384303 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6470827327786937022, guid: e397fe6b800207348a0290e227c695f1, type: 3}
+  m_PrefabInstance: {fileID: 369805493}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3178f442c2274a48ad676a175050475, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &924352240
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26872,6 +26883,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4331832858961822, guid: 461adae6d8ea6d74fac73e4bd90066cb, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4552874026067268729}
+    - targetCorrespondingSourceObject: {fileID: 4331832858961822, guid: 461adae6d8ea6d74fac73e4bd90066cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1831374158629246488}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1235095919362174, guid: 461adae6d8ea6d74fac73e4bd90066cb, type: 3}
       insertIndex: -1
@@ -34697,7 +34711,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1894959136181803026, guid: 4dc41b3a9703d9646bd35155d698423f, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1894959136181803026, guid: 4dc41b3a9703d9646bd35155d698423f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -34743,6 +34757,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Menu Music '
       objectReference: {fileID: 0}
+    - target: {fileID: 9023990052495696507, guid: 4dc41b3a9703d9646bd35155d698423f, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 8b301138c94126d4a9ce2b7a516165dd, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -35182,6 +35200,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 369805494}
     m_Modifications:
+    - target: {fileID: 4016231426328196283, guid: 0ef9a46f5f887fa4a8607043a92b83df, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 920384303}
+    - target: {fileID: 4016231426328196283, guid: 0ef9a46f5f887fa4a8607043a92b83df, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: quit
+      objectReference: {fileID: 0}
+    - target: {fileID: 4065385109605191154, guid: 0ef9a46f5f887fa4a8607043a92b83df, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 920384303}
+    - target: {fileID: 4065385109605191154, guid: 0ef9a46f5f887fa4a8607043a92b83df, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MainMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 4112282388841197994, guid: 0ef9a46f5f887fa4a8607043a92b83df, type: 3}
       propertyPath: m_Name
       value: FInal Game Win
@@ -42842,15 +42876,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1831374158629079672}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -490, y: -0.27, z: -540}
+  m_LocalPosition: {x: 0, y: -0.27, z: -70}
   m_LocalScale: {x: 35, y: 25, z: 35}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1831374158629246496}
   - {fileID: 1831374158629246490}
   - {fileID: 3846441670367812834}
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_Father: {fileID: 1620844049}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1831374158629246490
 Transform:
@@ -44670,12 +44704,12 @@ NavMeshAgent:
   m_GameObject: {fileID: 1831374158629079672}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.01
+  m_Radius: 0.5
   m_Speed: 100
   m_Acceleration: 50
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 50
+  m_StoppingDistance: 75
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1

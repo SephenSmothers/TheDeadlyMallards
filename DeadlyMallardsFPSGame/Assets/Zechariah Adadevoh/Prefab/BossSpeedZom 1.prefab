@@ -138,6 +138,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100056, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2786975695514436971}
+    - targetCorrespondingSourceObject: {fileID: 100056, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -2814783290636791921}
   m_SourcePrefab: {fileID: 100100000, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
 --- !u!4 &5719475534194368146 stripped
 Transform:
@@ -179,7 +182,7 @@ MonoBehaviour:
   viewAngle: 180
   playerFaceSpeed: 10
   aud: {fileID: 0}
-  drops: {fileID: 0}
+  drops: {fileID: -2814783290636791921}
   zombieCry: {fileID: 0}
   cryVolume: 0
   zombieAttack: {fileID: 0}
@@ -255,6 +258,21 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &-2814783290636791921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5719475534194721480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96d7bab4c382bfe43af80fcae3f02aec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthCrate: {fileID: 5987435874294677558, guid: 665d69d4fe166cc409b3c28d47456a4c, type: 3}
+  ammoCrate: {fileID: 2643092445357577693, guid: a56aec048385cbb4e964425ee3b5aed2, type: 3}
+  dynamite: {fileID: 8687384243056823977, guid: 881f3f5feb02c244aa45ed3cd00fa2f0, type: 3}
 --- !u!95 &5719475534202122608 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 9500000, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
