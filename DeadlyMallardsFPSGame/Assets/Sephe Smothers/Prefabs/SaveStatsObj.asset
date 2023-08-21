@@ -14,5 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cash: 0
   _currWave: 0
-  _guns:
-  - {fileID: 11400000, guid: db08fffd15e3c2146aabd166466c5b5d, type: 2}
+  _guns: []

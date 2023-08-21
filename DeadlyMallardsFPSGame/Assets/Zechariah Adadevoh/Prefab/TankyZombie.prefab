@@ -316,7 +316,7 @@ MonoBehaviour:
   zombieDeath: {fileID: 8300000, guid: f3b2285de27e0944ca86c474f894e9fc, type: 3}
   DeathVol: 0.5
   playerInRange: 0
-  DamagePopUp: {fileID: 0}
+  DamagePopUp: {fileID: 3830295708246891327, guid: 313942a27a6572843ac4895e5f4170e9, type: 3}
   shooter: 0
 --- !u!195 &6161223996371657999
 NavMeshAgent:
