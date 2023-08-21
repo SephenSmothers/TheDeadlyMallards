@@ -70,6 +70,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   where: {fileID: 3167223332931202303}
   colliderObj: {fileID: 5972891270378947824}
+  enemy: {fileID: 965941329803303726}
 --- !u!1 &6782863042894099170
 GameObject:
   m_ObjectHideFlags: 0
@@ -140,6 +141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   where: {fileID: 3167223332931202249}
   colliderObj: {fileID: 6782863042894099170}
+  enemy: {fileID: 965941329803303726}
 --- !u!1 &9122233153584437697
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,7 +195,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400056, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 400056, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
       propertyPath: m_LocalScale.x
@@ -209,15 +211,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400056, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15.932971
+      value: 5.1198573
       objectReference: {fileID: 0}
     - target: {fileID: 400056, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.8915553
+      value: 1.7779822
       objectReference: {fileID: 0}
     - target: {fileID: 400056, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.3062754
+      value: 1.1823902
       objectReference: {fileID: 0}
     - target: {fileID: 400056, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
       propertyPath: m_LocalRotation.w

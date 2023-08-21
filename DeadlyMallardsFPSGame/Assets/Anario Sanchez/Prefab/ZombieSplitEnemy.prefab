@@ -102,6 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   where: {fileID: 1125809258068313154}
   colliderObj: {fileID: 377657770565981146}
+  enemy: {fileID: 8443363236154550222}
 --- !u!1 &605231690925352259
 GameObject:
   m_ObjectHideFlags: 0
@@ -990,7 +991,7 @@ Transform:
   - {fileID: 4603071954833319959}
   - {fileID: 7489220254993486539}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &-1066491199078304538
 MonoBehaviour:
@@ -1305,6 +1306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   where: {fileID: 8319994857774014272}
   colliderObj: {fileID: 8695290950102031295}
+  enemy: {fileID: 8443363236154550222}
 --- !u!1 &8929776598965277560
 GameObject:
   m_ObjectHideFlags: 0

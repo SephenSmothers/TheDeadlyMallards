@@ -760,7 +760,7 @@ Transform:
   - {fileID: 4199763810531633110}
   - {fileID: 2102371119900536186}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &598377184842885272
 MonoBehaviour:
@@ -1172,6 +1172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   where: {fileID: 753045697949549879}
   colliderObj: {fileID: 7904166730292067146}
+  enemy: {fileID: 3034641422232311442}
 --- !u!1 &7924217996411721845
 GameObject:
   m_ObjectHideFlags: 0
@@ -1242,6 +1243,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   where: {fileID: 7236201382422417770}
   colliderObj: {fileID: 7924217996411721845}
+  enemy: {fileID: 3034641422232311442}
 --- !u!1 &7974354404389700628
 GameObject:
   m_ObjectHideFlags: 0

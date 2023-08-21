@@ -70,6 +70,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   where: {fileID: 1182583207409696909}
   colliderObj: {fileID: 1581296786953420149}
+  enemy: {fileID: 1572471273293246130}
 --- !u!1 &3280715150733453156
 GameObject:
   m_ObjectHideFlags: 0
@@ -140,6 +141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   where: {fileID: 1182583207409696955}
   colliderObj: {fileID: 3280715150733453156}
+  enemy: {fileID: 1572471273293246130}
 --- !u!1 &5531296111253403963
 GameObject:
   m_ObjectHideFlags: 0
