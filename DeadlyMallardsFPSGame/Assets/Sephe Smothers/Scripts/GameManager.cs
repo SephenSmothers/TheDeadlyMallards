@@ -52,7 +52,6 @@ public class GameManager : MonoBehaviour
         _playerSpawn = GameObject.FindGameObjectWithTag("playerSpawn");
         origTimeScale = Time.timeScale;
         zombiesKilled = 0;
-        cash = 10000;
     }
     private void Start()
     {
