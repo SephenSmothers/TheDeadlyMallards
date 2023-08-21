@@ -271,7 +271,7 @@ public class shootingControl : MonoBehaviour
     {
         for (int i = 0; i < guns.Count; i++)
         {
-            if (guns[i].name == name)
+            if (guns[i].gunName == name)
             {
                 return true;
             }

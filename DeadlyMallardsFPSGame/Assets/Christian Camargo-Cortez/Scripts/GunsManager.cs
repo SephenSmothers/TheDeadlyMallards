@@ -30,6 +30,7 @@ public class GunsManager : ScriptableObject
     int origBulletsPerShot;
     int origMagSize;
     int origMaxAmmo;
+    public float origSpread;
 
 
     private void Awake()
@@ -41,6 +42,7 @@ public class GunsManager : ScriptableObject
         origBulletsPerShot = bulletsPerShot;
         origMagSize = magSize;
         origMaxAmmo = maxAmmo;
+        origSpread = spread;
     }
   
     public void resetGunStats()
@@ -57,5 +59,6 @@ public class GunsManager : ScriptableObject
         totalAmmo = maxAmmo;
         upgradedGun1 = false;
         upgradedGun2 = false;
+        spread = origSpread;
     }
 }

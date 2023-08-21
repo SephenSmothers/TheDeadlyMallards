@@ -54,7 +54,7 @@ public class upgradeBox : MonoBehaviour, Interactables
                 curGun.model.GetComponent<MeshRenderer>().sharedMaterial.color = Color.yellow;
                 GameManager.instance.shootingScript.gunList.Insert(GameManager.instance.shootingScript.selectedGun, curGun);
                 GameManager.instance.shootingScript.changeGunStats();
-                GameManager.instance.RemoveCash(2500);
+                GameManager.instance.RemoveCash(5000);
             }
             else
             {
@@ -68,7 +68,7 @@ public class upgradeBox : MonoBehaviour, Interactables
                 curGun.model.GetComponent<MeshRenderer>().sharedMaterial.color = Color.yellow;
                 GameManager.instance.shootingScript.gunList.Insert(GameManager.instance.shootingScript.selectedGun, curGun);
                 GameManager.instance.shootingScript.changeGunStats();
-                GameManager.instance.RemoveCash(2500);
+                GameManager.instance.RemoveCash(5000);
             }
         }
     }

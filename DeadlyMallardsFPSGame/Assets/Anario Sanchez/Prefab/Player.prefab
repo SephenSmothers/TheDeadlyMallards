@@ -312,7 +312,7 @@ MonoBehaviour:
   playerWalkSpeed: 6
   playerSprintSpeed: 9
   stamina: 5
-  jumpHeight: 5
+  jumpHeight: 4
   maxStamina: 0
   maxHP: 0
   gun: {fileID: 3554391748248248238}
@@ -320,7 +320,9 @@ MonoBehaviour:
   origGun: {fileID: 3442236321169187184}
   pointer: {fileID: 5344089196946095140, guid: ad8fb208ec8ea0e48b5aa58926f4c0e6, type: 3}
   state: 0
+  isBossPlayer: 0
   invulnerabilityDuration: 0.5
+  isInvulnerable: 0
 --- !u!114 &7797289553928980035
 MonoBehaviour:
   m_ObjectHideFlags: 0

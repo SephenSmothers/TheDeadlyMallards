@@ -108,10 +108,11 @@ public class playerControl : MonoBehaviour, TakeDamage
         {
             state = MovementState.exhausted;
             staminaRegen();
+            resetSpread();
             playerSpeed = playerWalkSpeed / 2;
             bobbing.speed = 2;
             gun.position = Vector3.Lerp(gun.position, origGun.position, 10f * Time.deltaTime);
-            playerCam.fieldOfView = Mathf.Lerp(playerCam.fieldOfView,55,10f * Time.deltaTime);
+            playerCam.fieldOfView = Mathf.Lerp(playerCam.fieldOfView, 55, 10f * Time.deltaTime);
         }
         else if (Input.GetKey(KeyCode.Mouse1) && !GameManager.instance.shootingScript.reloading)
         {
@@ -119,13 +120,22 @@ public class playerControl : MonoBehaviour, TakeDamage
             staminaRegen();
             playerSpeed = playerWalkSpeed / 2;
             bobbing.intensity = 0f;
-            gun.position = Vector3.Lerp(gun.position,ads.position, 10f * Time.deltaTime);
-            playerCam.fieldOfView = Mathf.Lerp(playerCam.fieldOfView,35, 10f * Time.deltaTime);
+            if (GameManager.instance.shootingScript.gunList[GameManager.instance.shootingScript.selectedGun].gunName == "Shotgun")
+            {
+                GameManager.instance.shootingScript.gunList[GameManager.instance.shootingScript.selectedGun].spread = 0.05f;
+            }
+            else
+            {
+                GameManager.instance.shootingScript.gunList[GameManager.instance.shootingScript.selectedGun].spread = 0f;
+            }
+            gun.position = Vector3.Lerp(gun.position, ads.position, 10f * Time.deltaTime);
+            playerCam.fieldOfView = Mathf.Lerp(playerCam.fieldOfView, 35, 10f * Time.deltaTime);
         }
         else if (Input.GetKey(KeyCode.LeftShift) && !tired && state != MovementState.ads)
         {
             state = MovementState.sprinting;
             staminaRunning();
+            resetSpread();
             playerSpeed = playerSprintSpeed;
             bobbing.speed = 8;
             bobbing.intensity = 0.02f;
@@ -136,6 +146,7 @@ public class playerControl : MonoBehaviour, TakeDamage
         {
             state = MovementState.walking;
             staminaRegen();
+            resetSpread();
             playerSpeed = playerWalkSpeed;
             bobbing.speed = 4;
             bobbing.intensity = 0.02f;
@@ -145,6 +156,7 @@ public class playerControl : MonoBehaviour, TakeDamage
         else
         {
             staminaRegen();
+            resetSpread();
             state = MovementState.air;
         }
     }
@@ -163,7 +175,7 @@ public class playerControl : MonoBehaviour, TakeDamage
     {
         if (stamina <= maxStamina)
         {
-            stamina += 1 * Time.deltaTime;
+            stamina += 2 * Time.deltaTime;
         }
         else
         {
@@ -173,7 +185,7 @@ public class playerControl : MonoBehaviour, TakeDamage
     public void CanTakeDamage(int amount)
     {
         if (!isInvulnerable)
-        { 
+        {
             hp -= amount;
             isInvulnerable = true;
             invulnerabilityTimer = invulnerabilityDuration;
@@ -194,11 +206,11 @@ public class playerControl : MonoBehaviour, TakeDamage
             GameManager.instance.UpdatePlayerUI();
             ScoreManager.instance.UpdateTotalDamageTaken(amount);
             ScoreManager.instance.UpdateScores();
-            if (hp < 10) 
+            if (hp < 10)
             {
                 StartCoroutine(GameManager.instance.FlashScreen());
             }
-            if(hp <= 0 && safety)
+            if (hp <= 0 && safety)
             {
                 hp = 1;
                 safety = false;
@@ -207,7 +219,7 @@ public class playerControl : MonoBehaviour, TakeDamage
             {
                 GameManager.instance.YoLose();
             }
-        
+
         }
 
     }
@@ -230,5 +242,17 @@ public class playerControl : MonoBehaviour, TakeDamage
     public bool isTiredChecker()
     {
         return tired;
+    }
+    
+    void resetSpread()
+    {
+        if (GameManager.instance.shootingScript.gunList[GameManager.instance.shootingScript.selectedGun].gunName == "Shotgun")
+        {
+            GameManager.instance.shootingScript.gunList[GameManager.instance.shootingScript.selectedGun].spread = GameManager.instance.shootingScript.gunList[GameManager.instance.shootingScript.selectedGun].origSpread;
+        }
+        else
+        {
+            GameManager.instance.shootingScript.gunList[GameManager.instance.shootingScript.selectedGun].spread = GameManager.instance.shootingScript.gunList[GameManager.instance.shootingScript.selectedGun].origSpread;
+        }
     }
 }
