@@ -42,7 +42,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4603071954833319959}
   - component: {fileID: 2709542668913547829}
-  - component: {fileID: 4016009225463912153}
   m_Layer: 7
   m_Name: HeadPos
   m_TagString: Head
@@ -88,21 +87,6 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 2.39, z: 0}
---- !u!114 &4016009225463912153
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 377657770565981146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 390e510a77abac84b99d75c0f70e4823, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  where: {fileID: 1125809258068313154}
-  colliderObj: {fileID: 377657770565981146}
-  enemy: {fileID: 8443363236154550222}
 --- !u!1 &605231690925352259
 GameObject:
   m_ObjectHideFlags: 0
@@ -963,9 +947,11 @@ GameObject:
   - component: {fileID: 441309679248778184}
   - component: {fileID: -1066491199078304538}
   - component: {fileID: 8443363236154550222}
+  - component: {fileID: 9016307809735826848}
   - component: {fileID: 803958145523720471}
   - component: {fileID: 875290046749856809}
   - component: {fileID: 841306691927568549}
+  - component: {fileID: 7563077736190835317}
   m_Layer: 7
   m_Name: ZombieSplitEnemy
   m_TagString: Untagged
@@ -991,7 +977,7 @@ Transform:
   - {fileID: 4603071954833319959}
   - {fileID: 7489220254993486539}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &-1066491199078304538
 MonoBehaviour:
@@ -1022,6 +1008,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modle: {fileID: 8747248153771512329}
   agent: {fileID: 803958145523720471}
+  caps: {fileID: 9016307809735826848}
   hp: 8
   shootspeed: 0.5
   shootingpos: {fileID: 0}
@@ -1032,18 +1019,32 @@ MonoBehaviour:
   anim: {fileID: 875290046749856809}
   viewAngle: 90
   playerFaceSpeed: 180
-  aud: {fileID: 0}
+  aud: {fileID: 7563077736190835317}
   drops: {fileID: -1066491199078304538}
-  zombieCry: {fileID: 0}
+  zombieCry: {fileID: 8300000, guid: f127010fbee96094b8e24305831f9822, type: 3}
   cryVolume: 0
-  zombieAttack: {fileID: 0}
+  zombieAttack: {fileID: 8300000, guid: a7ab5a9a664e80644aff0e92fbd437c3, type: 3}
   attackVolume: 0
-  zombieDeath: {fileID: 0}
+  zombieDeath: {fileID: 8300000, guid: 61e9a8b925e552443addbd7909adaed3, type: 3}
   DeathVol: 0
   playerInRange: 0
   DamagePopUp: {fileID: 3830295708246891327, guid: 313942a27a6572843ac4895e5f4170e9, type: 3}
   shooter: 0
   zombie: {fileID: 5719475534194721480, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
+--- !u!114 &9016307809735826848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6673777561959086552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 390e510a77abac84b99d75c0f70e4823, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  headCap: {fileID: 5226495225421011706}
+  bodyCap: {fileID: 2709542668913547829}
 --- !u!195 &803958145523720471
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1109,6 +1110,102 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!82 &7563077736190835317
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6673777561959086552}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &7211872767488515115
 GameObject:
   m_ObjectHideFlags: 0
@@ -1246,7 +1343,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7489220254993486539}
   - component: {fileID: 5226495225421011706}
-  - component: {fileID: 9006960246050683265}
   m_Layer: 7
   m_Name: BodyPos
   m_TagString: Body
@@ -1292,21 +1388,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &9006960246050683265
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8695290950102031295}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 390e510a77abac84b99d75c0f70e4823, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  where: {fileID: 8319994857774014272}
-  colliderObj: {fileID: 8695290950102031295}
-  enemy: {fileID: 8443363236154550222}
 --- !u!1 &8929776598965277560
 GameObject:
   m_ObjectHideFlags: 0
