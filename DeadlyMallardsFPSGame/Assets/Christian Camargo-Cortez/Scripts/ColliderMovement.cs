@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class ColliderMovement : MonoBehaviour
 {
-  
-    void Awake()
-    {
-        
-    }
+    public CapsuleCollider headCap;
+    public CapsuleCollider bodyCap;
 
-    // Update is called once per frame
-    void Update()
+    public void capsuleDisable()
     {
-       
+       headCap.enabled = false;
+       bodyCap.enabled = false;
     }
 }

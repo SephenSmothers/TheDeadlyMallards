@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5353234002047748262}
   - component: {fileID: 3421898153461194956}
-  - component: {fileID: 596101159144416014}
   m_Layer: 7
   m_Name: HeadPos
   m_TagString: Head
@@ -56,21 +55,6 @@ CapsuleCollider:
   m_Height: 0
   m_Direction: 1
   m_Center: {x: -0.15, y: 0, z: 0}
---- !u!114 &596101159144416014
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3997362707439665639}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 390e510a77abac84b99d75c0f70e4823, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  where: {fileID: 5719475534194368146}
-  colliderObj: {fileID: 3997362707439665639}
-  enemy: {fileID: 5112939696905311384}
 --- !u!1 &6107612585688411089
 GameObject:
   m_ObjectHideFlags: 0
@@ -112,7 +96,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1379775288446024489}
   - component: {fileID: 699118808702070093}
-  - component: {fileID: 356047570360347236}
   m_Layer: 7
   m_Name: BodyPos
   m_TagString: Body
@@ -158,21 +141,6 @@ CapsuleCollider:
   m_Height: 0.1
   m_Direction: 1
   m_Center: {x: 0.2, y: 0, z: 0}
---- !u!114 &356047570360347236
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6236311193501335840}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 390e510a77abac84b99d75c0f70e4823, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  where: {fileID: 5719475534194368164}
-  colliderObj: {fileID: 6236311193501335840}
-  enemy: {fileID: 5112939696905311384}
 --- !u!1001 &5719475534194754576
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -195,7 +163,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400056, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400056, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
       propertyPath: m_LocalScale.x
@@ -285,6 +253,9 @@ PrefabInstance:
       addedObject: {fileID: 1422823510059836802}
     - targetCorrespondingSourceObject: {fileID: 100056, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 9010772094095166507}
+    - targetCorrespondingSourceObject: {fileID: 100056, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 2786975695514436971}
     - targetCorrespondingSourceObject: {fileID: 100056, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
       insertIndex: -1
@@ -293,11 +264,6 @@ PrefabInstance:
 --- !u!4 &5719475534194368146 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400002, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
-  m_PrefabInstance: {fileID: 5719475534194754576}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &5719475534194368164 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400052, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
   m_PrefabInstance: {fileID: 5719475534194754576}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &5719475534194368168 stripped
@@ -339,6 +305,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modle: {fileID: 5719475534206226352}
   agent: {fileID: 2786975695514436971}
+  caps: {fileID: 9010772094095166507}
   hp: 3
   shootspeed: 1
   shootingpos: {fileID: 0}
@@ -381,6 +348,20 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1.25
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &9010772094095166507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5719475534194721480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 390e510a77abac84b99d75c0f70e4823, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  headCap: {fileID: 699118808702070093}
+  bodyCap: {fileID: 3421898153461194956}
 --- !u!195 &2786975695514436971
 NavMeshAgent:
   m_ObjectHideFlags: 0

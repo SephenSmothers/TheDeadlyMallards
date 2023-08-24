@@ -237,6 +237,7 @@ GameObject:
   - component: {fileID: 4926572047297011294}
   - component: {fileID: 9119296194016297407}
   - component: {fileID: 3862666026294156513}
+  - component: {fileID: 4324426387391701954}
   - component: {fileID: 6161223996371657999}
   - component: {fileID: 7062833521611038124}
   - component: {fileID: 4301378476205099065}
@@ -266,7 +267,7 @@ Transform:
   - {fileID: 5107266081442980395}
   - {fileID: 8141269320126279285}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9119296194016297407
 MonoBehaviour:
@@ -297,6 +298,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modle: {fileID: 6292379029496106636}
   agent: {fileID: 6161223996371657999}
+  caps: {fileID: 4324426387391701954}
   hp: 8
   shootspeed: 1
   shootingpos: {fileID: 0}
@@ -311,13 +313,27 @@ MonoBehaviour:
   drops: {fileID: 9119296194016297407}
   zombieCry: {fileID: 8300000, guid: 7f83d577f0bf80a49a5b118fc2f9013f, type: 3}
   cryVolume: 0.5
-  zombieAttack: {fileID: 0}
+  zombieAttack: {fileID: 8300000, guid: a7ab5a9a664e80644aff0e92fbd437c3, type: 3}
   attackVolume: 0
   zombieDeath: {fileID: 8300000, guid: f3b2285de27e0944ca86c474f894e9fc, type: 3}
   DeathVol: 0.5
   playerInRange: 0
   DamagePopUp: {fileID: 3830295708246891327, guid: 313942a27a6572843ac4895e5f4170e9, type: 3}
   shooter: 0
+--- !u!114 &4324426387391701954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2420944998124642665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 390e510a77abac84b99d75c0f70e4823, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  headCap: {fileID: 1026133571549398670}
+  bodyCap: {fileID: 6227460196819068324}
 --- !u!195 &6161223996371657999
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -890,7 +906,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5107266081442980395}
   - component: {fileID: 6227460196819068324}
-  - component: {fileID: 3985702657925377416}
   m_Layer: 7
   m_Name: HeadPos
   m_TagString: Head
@@ -936,21 +951,6 @@ CapsuleCollider:
   m_Height: 0
   m_Direction: 1
   m_Center: {x: -0.15, y: 0, z: 0}
---- !u!114 &3985702657925377416
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5022579450598749039}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 390e510a77abac84b99d75c0f70e4823, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  where: {fileID: 388604685633476278}
-  colliderObj: {fileID: 5022579450598749039}
-  enemy: {fileID: 3862666026294156513}
 --- !u!1 &5324948915692253286
 GameObject:
   m_ObjectHideFlags: 0
@@ -1373,7 +1373,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8141269320126279285}
   - component: {fileID: 1026133571549398670}
-  - component: {fileID: 6688909953885953984}
   m_Layer: 7
   m_Name: BodyPos
   m_TagString: Body
@@ -1419,18 +1418,3 @@ CapsuleCollider:
   m_Height: 0.1
   m_Direction: 1
   m_Center: {x: 0.2, y: 0, z: 0}
---- !u!114 &6688909953885953984
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8408664366746385735}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 390e510a77abac84b99d75c0f70e4823, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  where: {fileID: 8894340363127137655}
-  colliderObj: {fileID: 8408664366746385735}
-  enemy: {fileID: 3862666026294156513}
