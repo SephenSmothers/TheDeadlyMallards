@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 //using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.InputSystem.HID;
 using UnityEngine.UI;
 
 public class playerControl : MonoBehaviour, TakeDamage
@@ -58,7 +59,9 @@ public class playerControl : MonoBehaviour, TakeDamage
     }
     void Update()
     {
-        groundedPlayer = controller.isGrounded;
+        groundedPlayer = Physics.Raycast(transform.position, transform.up * -1, out RaycastHit hit, 3);
+        Debug.Log(groundedPlayer);
+        Debug.DrawRay(transform.position, transform.up * -1);
         if (GameManager.instance._activeMenu == null)
         {
             stateCheck();
@@ -155,7 +158,6 @@ public class playerControl : MonoBehaviour, TakeDamage
         }
         else
         {
-            staminaRegen();
             resetSpread();
             state = MovementState.air;
         }

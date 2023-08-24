@@ -8,6 +8,7 @@ public class shootingControl : MonoBehaviour
     public LayerMask enemy;
     public List<GunsManager> gunList = new List<GunsManager>();
     [SerializeField] GameObject gunModel;
+    public Animator anim;
     [SerializeField] int damage;
     [SerializeField] float fireRate, range, spread, reloadTime, timeBetweenShots;
     [SerializeField] int magSize, bulletsPerShot, totalAmmo;
@@ -25,6 +26,7 @@ public class shootingControl : MonoBehaviour
     {
         readyToShoot = true;
         bulletCounter = 0;
+        anim.SetBool("Revolver", true);
         usedGuns.Add(gunList[selectedGun]);
     }
 
@@ -60,22 +62,26 @@ public class shootingControl : MonoBehaviour
         //shooting input
         if (readyToShoot && isShooting && !reloading && gunList[selectedGun].bulletsLeft > 0)
         {
-            soundManager.PlayAllShots();
+            //soundManager.PlayAllShots();
             shoot();
         }
         else if (gunList[selectedGun].bulletsLeft <= 0 && isShooting && !reloading)
         {
+
             reload();
         }
 
         if (gunList[selectedGun].bulletsLeft <= 0 && gunList[selectedGun].totalAmmo <= 0 && isShooting)
         {
-            soundManager.PlayDryFireSound();
+            //soundManager.PlayDryFireSound();
+            anim.SetBool("isShooting", true);
+            anim.SetBool("isEmpty", true);
         }
     }
     public void reload()
     {
         reloading = true;
+        anim.SetBool("isReloading", true);
         Invoke(nameof(reloadEnd), gunList[selectedGun].reloadTime);
     }
 
@@ -95,6 +101,7 @@ public class shootingControl : MonoBehaviour
         }
         reloading = false;
         readyToShoot = true;
+        anim.SetBool("isReloading", false);
         GameManager.instance.UpdatePlayerUI();
 
         //gameManager.SetAmmoCount(totalAmmo);
@@ -103,7 +110,7 @@ public class shootingControl : MonoBehaviour
     public void shoot()
     {
         readyToShoot = false;
-
+        anim.SetBool("isShooting", true);
         if (bulletCounter < bulletsPerShot)
         {
             bulletCounter++;
@@ -172,6 +179,7 @@ public class shootingControl : MonoBehaviour
     public void resetShot()
     {
         readyToShoot = true;
+        anim.SetBool("isShooting", false);
         bulletCounter = 0;
     }
 

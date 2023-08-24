@@ -27,5 +27,7 @@ MonoBehaviour:
   maxAmmo: 84
   model: {fileID: 919132149155446097, guid: 4df3ce82db8e66645afd54ab1d5b0262, type: 3}
   hitEffect: {fileID: 1279405948704577569, guid: f59e2a30d8ee4b849b13cfa9bf84469e, type: 3}
-  upgradedGun: 0
+  upgradedGun1: 0
+  upgradedGun2: 0
   gunPrice: 500
+  origSpread: 0.05

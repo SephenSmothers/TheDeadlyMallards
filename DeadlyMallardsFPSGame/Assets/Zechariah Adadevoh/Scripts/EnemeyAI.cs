@@ -180,7 +180,7 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
         anim.SetTrigger("Attack");
         anim.SetTrigger("speedAttack");
         anim.SetTrigger("tankAttack");
-        Instantiate(hitbox, attackpos.position, Quaternion.Euler(90, 0, 0));
+        Instantiate(hitbox, attackpos.position, Quaternion.Euler(0, 90, 0));
         yield return new WaitForSeconds(shootspeed);
         isattacking = false;
     }
