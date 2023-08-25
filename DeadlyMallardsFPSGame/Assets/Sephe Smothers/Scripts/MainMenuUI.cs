@@ -38,8 +38,9 @@ public class MainMenuUI : MonoBehaviour
 
     public void PlayGame()
     {
-        _mainMenu.SetActive(false);
-        _levelSelectMenu.SetActive(true);
+        //_mainMenu.SetActive(false);
+        //_levelSelectMenu.SetActive(true);
+        SceneManager.LoadScene(1);
     }
 
     public void Settings()
