@@ -43,6 +43,9 @@ public class GameManager : MonoBehaviour
     public GameObject damageIndicator;
     public ScoreManager scoreManager;
     public SliderSettings sliderSettings;
+    public ObjectiveManager _ObjectiveUi;
+
+
 
 
     void Awake()
@@ -70,6 +73,7 @@ public class GameManager : MonoBehaviour
             _activeMenu = _pauseMenu;
             _activeMenu.SetActive(isPaused);
             scoreManager.ScoreBoard.SetActive(true);
+            _ObjectiveUi.ObjectiveUi.SetActive(false);
         }
     }
 
@@ -85,6 +89,7 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
         isPaused = !isPaused;
         scoreManager.ScoreBoard.SetActive(true);
+        _ObjectiveUi.ObjectiveUi.SetActive(false);
 
     }
 
@@ -97,6 +102,7 @@ public class GameManager : MonoBehaviour
         _activeMenu.SetActive(false);
         _activeMenu = null;
         scoreManager.ScoreBoard.SetActive(false);
+        _ObjectiveUi.ObjectiveUi.SetActive(true);
     }
 
     public void YoLose()
