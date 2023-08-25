@@ -1139,7 +1139,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7040207526670876810, guid: 4c32bda449c359e44b88c52266c00e96, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7820058122509311759, guid: 4c32bda449c359e44b88c52266c00e96, type: 3}
       propertyPath: m_text
@@ -1535,6 +1535,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 874754249}
     - target: {fileID: 2874073456481811570, guid: e397fe6b800207348a0290e227c695f1, type: 3}
+      propertyPath: _ObjectiveUi
+      value: 
+      objectReference: {fileID: 394665446}
+    - target: {fileID: 2874073456481811570, guid: e397fe6b800207348a0290e227c695f1, type: 3}
       propertyPath: _playerSpawn
       value: 
       objectReference: {fileID: 1477557383}
@@ -1619,7 +1623,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3305768544031986533, guid: e397fe6b800207348a0290e227c695f1, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e397fe6b800207348a0290e227c695f1, type: 3}
