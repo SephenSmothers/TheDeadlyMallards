@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         UpdatePlayerUI();
-        if (!isPaused && Input.GetButtonDown("Cancel") && _activeMenu == null)
+        if (!_ObjectiveUi.AllObjectivesCompleted && !isPaused && Input.GetButtonDown("Cancel") && _activeMenu == null)
         {
             Pause();
             _activeMenu = _pauseMenu;
@@ -83,12 +83,15 @@ public class GameManager : MonoBehaviour
 
     public void Pause()
     {
-        Time.timeScale = 0;
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.Confined;
-        isPaused = !isPaused;
-        scoreManager.ScoreBoard.SetActive(true);
-        _ObjectiveUi.ObjectiveUi.SetActive(false);
+        if (!_ObjectiveUi.AllObjectivesCompleted)
+        {
+            Time.timeScale = 0;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.Confined;
+            isPaused = !isPaused;
+            scoreManager.ScoreBoard.SetActive(true);
+            _ObjectiveUi.ObjectiveUi.SetActive(false);
+        }
 
     }
 
