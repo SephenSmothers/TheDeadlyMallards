@@ -1437,7 +1437,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1325778739949247361
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2686,6 +2686,7 @@ MonoBehaviour:
   _winMenu: {fileID: 6865534547958347035}
   _loseMenu: {fileID: 1593964957640273552}
   _flashScreen: {fileID: 2775388468015474322}
+  _finalwinMenu: {fileID: 0}
   _settings: {fileID: 6855337155915234156}
   dynamiteRemaining: {fileID: 9178626114779774093}
   enemiesRemainText: {fileID: 2153340005262968772}
@@ -6273,7 +6274,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 187, y: 0}
   m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5355128791415355710
@@ -6332,6 +6333,7 @@ MonoBehaviour:
   sensitivity: {fileID: 5225052319117419733}
   soundManager: {fileID: 0}
   cam: {fileID: 0}
+  musicSM: {fileID: 0}
 --- !u!1 &6865534547958347035
 GameObject:
   m_ObjectHideFlags: 0
@@ -7796,7 +7798,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 187, y: 0}
   m_SizeDelta: {x: 300, y: 325}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4466922036925254669
@@ -8088,6 +8090,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DynamiteAmount
       objectReference: {fileID: 0}
+    - target: {fileID: 5926984845173441096, guid: a610075ac33da75458a9bcfeca734737, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6895491709731014772, guid: a610075ac33da75458a9bcfeca734737, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -8154,11 +8160,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6895491709731014772, guid: a610075ac33da75458a9bcfeca734737, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1840.1339
+      value: -1587
       objectReference: {fileID: 0}
     - target: {fileID: 6895491709731014772, guid: a610075ac33da75458a9bcfeca734737, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -490
+      value: -489.4
       objectReference: {fileID: 0}
     - target: {fileID: 6895491709731014772, guid: a610075ac33da75458a9bcfeca734737, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -8293,6 +8299,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Stamina Bar
       objectReference: {fileID: 0}
+    - target: {fileID: 5898908785303566573, guid: 79471acd88afb1547b0be8a50758e2ba, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8413,6 +8423,10 @@ PrefabInstance:
     - target: {fileID: 7103741082145674597, guid: a4ca45794676c6641b04c7b9ca9ddcde, type: 3}
       propertyPath: m_Name
       value: RoundText
+      objectReference: {fileID: 0}
+    - target: {fileID: 7103741082145674597, guid: a4ca45794676c6641b04c7b9ca9ddcde, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

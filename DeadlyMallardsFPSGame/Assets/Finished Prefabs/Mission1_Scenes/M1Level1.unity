@@ -423,6 +423,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 680549467139875428e835d4dc75fc89, type: 3}
+--- !u!114 &202836594 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7440730873384125848, guid: e397fe6b800207348a0290e227c695f1, type: 3}
+  m_PrefabInstance: {fileID: 8046381021372730588}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &300294706
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1034,6 +1045,10 @@ PrefabInstance:
     - target: {fileID: 7040207526670876810, guid: 4c32bda449c359e44b88c52266c00e96, type: 3}
       propertyPath: m_Name
       value: ObjectiveUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 7040207526670876810, guid: 4c32bda449c359e44b88c52266c00e96, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2669,10 +2684,6 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1172511218674096724, guid: e397fe6b800207348a0290e227c695f1, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 187
-      objectReference: {fileID: 0}
     - target: {fileID: 1941880253687573143, guid: e397fe6b800207348a0290e227c695f1, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -2778,10 +2789,6 @@ PrefabInstance:
       value: UI
       objectReference: {fileID: 0}
     - target: {fileID: 2874073456481811570, guid: e397fe6b800207348a0290e227c695f1, type: 3}
-      propertyPath: cash
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2874073456481811570, guid: e397fe6b800207348a0290e227c695f1, type: 3}
       propertyPath: playerScript
       value: 
       objectReference: {fileID: 981802456}
@@ -2797,10 +2804,6 @@ PrefabInstance:
       propertyPath: shootingScript
       value: 
       objectReference: {fileID: 981802457}
-    - target: {fileID: 4695191515156444583, guid: e397fe6b800207348a0290e227c695f1, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 187
-      objectReference: {fileID: 0}
     - target: {fileID: 5860501055307135800, guid: e397fe6b800207348a0290e227c695f1, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -2813,24 +2816,12 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6129172655791954302, guid: e397fe6b800207348a0290e227c695f1, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -1587
-      objectReference: {fileID: 0}
-    - target: {fileID: 6129172655791954302, guid: e397fe6b800207348a0290e227c695f1, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -489.4
-      objectReference: {fileID: 0}
     - target: {fileID: 7753649326155228492, guid: e397fe6b800207348a0290e227c695f1, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7753649326155228492, guid: e397fe6b800207348a0290e227c695f1, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8554489110280762195, guid: e397fe6b800207348a0290e227c695f1, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8576676112032492314, guid: e397fe6b800207348a0290e227c695f1, type: 3}
@@ -2878,6 +2869,10 @@ PrefabInstance:
       propertyPath: waves.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2956486890969200567, guid: d8a65a4a552646f45bc4f57e09051260, type: 3}
+      propertyPath: RoundIndicatorText
+      value: 
+      objectReference: {fileID: 202836594}
     - target: {fileID: 2956486890969200567, guid: d8a65a4a552646f45bc4f57e09051260, type: 3}
       propertyPath: waves.Array.data[0].enemiesAmmount
       value: 4

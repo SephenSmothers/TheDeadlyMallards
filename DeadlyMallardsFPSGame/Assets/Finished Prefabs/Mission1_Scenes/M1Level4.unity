@@ -1137,6 +1137,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ObjectiveUI
       objectReference: {fileID: 0}
+    - target: {fileID: 7040207526670876810, guid: 4c32bda449c359e44b88c52266c00e96, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7820058122509311759, guid: 4c32bda449c359e44b88c52266c00e96, type: 3}
       propertyPath: m_text
       value: Barrel
