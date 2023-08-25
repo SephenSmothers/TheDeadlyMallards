@@ -1396,6 +1396,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 346
       objectReference: {fileID: 0}
+    - target: {fileID: 1176574788932495458, guid: e397fe6b800207348a0290e227c695f1, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 539811283}
+    - target: {fileID: 1176574788932495458, guid: e397fe6b800207348a0290e227c695f1, type: 3}
+      propertyPath: musicSM
+      value: 
+      objectReference: {fileID: 29059871}
+    - target: {fileID: 1176574788932495458, guid: e397fe6b800207348a0290e227c695f1, type: 3}
+      propertyPath: soundManager
+      value: 
+      objectReference: {fileID: 686627247}
     - target: {fileID: 1941880253687573143, guid: e397fe6b800207348a0290e227c695f1, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1921,7 +1933,7 @@ PrefabInstance:
     - target: {fileID: 9023990052495696507, guid: 4dc41b3a9703d9646bd35155d698423f, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: c779f464dfd630c4eabf6cea3f2e8329, type: 3}
+      objectReference: {fileID: 8300000, guid: 8b301138c94126d4a9ce2b7a516165dd, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

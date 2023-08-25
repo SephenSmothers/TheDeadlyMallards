@@ -826,6 +826,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1652143759095011302, guid: e2c1ac940434a5242b54d72b66654687, type: 3}
   m_PrefabInstance: {fileID: 552673683}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &638483230 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1511103988260378995, guid: 4dc41b3a9703d9646bd35155d698423f, type: 3}
+  m_PrefabInstance: {fileID: 118441118}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ddae1db7a6b7f24b855e7b292861a86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &645894578
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1319,6 +1330,28 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f55a989ee877f2468ed333bdd187203, type: 3}
+--- !u!114 &1358326915 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8294793559072932381, guid: 8a24181c16333d54298dcc6a455acf2a, type: 3}
+  m_PrefabInstance: {fileID: 981802455}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 829dab9df20f1374693f58bdddb8ac73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1436921445 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4403571517906450160, guid: 8a24181c16333d54298dcc6a455acf2a, type: 3}
+  m_PrefabInstance: {fileID: 981802455}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8414c6e1c1e67a647a5da8480e012ea3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1467655737 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7040207526670876810, guid: 4c32bda449c359e44b88c52266c00e96, type: 3}
@@ -2668,6 +2701,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -925
       objectReference: {fileID: 0}
+    - target: {fileID: 1176574788932495458, guid: e397fe6b800207348a0290e227c695f1, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1436921445}
+    - target: {fileID: 1176574788932495458, guid: e397fe6b800207348a0290e227c695f1, type: 3}
+      propertyPath: musicSM
+      value: 
+      objectReference: {fileID: 638483230}
+    - target: {fileID: 1176574788932495458, guid: e397fe6b800207348a0290e227c695f1, type: 3}
+      propertyPath: soundManager
+      value: 
+      objectReference: {fileID: 1358326915}
     - target: {fileID: 2037073404082963448, guid: e397fe6b800207348a0290e227c695f1, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
