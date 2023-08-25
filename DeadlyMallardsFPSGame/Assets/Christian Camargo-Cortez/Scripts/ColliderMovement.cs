@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ColliderMovement : MonoBehaviour
 {
-    public CapsuleCollider headCap;
-    public CapsuleCollider bodyCap;
+    public Collider headCap;
+    public Collider bodyCap;
 
     public void capsuleDisable()
     {
