@@ -59,7 +59,6 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         _settings.SetActive(false);
-
         LoadAllStats();
     }
 
@@ -67,7 +66,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         UpdatePlayerUI();
-        if (Input.GetButtonDown("Cancel") && _activeMenu == null)
+        if (!isPaused && Input.GetButtonDown("Cancel") && _activeMenu == null)
         {
             Pause();
             _activeMenu = _pauseMenu;
@@ -99,8 +98,13 @@ public class GameManager : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         isPaused = !isPaused;
-        _activeMenu.SetActive(false);
-        _activeMenu = null;
+        if (_activeMenu != null)
+        {
+            _activeMenu.SetActive(false);
+            _activeMenu = null;
+        }
+        //_activeMenu.SetActive(false);
+        //_activeMenu = null;
         scoreManager.ScoreBoard.SetActive(false);
         _ObjectiveUi.ObjectiveUi.SetActive(true);
     }
