@@ -9,8 +9,10 @@ public class KamikazeZombieAI : EnemeyAI
 {
     [SerializeField] int explostiondmg;
     [SerializeField] GameObject Boom;
+    [SerializeField] Transform headpos;
     Collider player; 
     EnemeyAI zombo;
+
 
     // Start is called before the first frame update
     void Start()
@@ -30,27 +32,22 @@ public class KamikazeZombieAI : EnemeyAI
         }
 
     }
+
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             zombo.anim.SetTrigger("jumpAttack");
-            player = other;
+          
         }
     }
 
-    public void DestroyZombie()
-    {
-        Destroy(gameObject);
-        Instantiate(Boom, gameObject.transform.position, Quaternion.identity);
-        player.GetComponent<playerControl>().CanTakeDamage(explostiondmg);
-        zombo.playerInRange = true;
-    }
 
     void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
         {
+
             zombo.playerInRange = false;
             
         }

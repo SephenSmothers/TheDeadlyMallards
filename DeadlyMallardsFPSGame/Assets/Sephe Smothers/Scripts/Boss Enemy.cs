@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class BossEnemy : MonoBehaviour, TakeDamage
 {
+    [SerializeField] ObjectiveManager _manager;
     [SerializeField] Renderer modle;
     [SerializeField] NavMeshAgent agent;
     public int hp;
@@ -105,6 +106,7 @@ public class BossEnemy : MonoBehaviour, TakeDamage
         }
     }
 
+
     public void CanTakeDamage(int amount)
     {
         hp -= amount;
@@ -121,6 +123,7 @@ public class BossEnemy : MonoBehaviour, TakeDamage
             GameManager.instance.FinalWin();
             Destroy(gameObject, 5);
             GameManager.instance.OnZombieKilled();
+            _manager.LastObjective = true;
         }
         else
         {

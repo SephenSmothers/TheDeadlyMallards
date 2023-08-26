@@ -8,6 +8,7 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
 {
     [SerializeField] Renderer modle;
     public NavMeshAgent agent;
+    public ColliderMovement caps;
     public int hp;
 
     [SerializeField] float shootspeed;
@@ -44,6 +45,7 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
     public GameObject DamagePopUp;
 
     public bool shooter;
+    public bool bomber;
     bool isshooting;
 
 
@@ -51,7 +53,6 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
     void Start()
     {
         GameManager.instance.ReturnEnemyCount(1);
-
     }
 
     // Update is called once per frame
@@ -101,6 +102,7 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
             }
         }
     }
+ 
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -133,9 +135,11 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
         ScoreManager.instance.UpdateTotalDamageDealt(amount);
         if (hp <= 0)
         {
+            gameObject.GetComponent<SphereCollider>().enabled = false;
             GameManager.instance.ReturnEnemyCount(-1);
             ScoreManager.instance.UpdateZombiesKilled(1);
             ScoreManager.instance.UpdateScores();
+            caps.capsuleDisable();
             drops.randomChance();
             anim.SetBool("Dead", true);
             anim.SetBool("deadSpeed", true);
@@ -143,7 +147,6 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
             anim.SetBool("DeadGun", true);
             aud.PlayOneShot(zombieDeath, DeathVol);
             agent.enabled = false;
-            //GetComponent<CapsuleCollider>().enabled = false;
             if (gameObject.GetComponent("splitZombie") as splitZombie)
             {
                 GetComponent<splitZombie>().OnDeath();
@@ -179,7 +182,7 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
         anim.SetTrigger("Attack");
         anim.SetTrigger("speedAttack");
         anim.SetTrigger("tankAttack");
-        Instantiate(hitbox, attackpos.position, Quaternion.Euler(90, 0, 0));
+        Instantiate(hitbox, attackpos.position, attackpos.rotation);
         yield return new WaitForSeconds(shootspeed);
         isattacking = false;
     }

@@ -11,10 +11,11 @@ public class ObjectiveManager : MonoBehaviour, Interactables
     //[SerializeField] int roundToReach;
    // public int zombiesToKill;
     public bool AllObjectivesCompleted;
-    [SerializeField] bool LastObjective;
+    public bool LastObjective;
     public GameObject LevelWinUi;
     public GameObject ObjectiveUi;
     public ScoreManager _scoreManager;
+  
 
 
     // Start is called before the first frame update
@@ -35,8 +36,17 @@ public class ObjectiveManager : MonoBehaviour, Interactables
     { 
         for (int i = 0; i < Objectives.Count; i++)
         {
+            if (LastObjective)
+            {
+                AllObjectivesCompleted = true;
+                GameManager.instance.SaveAllStats();
 
-            if (CheckObjectives())
+                LevelWinUi.SetActive(true);
+                ObjectiveUi.SetActive(false);
+                _scoreManager.ScoreBoard.SetActive(true);
+                StartCoroutine(HideLevelCompleteUI());
+            }
+            else if (CheckObjectives())
             {
                 AllObjectivesCompleted = true;
                 GameManager.instance.SaveAllStats();
@@ -80,41 +90,55 @@ public class ObjectiveManager : MonoBehaviour, Interactables
 
         return complete;
     }
-    //private bool CheckZombies()
-    //{
-    //    bool complete = false;
-
-    //    if (zombiesToKill <= GameManager.instance.GetZombiesKilled())
-    //    {
-    //        complete = true;
-    //    }
-
-    //    return complete;
-    //}
-    //private bool CheckWaves()
-    //{
-    //    bool complete = false;
-
-    //    if (roundToReach <= EnemySpawner.instance.GetCurrentWave())
-    //    {
-    //        complete = true;
-    //    }
-
-    //    return complete;
-    //}
 
     private IEnumerator HideLevelCompleteUI()
     {
-        GameManager.instance.playerScript.isInvulnerable = true;
-        yield return new WaitForSeconds(3.0f);
       
 
+        float timerDuration = 3.0f;
+        float startTime = Time.realtimeSinceStartup;
+
+
+
+        GameManager.instance.Pause();
+
+
+        while (Time.realtimeSinceStartup - startTime < timerDuration)
+        {
+            yield return null;
+        }
+
+        yield return new WaitForEndOfFrame();
+
+
+        
+
+       SceneManager.LoadSceneAsync(nextScene);
+
+
+        
         _scoreManager.ScoreBoard.SetActive(false);
         LevelWinUi.SetActive(false);
         ObjectiveUi.SetActive(true);
+        
+        GameManager.instance.UnPause();
+
+        
+
+        //yield return new WaitForSeconds(3.0f);
+        //Debug.Log("Disabling player collider");
+        //playerCollider.enabled = false;
+        //yield return new WaitForSeconds(3.0f);
+        //Debug.Log("Enabling player collider");
+        //playerCollider.enabled = true;
+
+        //_scoreManager.ScoreBoard.SetActive(false);
+        //LevelWinUi.SetActive(false);
+        //ObjectiveUi.SetActive(true);
+        //playerCollider.enabled = true;
+
 
        
-        SceneManager.LoadScene(nextScene);
     }
 
     public void Interact()

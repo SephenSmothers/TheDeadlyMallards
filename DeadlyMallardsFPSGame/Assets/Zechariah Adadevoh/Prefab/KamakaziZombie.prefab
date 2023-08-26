@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7477629223525291953}
   - component: {fileID: 327998548523804032}
-  - component: {fileID: 7140048680723934270}
   m_Layer: 7
   m_Name: BodyPos
   m_TagString: Body
@@ -56,21 +55,6 @@ CapsuleCollider:
   m_Height: 0.1
   m_Direction: 1
   m_Center: {x: 0.2, y: 0, z: 0}
---- !u!114 &7140048680723934270
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1581296786953420149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 390e510a77abac84b99d75c0f70e4823, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  where: {fileID: 1182583207409696909}
-  colliderObj: {fileID: 1581296786953420149}
-  enemy: {fileID: 1572471273293246130}
 --- !u!1 &3280715150733453156
 GameObject:
   m_ObjectHideFlags: 0
@@ -81,7 +65,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2805872279720013345}
   - component: {fileID: 8307642158162750220}
-  - component: {fileID: 5414272927824167273}
   m_Layer: 7
   m_Name: HeadPos
   m_TagString: Head
@@ -127,21 +110,6 @@ CapsuleCollider:
   m_Height: 0
   m_Direction: 1
   m_Center: {x: -0.15, y: 0, z: 0}
---- !u!114 &5414272927824167273
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3280715150733453156}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 390e510a77abac84b99d75c0f70e4823, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  where: {fileID: 1182583207409696955}
-  colliderObj: {fileID: 3280715150733453156}
-  enemy: {fileID: 1572471273293246130}
 --- !u!1 &5531296111253403963
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,7 +163,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400056, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400056, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
       propertyPath: m_LocalScale.x
@@ -287,6 +255,9 @@ PrefabInstance:
       addedObject: {fileID: 1572471273293246130}
     - targetCorrespondingSourceObject: {fileID: 100056, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
       insertIndex: -1
+      addedObject: {fileID: -8871386240235166532}
+    - targetCorrespondingSourceObject: {fileID: 100056, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 1464697624522964278}
     - targetCorrespondingSourceObject: {fileID: 100056, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
       insertIndex: -1
@@ -337,6 +308,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modle: {fileID: 1182583207395611033}
   agent: {fileID: 3703346473978969503}
+  caps: {fileID: -8871386240235166532}
   hp: 2
   shootspeed: 0
   shootingpos: {fileID: 0}
@@ -360,6 +332,20 @@ MonoBehaviour:
   shooter: 0
   explostiondmg: 4
   Boom: {fileID: 8194992990867289339, guid: 99bc28c0d45f51c4fbac01080b73edc7, type: 3}
+--- !u!114 &-8871386240235166532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182583207409278177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 390e510a77abac84b99d75c0f70e4823, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  headCap: {fileID: 327998548523804032}
+  bodyCap: {fileID: 8307642158162750220}
 --- !u!135 &1464697624522964278
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -524,11 +510,6 @@ AudioSource:
 --- !u!4 &1182583207409696897 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400056, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
-  m_PrefabInstance: {fileID: 1182583207409310265}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1182583207409696909 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400052, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
   m_PrefabInstance: {fileID: 1182583207409310265}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1182583207409696955 stripped

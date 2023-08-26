@@ -43,6 +43,9 @@ public class GameManager : MonoBehaviour
     public GameObject damageIndicator;
     public ScoreManager scoreManager;
     public SliderSettings sliderSettings;
+    public ObjectiveManager _ObjectiveUi;
+
+
 
 
     void Awake()
@@ -56,7 +59,6 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         _settings.SetActive(false);
-
         LoadAllStats();
     }
 
@@ -64,12 +66,13 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         UpdatePlayerUI();
-        if (Input.GetButtonDown("Cancel") && _activeMenu == null)
+        if (!_ObjectiveUi.AllObjectivesCompleted && !isPaused && Input.GetButtonDown("Cancel") && _activeMenu == null)
         {
             Pause();
             _activeMenu = _pauseMenu;
             _activeMenu.SetActive(isPaused);
             scoreManager.ScoreBoard.SetActive(true);
+            _ObjectiveUi.ObjectiveUi.SetActive(false);
         }
     }
 
@@ -80,11 +83,15 @@ public class GameManager : MonoBehaviour
 
     public void Pause()
     {
-        Time.timeScale = 0;
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.Confined;
-        isPaused = !isPaused;
-        scoreManager.ScoreBoard.SetActive(true);
+        if (!_ObjectiveUi.AllObjectivesCompleted)
+        {
+            Time.timeScale = 0;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.Confined;
+            isPaused = !isPaused;
+            scoreManager.ScoreBoard.SetActive(true);
+            _ObjectiveUi.ObjectiveUi.SetActive(false);
+        }
 
     }
 
@@ -94,9 +101,15 @@ public class GameManager : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         isPaused = !isPaused;
-        _activeMenu.SetActive(false);
-        _activeMenu = null;
+        if (_activeMenu != null)
+        {
+            _activeMenu.SetActive(false);
+            _activeMenu = null;
+        }
+        //_activeMenu.SetActive(false);
+        //_activeMenu = null;
         scoreManager.ScoreBoard.SetActive(false);
+        _ObjectiveUi.ObjectiveUi.SetActive(true);
     }
 
     public void YoLose()
