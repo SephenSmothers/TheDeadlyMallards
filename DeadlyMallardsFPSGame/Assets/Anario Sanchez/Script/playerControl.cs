@@ -41,6 +41,8 @@ public class playerControl : MonoBehaviour, TakeDamage
     private float invulnerabilityTimer = 0.0f;
     public bool isInvulnerable = false;
     private bool safety;
+
+    public float playerVel;
     public enum MovementState
     {
         ads,
@@ -59,8 +61,8 @@ public class playerControl : MonoBehaviour, TakeDamage
     }
     void Update()
     {
-        groundedPlayer = Physics.Raycast(transform.position, transform.up * -1, out RaycastHit hit, 3);
-        Debug.Log(groundedPlayer);
+        playerVel = playerVelocity.y;
+        groundedPlayer = gameObject.GetComponent<CharacterController>().isGrounded;//Physics.Raycast(transform.position, transform.up * -1, out RaycastHit hit, 2.1f);
         Debug.DrawRay(transform.position, transform.up * -1);
         if (GameManager.instance._activeMenu == null)
         {

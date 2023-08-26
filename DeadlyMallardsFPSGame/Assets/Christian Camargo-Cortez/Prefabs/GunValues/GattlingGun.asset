@@ -30,3 +30,4 @@ MonoBehaviour:
   upgradedGun1: 0
   upgradedGun2: 0
   gunPrice: 1
+  origSpread: 0
