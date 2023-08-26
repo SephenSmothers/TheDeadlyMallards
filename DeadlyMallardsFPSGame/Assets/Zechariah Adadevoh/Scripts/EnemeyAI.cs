@@ -45,6 +45,7 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
     public GameObject DamagePopUp;
 
     public bool shooter;
+    public bool bomber;
     bool isshooting;
 
 
@@ -101,6 +102,7 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
             }
         }
     }
+ 
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -180,7 +182,7 @@ public class EnemeyAI : MonoBehaviour, TakeDamage
         anim.SetTrigger("Attack");
         anim.SetTrigger("speedAttack");
         anim.SetTrigger("tankAttack");
-        Instantiate(hitbox, attackpos.position, Quaternion.Euler(0, 90, 0));
+        Instantiate(hitbox, attackpos.position, attackpos.rotation);
         yield return new WaitForSeconds(shootspeed);
         isattacking = false;
     }
