@@ -15,10 +15,6 @@ public class Collectible : MonoBehaviour, Interactables
     {
         completed = false;
     }
-    void Update()
-    {
-       
-    }
 
     void Destroy()
     {
