@@ -155,7 +155,8 @@ public class shootingControl : MonoBehaviour
             if (Physics.Raycast(bullet.position, direction, out hit, 1000f) && !hit.collider.CompareTag("Head") && !hit.collider.CompareTag("Player") && !hit.collider.CompareTag("Body"))
             {
                 GameObject bulletHole = Instantiate(bulletHolePrefab, hit.point, Quaternion.Euler(0, 180, 0)) as GameObject;
-                bulletHole.transform.LookAt(hit.point + hit.normal);
+                bulletHole.transform.LookAt(hit.point + hit.normal * .01f);
+                bulletHole.transform.Rotate(Vector3.up, Random.Range(0f, 360f));
                 Destroy(bulletHole, 5f);
 
                 if (gunList[selectedGun].hitEffect != null)
