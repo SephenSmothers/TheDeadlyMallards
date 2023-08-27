@@ -62,8 +62,7 @@ public class playerControl : MonoBehaviour, TakeDamage
     void Update()
     {
         playerVel = playerVelocity.y;
-        groundedPlayer = gameObject.GetComponent<CharacterController>().isGrounded;//Physics.Raycast(transform.position, transform.up * -1, out RaycastHit hit, 2.1f);
-        Debug.DrawRay(transform.position, transform.up * -1);
+        groundedPlayer = controller.isGrounded;
         if (GameManager.instance._activeMenu == null)
         {
             stateCheck();
@@ -133,7 +132,7 @@ public class playerControl : MonoBehaviour, TakeDamage
             {
                 GameManager.instance.shootingScript.gunList[GameManager.instance.shootingScript.selectedGun].spread = 0f;
             }
-            gun.position = Vector3.Lerp(gun.position, ads.position, 10f * Time.deltaTime);
+            GameManager.instance.shootingScript.anim.SetBool("Ads", true);
             playerCam.fieldOfView = Mathf.Lerp(playerCam.fieldOfView, 35, 10f * Time.deltaTime);
         }
         else if (Input.GetKey(KeyCode.LeftShift) && !tired && state != MovementState.ads)
@@ -258,5 +257,6 @@ public class playerControl : MonoBehaviour, TakeDamage
         {
             GameManager.instance.shootingScript.gunList[GameManager.instance.shootingScript.selectedGun].spread = GameManager.instance.shootingScript.gunList[GameManager.instance.shootingScript.selectedGun].origSpread;
         }
+        GameManager.instance.shootingScript.anim.SetBool("Ads", false);
     }
 }
