@@ -11,8 +11,9 @@ public class DamageText : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        damageText = GetComponentInChildren<TextMeshPro>();
+        damageText = gameObject.GetComponent<TextMeshPro>();
     }
+
 
    public void DisplayDamage(int amount)
    {
@@ -34,10 +35,10 @@ public class DamageText : MonoBehaviour
 
         while (elapseTime < destroyTimer) 
         {
-            transform.position = Vector3.Lerp(startPos, targetPos, elapseTime / destroyTimer);
-            transform.rotation = rotationToCamera;
+            gameObject.transform.position = Vector3.Lerp(startPos, targetPos, elapseTime / destroyTimer);
+            gameObject.transform.rotation = rotationToCamera;
             elapseTime += Time.deltaTime;
-            yield return null; 
+            yield return new WaitForSeconds(0); 
         }
         damageText.enabled = false;
         Destroy(gameObject);
