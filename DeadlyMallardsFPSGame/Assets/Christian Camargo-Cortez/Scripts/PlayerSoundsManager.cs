@@ -115,6 +115,10 @@ public class PlayerSoundsManager : MonoBehaviour
         {
             PlayRifleShootingSound();
         }
+        else if (curGun.gunName == "GattlingGun")
+        {
+            PlayAssaultRifleShoot();
+        }
     }
 
     //REVOLVER SOUNDS
