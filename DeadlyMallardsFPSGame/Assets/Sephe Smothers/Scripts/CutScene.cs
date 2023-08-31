@@ -17,5 +17,6 @@ public class CutScene : MonoBehaviour
     {
         yield return new WaitForSeconds(CutSceneTime);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        Debug.Log("Made it here");
     }
 }

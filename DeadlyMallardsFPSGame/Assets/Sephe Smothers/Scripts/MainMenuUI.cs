@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -38,8 +39,10 @@ public class MainMenuUI : MonoBehaviour
 
     public void PlayGame()
     {
-        //_mainMenu.SetActive(false);
-        //_levelSelectMenu.SetActive(true);
+        if (Time.timeScale == 0)
+        {
+            Time.timeScale = 1;
+        }
         SceneManager.LoadScene(1);
     }
 
@@ -77,6 +80,7 @@ public class MainMenuUI : MonoBehaviour
         if (Time.timeScale == 0)
         {
             Time.timeScale = 1;
+            Debug.Log("Made it here in ui");
         }
 
         SceneManager.LoadScene(1);
