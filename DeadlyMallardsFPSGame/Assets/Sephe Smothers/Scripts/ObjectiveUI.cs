@@ -19,12 +19,16 @@ public class ObjectiveUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       for( int i = 0;i < manager.Objectives.Count; i++)
-       {
-            if (manager.Objectives[i].completed)
+        if (manager.Objectives.Count != 0)
+        {
+            for (int i = 0; i < manager.Objectives.Count; i++)
             {
-                checks[i].SetActive(true);
+                if (manager.Objectives[i].completed)
+                {
+                    checks[i].SetActive(true);
+                }
             }
-       }
+        }
+       
     }
 }

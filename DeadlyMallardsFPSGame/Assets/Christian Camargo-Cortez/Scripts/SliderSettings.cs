@@ -26,7 +26,7 @@ public class SliderSettings : MonoBehaviour
         {
             PlayerPrefs.SetFloat("Master", 1);
             PlayerPrefs.SetFloat("SFX", 1);
-            PlayerPrefs.SetFloat("Music", 1);
+            PlayerPrefs.SetFloat("Music", musicSM.source.volume);
             PlayerPrefs.SetFloat("Sensitivity", .5f);
             LoadSoundValues();
         }

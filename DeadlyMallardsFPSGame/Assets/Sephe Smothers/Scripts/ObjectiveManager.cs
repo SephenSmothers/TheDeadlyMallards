@@ -11,7 +11,7 @@ public class ObjectiveManager : MonoBehaviour, Interactables
     //[SerializeField] int roundToReach;
    // public int zombiesToKill;
     public bool AllObjectivesCompleted;
-    [SerializeField] bool LastObjective;
+    public bool LastObjective;
     public GameObject LevelWinUi;
     public GameObject ObjectiveUi;
     public ScoreManager _scoreManager;
@@ -36,8 +36,17 @@ public class ObjectiveManager : MonoBehaviour, Interactables
     { 
         for (int i = 0; i < Objectives.Count; i++)
         {
+            if (LastObjective)
+            {
+                AllObjectivesCompleted = true;
+                GameManager.instance.SaveAllStats();
 
-            if (CheckObjectives())
+                LevelWinUi.SetActive(true);
+                ObjectiveUi.SetActive(false);
+                _scoreManager.ScoreBoard.SetActive(true);
+                StartCoroutine(HideLevelCompleteUI());
+            }
+            else if (CheckObjectives())
             {
                 AllObjectivesCompleted = true;
                 GameManager.instance.SaveAllStats();
@@ -81,28 +90,6 @@ public class ObjectiveManager : MonoBehaviour, Interactables
 
         return complete;
     }
-    //private bool CheckZombies()
-    //{
-    //    bool complete = false;
-
-    //    if (zombiesToKill <= GameManager.instance.GetZombiesKilled())
-    //    {
-    //        complete = true;
-    //    }
-
-    //    return complete;
-    //}
-    //private bool CheckWaves()
-    //{
-    //    bool complete = false;
-
-    //    if (roundToReach <= EnemySpawner.instance.GetCurrentWave())
-    //    {
-    //        complete = true;
-    //    }
-
-    //    return complete;
-    //}
 
     private IEnumerator HideLevelCompleteUI()
     {

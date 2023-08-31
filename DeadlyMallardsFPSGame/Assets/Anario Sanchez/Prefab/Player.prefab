@@ -190,9 +190,9 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1880819164249809558}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: cbffbd9f028da3f42a6281a730e9ba18, type: 2}
+  m_Controller: {fileID: 9100000, guid: 371a8e3cca6557e439fb397d3e853d2c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -323,6 +323,7 @@ MonoBehaviour:
   isBossPlayer: 0
   invulnerabilityDuration: 0.5
   isInvulnerable: 0
+  playerVel: 0
 --- !u!114 &7797289553928980035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -582,7 +583,6 @@ GameObject:
   m_Component:
   - component: {fileID: 325485243074235867}
   - component: {fileID: 6025292221342782989}
-  - component: {fileID: 4572634376319183901}
   m_Layer: 0
   m_Name: Weapon Cam
   m_TagString: Untagged
@@ -656,14 +656,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &4572634376319183901
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3367311687173104704}
-  m_Enabled: 1
 --- !u!1 &3635339285444061385
 GameObject:
   m_ObjectHideFlags: 0
@@ -1034,7 +1026,7 @@ Transform:
   - {fileID: 1815063520046224102}
   - {fileID: 8250367583141367117}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5685288592081153806
 GameObject:
@@ -1483,11 +1475,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6668600122513740892, guid: f738f637376f2674194a70deaf8ae0a6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.091
       objectReference: {fileID: 0}
     - target: {fileID: 6668600122513740892, guid: f738f637376f2674194a70deaf8ae0a6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 4.139
       objectReference: {fileID: 0}
     - target: {fileID: 6668600122513740892, guid: f738f637376f2674194a70deaf8ae0a6, type: 3}
       propertyPath: m_LocalRotation.w

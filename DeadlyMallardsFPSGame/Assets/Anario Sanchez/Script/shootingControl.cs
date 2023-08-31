@@ -62,7 +62,7 @@ public class shootingControl : MonoBehaviour
         //shooting input
         if (readyToShoot && isShooting && !reloading && gunList[selectedGun].bulletsLeft > 0)
         {
-            //soundManager.PlayAllShots();
+            soundManager.PlayAllShots();
             shoot();
         }
         else if (gunList[selectedGun].bulletsLeft <= 0 && isShooting && !reloading)
@@ -73,9 +73,7 @@ public class shootingControl : MonoBehaviour
 
         if (gunList[selectedGun].bulletsLeft <= 0 && gunList[selectedGun].totalAmmo <= 0 && isShooting)
         {
-            //soundManager.PlayDryFireSound();
-            anim.SetBool("isShooting", true);
-            anim.SetBool("isEmpty", true);
+            soundManager.PlayDryFireSound();
         }
     }
     public void reload()
@@ -110,7 +108,6 @@ public class shootingControl : MonoBehaviour
     public void shoot()
     {
         readyToShoot = false;
-        anim.SetBool("isShooting", true);
         if (bulletCounter < bulletsPerShot)
         {
             bulletCounter++;
@@ -155,7 +152,8 @@ public class shootingControl : MonoBehaviour
             if (Physics.Raycast(bullet.position, direction, out hit, 1000f) && !hit.collider.CompareTag("Head") && !hit.collider.CompareTag("Player") && !hit.collider.CompareTag("Body"))
             {
                 GameObject bulletHole = Instantiate(bulletHolePrefab, hit.point, Quaternion.Euler(0, 180, 0)) as GameObject;
-                bulletHole.transform.LookAt(hit.point + hit.normal);
+                bulletHole.transform.LookAt(hit.point + hit.normal * .01f);
+                bulletHole.transform.Rotate(Vector3.up, Random.Range(0f, 360f));
                 Destroy(bulletHole, 5f);
 
                 if (gunList[selectedGun].hitEffect != null)
@@ -179,7 +177,6 @@ public class shootingControl : MonoBehaviour
     public void resetShot()
     {
         readyToShoot = true;
-        anim.SetBool("isShooting", false);
         bulletCounter = 0;
     }
 
@@ -197,12 +194,14 @@ public class shootingControl : MonoBehaviour
         {
             if (Input.GetAxis("Mouse ScrollWheel") > 0 && selectedGun < gunList.Count - 1)
             {
+                anim.SetBool(gunList[selectedGun].gunName, false);
                 selectedGun++;
                 changeGunStats();
                 soundManager.PlaySwapGuns();
             }
             else if (Input.GetAxis("Mouse ScrollWheel") < 0 && selectedGun > 0)
             {
+                anim.SetBool(gunList[selectedGun].gunName, false);
                 selectedGun--;
                 changeGunStats();
                 soundManager.PlaySwapGuns();
@@ -212,15 +211,17 @@ public class shootingControl : MonoBehaviour
 
     public bool OnGunPickUp(GunsManager _gunStats)
     {
-        if (checkGunSlots(_gunStats.name, gunList))
+        if (checkGunSlots(_gunStats.gunName, gunList))
         {
             return false;
         }
+        anim.SetBool(gunList[selectedGun].gunName, false);
         gunList.Add(_gunStats);
         if (gunList.Count > 2)
         {
             gunList.RemoveAt(selectedGun);
         }
+        anim.SetBool(_gunStats.gunName, true);
         damage = _gunStats.damage;
         fireRate = _gunStats.fireRate;
         range = _gunStats.range;
@@ -245,6 +246,7 @@ public class shootingControl : MonoBehaviour
 
     public void changeGunStats()
     {
+        anim.SetBool(gunList[selectedGun].gunName, true);
         damage = gunList[selectedGun].damage;
         range = gunList[selectedGun].range;
         fireRate = gunList[selectedGun].fireRate;

@@ -642,14 +642,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4697376313202284190}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: 0.033, y: 0.487, z: 0.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 441309679248778184}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 90}
 --- !u!1 &4724987003436680266
 GameObject:
   m_ObjectHideFlags: 0
@@ -1030,6 +1030,7 @@ MonoBehaviour:
   playerInRange: 0
   DamagePopUp: {fileID: 3830295708246891327, guid: 313942a27a6572843ac4895e5f4170e9, type: 3}
   shooter: 0
+  bomber: 0
   zombie: {fileID: 5719475534194721480, guid: 2fe3a80e0f99af8439ef888f48d5b581, type: 3}
 --- !u!114 &9016307809735826848
 MonoBehaviour:
